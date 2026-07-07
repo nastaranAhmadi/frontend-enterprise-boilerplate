@@ -1,0 +1,36 @@
+{
+  "name": "@enterprise/env",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "import": "./dist/client.js",
+      "default": "./dist/client.js"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js",
+      "default": "./dist/server.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@enterprise/errors": "workspace:*",
+    "@enterprise/types": "workspace:*",
+    "@enterprise/validation": "workspace:*"
+  },
+  "devDependencies": {
+    "@enterprise/tsconfig": "workspace:*"
+  }
+}

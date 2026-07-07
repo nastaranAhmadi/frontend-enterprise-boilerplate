@@ -1,0 +1,15 @@
+{
+  "name": "@enterprise/landing",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@enterprise/types": "workspace:*",
+    "@enterprise/ui": "workspace:*"
+  },
+  "devDependencies": {
+    "@enterprise/tsconfig": "workspace:*",
+    "@types/react": "^19.1.0",
+    "react": "^19.1.0"
+  }
+}

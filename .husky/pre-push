@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+set -e
+
+echo "▶ pre-push: validating affected projects (typecheck + build)..."
+
+pnpm affected:validate
+
+echo "✓ pre-push: affected validation passed."

@@ -1,0 +1,15 @@
+{
+  "name": "eslint-config",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "tooling/eslint-config",
+  "tags": ["scope:shared", "type:config", "platform:neutral"],
+  "targets": {
+    "lint": {
+      "executor": "nx:noop",
+      "metadata": {
+        "description": "Config-only package — linted via root eslint.config.mjs."
+      }
+    }
+  }
+}

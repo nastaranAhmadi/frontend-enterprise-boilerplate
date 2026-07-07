@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+storybook-static/
+coverage/
+
+# Nx
+.nx/
+
+# Generated
+*.tsbuildinfo
+
+# Package manager
+package-lock.json
+
+# Misc
+.DS_Store

@@ -1,0 +1,28 @@
+{
+  "extends": "./tooling/tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@enterprise/api-client": ["packages/api-client/src/index.ts"],
+      "@enterprise/auth": ["packages/auth/src/index.ts"],
+      "@enterprise/config": ["packages/config/src/index.ts"],
+      "@enterprise/design-tokens": ["packages/design-tokens/src/index.ts"],
+      "@enterprise/env": ["packages/env/src/index.ts"],
+      "@enterprise/env/client": ["packages/env/src/client.ts"],
+      "@enterprise/env/server": ["packages/env/src/server.ts"],
+      "@enterprise/errors": ["packages/errors/src/index.ts"],
+      "@enterprise/feature-flags": ["packages/feature-flags/src/index.ts"],
+      "@enterprise/hooks": ["packages/hooks/src/index.ts"],
+      "@enterprise/i18n": ["packages/i18n/src/index.tsx"],
+      "@enterprise/logger": ["packages/logger/src/index.ts"],
+      "@enterprise/permissions": ["packages/permissions/src/index.ts"],
+      "@enterprise/shared": ["packages/shared/src/index.ts"],
+      "@enterprise/theme": ["packages/theme/src/index.tsx"],
+      "@enterprise/types": ["packages/types/src/index.ts"],
+      "@enterprise/ui": ["packages/ui/src/index.ts"],
+      "@enterprise/utils": ["packages/utils/src/index.ts"],
+      "@enterprise/validation": ["packages/validation/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "build", "out", ".next", "coverage"]
+}

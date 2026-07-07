@@ -1,0 +1,27 @@
+{
+  "name": "@enterprise/tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared TypeScript configurations for frontend apps, backend services, and libraries.",
+  "files": [
+    "*.json",
+    "README.md"
+  ],
+  "exports": {
+    "./base": "./base.json",
+    "./browser": "./browser.json",
+    "./node": "./node.json",
+    "./react": "./react.json",
+    "./library": "./library.json",
+    "./library-browser": "./library-browser.json",
+    "./library-node": "./library-node.json",
+    "./library-react": "./library-react.json",
+    "./nextjs": "./nextjs.json",
+    "./vite-app": "./vite-app.json",
+    "./vitest": "./vitest.json"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "^5.8.3"
+  }
+}

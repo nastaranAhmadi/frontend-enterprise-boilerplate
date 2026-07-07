@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+storybook-static/
+coverage/
+*.tsbuildinfo
+
+# Nx
+.nx/cache/
+.nx/workspace-data/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Testing
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Misc
+*.local
+.turbo
+.vercel
+
+# Bundle analysis
+stats.html
+bundle-analyzer-report.html

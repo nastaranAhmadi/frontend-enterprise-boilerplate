@@ -1,0 +1,49 @@
+{
+  "name": "@enterprise/frontend",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Production-grade frontend monorepo foundation for large-scale e-commerce platforms.",
+  "packageManager": "pnpm@10.14.0",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "build": "nx run-many -t build",
+    "test": "nx run-many -t test",
+    "lint": "nx run-many -t lint",
+    "lint:fix": "nx run-many -t lint -- --fix",
+    "typecheck": "nx run-many -t typecheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "graph": "nx graph",
+    "affected": "nx affected",
+    "affected:build": "nx affected -t build",
+    "affected:test": "nx affected -t test",
+    "affected:lint": "nx affected -t lint",
+    "affected:typecheck": "nx affected -t typecheck",
+    "affected:validate": "pnpm affected:typecheck && pnpm affected:build",
+    "reset": "nx reset",
+    "validate:boundaries": "node scripts/validate-boundaries.mjs",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,tsx,json,md,css,scss,yaml,yml}": "prettier --write",
+    "*.{js,mjs,cjs,ts,tsx}": "eslint --fix"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@enterprise/eslint-config": "workspace:*",
+    "@nx/eslint": "23.0.1",
+    "@nx/js": "23.0.1",
+    "@nx/workspace": "23.0.1",
+    "@types/node": "^22.15.0",
+    "eslint": "^9.28.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0",
+    "nx": "23.0.1",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3"
+  }
+}

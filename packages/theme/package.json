@@ -1,0 +1,30 @@
+{
+  "name": "@enterprise/theme",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "@enterprise/design-tokens": "workspace:*",
+    "@enterprise/types": "workspace:*"
+  },
+  "devDependencies": {
+    "@enterprise/tsconfig": "workspace:*",
+    "@types/react": "^19.1.0",
+    "react": "^19.1.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  }
+}

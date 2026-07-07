@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "references": [
+    { "path": "./packages/types/tsconfig.lib.json" },
+    { "path": "./packages/errors/tsconfig.lib.json" },
+    { "path": "./packages/design-tokens/tsconfig.lib.json" },
+    { "path": "./packages/permissions/tsconfig.lib.json" },
+    { "path": "./packages/validation/tsconfig.lib.json" },
+    { "path": "./packages/logger/tsconfig.lib.json" },
+    { "path": "./packages/config/tsconfig.lib.json" },
+    { "path": "./packages/env/tsconfig.lib.json" },
+    { "path": "./packages/utils/tsconfig.lib.json" },
+    { "path": "./packages/api-client/tsconfig.lib.json" },
+    { "path": "./packages/auth/tsconfig.lib.json" },
+    { "path": "./packages/feature-flags/tsconfig.lib.json" },
+    { "path": "./packages/shared/tsconfig.lib.json" },
+    { "path": "./packages/theme/tsconfig.lib.json" },
+    { "path": "./packages/i18n/tsconfig.lib.json" },
+    { "path": "./packages/hooks/tsconfig.lib.json" },
+    { "path": "./packages/ui/tsconfig.lib.json" }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "extends": ["../../tsconfig.base.json", "@enterprise/tsconfig/library-react"],
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "tsBuildInfoFile": "./dist/tsconfig.lib.tsbuildinfo"
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["src/**/*.spec.ts", "src/**/*.test.ts", "src/**/*.stories.tsx"],
+  "references": [
+    { "path": "../types/tsconfig.lib.json" },
+    { "path": "../shared/tsconfig.lib.json" },
+    { "path": "../design-tokens/tsconfig.lib.json" },
+    { "path": "../theme/tsconfig.lib.json" }
+  ]
+}
