@@ -1,6 +1,3 @@
-/** Design token primitives — consumed by theme and UI packages via CSS variables. */
-export const PACKAGE_NAME = '@enterprise/design-tokens' as const;
-
 export const designTokens = {
   colors: {
     background: 'var(--color-background)',
@@ -70,7 +67,3 @@ export const cssVariableNames = {
   ],
   spacing: ['--spacing-xs', '--spacing-sm', '--spacing-md', '--spacing-lg', '--spacing-xl'],
 } as const;
-
-export function getDesignTokenCssVariables(): string[] {
-  return [...cssVariableNames.color, ...cssVariableNames.spacing];
-}

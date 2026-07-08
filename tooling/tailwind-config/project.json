@@ -1,0 +1,21 @@
+{
+  "name": "tailwind-config",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "tooling/tailwind-config",
+  "tags": ["scope:shared", "type:config", "platform:neutral"],
+  "targets": {
+    "lint": {
+      "executor": "nx:noop",
+      "metadata": {
+        "description": "Config-only package — linted via root eslint.config.mjs."
+      }
+    },
+    "typecheck": {
+      "executor": "nx:noop",
+      "metadata": {
+        "description": "Config-only package — no TypeScript sources to compile."
+      }
+    }
+  }
+}

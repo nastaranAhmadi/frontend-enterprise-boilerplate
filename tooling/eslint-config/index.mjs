@@ -7,7 +7,7 @@ import { reactConfig } from './react.mjs';
 import { typescriptConfig } from './typescript.mjs';
 
 /** Composable flat configs for the monorepo. */
-export { baseConfig, boundariesConfig,nodeConfig, reactConfig, typescriptConfig };
+export { baseConfig, boundariesConfig, nodeConfig, reactConfig, typescriptConfig };
 export { moduleBoundaryRules } from './boundaries.mjs';
 
 /** Default workspace configuration. */

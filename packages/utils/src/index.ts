@@ -1,8 +1,7 @@
-import { PACKAGE_NAME as TypesPackageName } from '@enterprise/types';
+export type DeepPartial<T> = {
+  [K in keyof T]?: T[K] extends Record<string, unknown> ? DeepPartial<T[K]> : T[K];
+};
 
-/** Infrastructure placeholder — utility exports will be added in later sections. */
-export const PACKAGE_NAME = '@enterprise/utils' as const;
+export type ValueOf<T> = T[keyof T];
 
-export function getWorkspacePackageName(): typeof TypesPackageName {
-  return TypesPackageName;
-}
+export type Primitive = string | number | boolean | bigint | symbol | null | undefined;

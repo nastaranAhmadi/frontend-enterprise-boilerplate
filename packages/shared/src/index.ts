@@ -1,21 +1,11 @@
-import { PACKAGE_NAME as ConfigPackageName } from '@enterprise/config';
-import { PACKAGE_NAME as TypesPackageName } from '@enterprise/types';
-import { PACKAGE_NAME as UtilsPackageName } from '@enterprise/utils';
-import { PACKAGE_NAME as ValidationPackageName } from '@enterprise/validation';
+export type SharedModuleName = string;
 
-/** Infrastructure placeholder — cross-cutting shared modules will be added in later sections. */
-export const PACKAGE_NAME = '@enterprise/shared' as const;
+export interface SharedModuleDefinition {
+  readonly name: SharedModuleName;
+  readonly version: string;
+  readonly description?: string;
+}
 
-export function getSharedDependencies(): {
-  config: typeof ConfigPackageName;
-  types: typeof TypesPackageName;
-  utils: typeof UtilsPackageName;
-  validation: typeof ValidationPackageName;
-} {
-  return {
-    config: ConfigPackageName,
-    types: TypesPackageName,
-    utils: UtilsPackageName,
-    validation: ValidationPackageName,
-  };
+export interface SharedModuleRegistry {
+  list(): readonly SharedModuleDefinition[];
 }

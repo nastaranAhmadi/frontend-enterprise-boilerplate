@@ -20,24 +20,8 @@ export type AuthSession = {
   tokens: AuthTokens | null;
 };
 
-/** Secure authentication boundary — token storage and refresh contracts only. */
-export function createAuthBoundary(options: AuthBoundaryOptions) {
-  return {
-    getSession(): AuthSession {
-      const tokens = options.getTokens();
-      return { isAuthenticated: tokens !== null, tokens };
-    },
-    async refreshTokens(): Promise<AuthTokens | null> {
-      const current = options.getTokens();
-      if (!current || !options.refreshStrategy) return current;
-      const refreshed = await options.refreshStrategy(current);
-      options.setTokens(refreshed);
-      return refreshed;
-    },
-    clearSession(): void {
-      options.setTokens(null);
-    },
-  };
+export interface AuthBoundary {
+  getSession(): AuthSession;
+  refreshTokens(): Promise<AuthTokens | null>;
+  clearSession(): void;
 }
-
-export type AuthBoundary = ReturnType<typeof createAuthBoundary>;

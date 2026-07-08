@@ -1,2 +1,13 @@
-/** Infrastructure placeholder — domain types will be added in later sections. */
-export const PACKAGE_NAME = '@enterprise/types' as const;
+export type JsonPrimitive = string | number | boolean | null;
+
+export type JsonValue = JsonPrimitive | JsonObject | JsonArray;
+
+export type JsonObject = {
+  [key: string]: JsonValue;
+};
+
+export type JsonArray = JsonValue[];
+
+export type Nullable<T> = T | null;
+
+export type Optional<T> = T | undefined;

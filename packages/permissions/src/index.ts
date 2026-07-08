@@ -14,15 +14,7 @@ export type CreatePermissionCheckerOptions = {
   permissionMap: PermissionMap;
 };
 
-/** Creates a role-based permission checker. No business rules — infrastructure only. */
-export function createPermissionChecker(
-  options: CreatePermissionCheckerOptions,
-): PermissionChecker {
-  const permissions = new Set(options.permissionMap[options.role] ?? []);
-
-  return {
-    can: (permission) => permissions.has(permission),
-    canAny: (required) => required.some((permission) => permissions.has(permission)),
-    canAll: (required) => required.every((permission) => permissions.has(permission)),
-  };
+export interface PermissionPolicy {
+  readonly roles: readonly Role[];
+  readonly permissions: PermissionMap;
 }

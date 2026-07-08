@@ -1,4 +1,4 @@
-import { createContext, type ReactNode, useCallback, useContext, useMemo, useState } from 'react';
+import type { ReactNode } from 'react';
 
 export type Locale = string;
 
@@ -21,44 +21,18 @@ export type I18nContextValue = {
   t: (namespace: TranslationNamespace, key: string) => string;
 };
 
-const I18nContext = createContext<I18nContextValue | null>(null);
-
 export type I18nProviderProps = {
   children: ReactNode;
   config: I18nConfig;
 };
 
-/** Locale provider with namespace-based translation loading. No translations bundled. */
-export function I18nProvider({ children, config }: I18nProviderProps) {
-  const [locale, setLocale] = useState<Locale>(config.defaultLocale);
-
-  const t = useCallback(
-    (namespace: TranslationNamespace, key: string) => {
-      return config.translations?.[locale]?.[namespace]?.[key] ?? key;
-    },
-    [config.translations, locale],
-  );
-
-  const value = useMemo(() => ({ locale, setLocale, t }), [locale, t]);
-
-  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
+export interface I18nProviderComponent {
+  (props: I18nProviderProps): ReactNode;
 }
 
-export function useI18n(): I18nContextValue {
-  const context = useContext(I18nContext);
-  if (!context) {
-    throw new Error('useI18n must be used within an I18nProvider');
-  }
-  return context;
-}
+export type UseI18nHook = () => I18nContextValue;
 
-export function useTranslation(namespace: TranslationNamespace) {
-  const { t, locale } = useI18n();
-  return useMemo(
-    () => ({
-      locale,
-      t: (key: string) => t(namespace, key),
-    }),
-    [locale, namespace, t],
-  );
-}
+export type UseTranslationHook = (namespace: TranslationNamespace) => {
+  locale: Locale;
+  t: (key: string) => string;
+};

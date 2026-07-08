@@ -1,9 +1,6 @@
-import { createEnv } from './index.js';
+import type { ZodType } from '@enterprise/validation';
 
-/** Client-safe environment entry point (VITE_*, NEXT_PUBLIC_* prefixes enforced at schema level). */
-export function createClientEnv<TSchema extends Parameters<typeof createEnv>[0]['schema']>(
+export type ClientEnvParser = <TSchema extends ZodType>(
   schema: TSchema,
   values: Record<string, string | undefined>,
-) {
-  return createEnv({ schema, values, runtime: 'client' });
-}
+) => TSchema['_output'];

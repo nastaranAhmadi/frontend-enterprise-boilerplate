@@ -1,15 +1,12 @@
-import { PACKAGE_NAME as TypesPackageName } from '@enterprise/types';
-import { PACKAGE_NAME as ValidationPackageName } from '@enterprise/validation';
+export type RuntimeEnvironment = 'development' | 'test' | 'staging' | 'production';
 
-/** Infrastructure placeholder — environment config will be added in later sections. */
-export const PACKAGE_NAME = '@enterprise/config' as const;
+export interface RuntimeConfig {
+  environment: RuntimeEnvironment;
+  appName: string;
+  appVersion: string;
+}
 
-export function getConfigDependencies(): {
-  types: typeof TypesPackageName;
-  validation: typeof ValidationPackageName;
-} {
-  return {
-    types: TypesPackageName,
-    validation: ValidationPackageName,
-  };
+export interface ConfigProvider<TConfig extends Record<string, unknown>> {
+  readonly namespace: string;
+  get(): TConfig;
 }

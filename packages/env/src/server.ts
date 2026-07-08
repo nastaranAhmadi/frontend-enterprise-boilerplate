@@ -1,9 +1,6 @@
-import { createEnv } from './index.js';
+import type { ZodType } from '@enterprise/validation';
 
-/** Server-only environment entry point. Must never be imported in client bundles. */
-export function createServerEnv<TSchema extends Parameters<typeof createEnv>[0]['schema']>(
+export type ServerEnvParser = <TSchema extends ZodType>(
   schema: TSchema,
   values: Record<string, string | undefined>,
-) {
-  return createEnv({ schema, values, runtime: 'server' });
-}
+) => TSchema['_output'];

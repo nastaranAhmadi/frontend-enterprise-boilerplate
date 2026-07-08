@@ -1,0 +1,20 @@
+{
+  "name": "@enterprise/tailwind-config",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared Tailwind CSS and PostCSS configuration for enterprise frontend workspace.",
+  "files": [
+    "preset.cjs",
+    "postcss.config.cjs",
+    "README.md"
+  ],
+  "exports": {
+    ".": "./preset.cjs",
+    "./postcss": "./postcss.config.cjs"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.5.2",
+    "postcss": "^8.5.16",
+    "tailwindcss": "^3.4.19"
+  }
+}

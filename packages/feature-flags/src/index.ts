@@ -24,19 +24,6 @@ export interface FeatureFlagsClient {
   getValue(key: FeatureFlagKey): FeatureFlagValue | undefined;
 }
 
-/** Feature flags infrastructure — no external provider integrated. */
-export function createFeatureFlagsClient(
-  options: FeatureFlagsClientOptions = {},
-): FeatureFlagsClient {
-  const defaults = options.defaults ?? {};
-
-  return {
-    isEnabled(key) {
-      const value = defaults[key];
-      return value === true || value === 'true' || value === 1;
-    },
-    getValue(key) {
-      return defaults[key];
-    },
-  };
+export interface FeatureFlagsClientFactory {
+  create(options?: FeatureFlagsClientOptions): FeatureFlagsClient;
 }

@@ -6,7 +6,7 @@ Shared build-time configuration packages consumed by apps and libraries.
 | ----------------- | ---------------------------------------------------- | --------------------------------------------- |
 | `tsconfig`        | TypeScript presets (browser, Node, React, libraries) | Frontend apps, backend services, all packages |
 | `eslint-config`   | ESLint 9 flat config + module boundaries             | All projects                                  |
-| `tailwind-config` | Shared Tailwind preset (upcoming)                    | Frontend apps, `ui` package                   |
+| `tailwind-config` | Shared Tailwind preset + PostCSS pipeline            | Frontend apps, `ui` package                   |
 
 Tooling packages are tagged `type:config`, `platform:neutral` and must not depend on application or business package code.
 
