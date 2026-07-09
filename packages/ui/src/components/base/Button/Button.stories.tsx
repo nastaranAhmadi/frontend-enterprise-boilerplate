@@ -24,7 +24,7 @@ const meta = {
     },
     size: {
       control: 'select',
-      options: ['sm', 'md', 'lg'],
+      options: ['small', 'medium', 'large'],
     },
     color: {
       control: 'select',
@@ -40,7 +40,7 @@ const meta = {
   args: {
     children: 'Button',
     variant: 'filled',
-    size: 'md',
+    size: 'medium',
     color: 'primary',
     disabled: false,
     loading: false,
@@ -99,13 +99,13 @@ export const Variants: ButtonStory = {
 export const Sizes: ButtonStory = {
   render: (args) => (
     <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-      <Button {...args} size="sm">
+      <Button {...args} size="small">
         Small
       </Button>
-      <Button {...args} size="md">
+      <Button {...args} size="medium">
         Medium
       </Button>
-      <Button {...args} size="lg">
+      <Button {...args} size="large">
         Large
       </Button>
     </div>

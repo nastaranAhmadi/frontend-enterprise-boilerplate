@@ -9,3 +9,7 @@ export interface DesignSystemProviderComponent {
 }
 
 export { Button } from './components/base/Button';
+export { ErrorMessage } from './components/base/ErrorMessage';
+export { HelperText } from './components/base/HelperText';
+export { Input } from './components/base/Input';
+export { Label } from './components/base/Label';

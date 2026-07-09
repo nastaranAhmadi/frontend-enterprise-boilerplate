@@ -1,40 +1,23 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
-type ButtonVariant = 'filled' | 'outlined' | 'text' | 'ghost' | 'link';
-type ButtonSize = 'sm' | 'md' | 'lg' | (string & {});
-type ButtonColor =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'info'
-  | 'neutral'
-  | (string & {});
-type ButtonIconSize = 'sm' | 'md' | 'lg' | (string & {});
-type ButtonIconColor =
-  | 'primary'
-  | 'secondary'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'info'
-  | 'neutral'
-  | (string & {});
+import type { Color, Size } from '../../../types';
 
-type ButtonOwnProps = {
+export type ButtonVariant = 'filled' | 'outlined' | 'text' | 'ghost' | 'link';
+
+export interface ButtonOwnProps {
   children?: ReactNode;
   className?: string;
-  color?: ButtonColor;
+  color?: Color;
   disabled?: boolean;
   fullWidth?: boolean;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
-  iconColor?: ButtonIconColor;
-  iconSize?: ButtonIconSize;
+  iconColor?: Color;
+  iconSize?: Size;
   loading?: boolean;
-  size?: ButtonSize;
+  size?: Size;
   variant?: ButtonVariant;
-};
+}
+
 export type ButtonProps = ButtonOwnProps &
   Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonOwnProps | 'color'>;
