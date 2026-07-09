@@ -13,3 +13,6 @@ export { ErrorMessage } from './components/base/ErrorMessage';
 export { HelperText } from './components/base/HelperText';
 export { Input } from './components/base/Input';
 export { Label } from './components/base/Label';
+export { Select } from './components/base/Select';
+export { FormField } from './components/composite/FormField';
+export { SelectField } from './components/composite/SelectField';
