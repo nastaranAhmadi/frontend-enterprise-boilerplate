@@ -28,11 +28,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(pro
         {startAdornment ? <span className={adornmentClassName}>{startAdornment}</span> : null}
 
         <input
+          {...inputProps}
           ref={ref}
           disabled={disabled}
           aria-invalid={invalid || undefined}
           className={getInputClassName()}
-          {...inputProps}
         />
 
         {endAdornment ? <span className={adornmentClassName}>{endAdornment}</span> : null}

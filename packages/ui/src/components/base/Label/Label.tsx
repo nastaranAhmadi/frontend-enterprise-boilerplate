@@ -7,7 +7,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(pro
   const { children, className, disabled, required, size, ...labelProps } = props;
 
   return (
-    <label ref={ref} className={getLabelClassName({ size, disabled, className })} {...labelProps}>
+    <label {...labelProps} ref={ref} className={getLabelClassName({ size, disabled, className })}>
       {children}
       {required ? (
         <span aria-hidden="true" className={REQUIRED_INDICATOR_CLASS}>

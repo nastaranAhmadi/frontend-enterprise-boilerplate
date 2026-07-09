@@ -4,13 +4,9 @@ import { ErrorMessage } from '../../base/ErrorMessage';
 import { HelperText } from '../../base/HelperText';
 import { Input } from '../../base/Input';
 import { Label } from '../../base/Label';
-import { getFormFieldClassName } from './FormField.styles';
+import { getFieldRootClassName } from '../field/field.styles';
+import { buildAriaDescribedBy } from '../field/fieldAccessibility';
 import type { FormFieldProps } from './FormField.types';
-
-const buildAriaDescribedBy = (...ids: Array<string | undefined>): string | undefined => {
-  const value = ids.filter(Boolean).join(' ');
-  return value || undefined;
-};
 
 export const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
   function FormField(props, ref) {
@@ -43,7 +39,7 @@ export const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
     );
 
     return (
-      <div className={getFormFieldClassName({ className })}>
+      <div className={getFieldRootClassName({ className })}>
         {label ? (
           <Label htmlFor={id} required={required} disabled={disabled} size={size}>
             {label}

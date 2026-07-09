@@ -13,10 +13,10 @@ export const ErrorMessage = forwardRef<HTMLParagraphElement, ErrorMessageProps>(
 
     return (
       <p
-        ref={ref}
-        className={getErrorMessageClassName({ size, className })}
-        role={role}
         {...errorMessageProps}
+        ref={ref}
+        role={role}
+        className={getErrorMessageClassName({ size, className })}
       >
         {children}
       </p>

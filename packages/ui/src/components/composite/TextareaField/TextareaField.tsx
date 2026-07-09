@@ -3,26 +3,25 @@ import { forwardRef, useId } from 'react';
 import { ErrorMessage } from '../../base/ErrorMessage';
 import { HelperText } from '../../base/HelperText';
 import { Label } from '../../base/Label';
-import { Select } from '../../base/Select';
+import { Textarea } from '../../base/Textarea';
 import { getFieldRootClassName } from '../field/field.styles';
 import { buildAriaDescribedBy } from '../field/fieldAccessibility';
-import type { SelectFieldProps } from './SelectField.types';
+import type { TextareaFieldProps } from './TextareaField.types';
 
-export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
-  function SelectField(props, ref) {
+export const TextareaField = forwardRef<HTMLTextAreaElement, TextareaFieldProps>(
+  function TextareaField(props, ref) {
     const {
       label,
       helperText,
       error: errorMessage,
       required,
       className,
-      selectRootClassName,
-      children,
+      textareaRootClassName,
       id: idProp,
       disabled,
       size,
       'aria-describedby': ariaDescribedByProp,
-      ...selectProps
+      ...textareaProps
     } = props;
 
     const generatedId = useId();
@@ -47,18 +46,16 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
           </Label>
         ) : null}
 
-        <Select
-          {...selectProps}
+        <Textarea
+          {...textareaProps}
           ref={ref}
           id={id}
           disabled={disabled}
           size={size}
           invalid={hasError}
           aria-describedby={ariaDescribedBy}
-          className={selectRootClassName}
-        >
-          {children}
-        </Select>
+          className={textareaRootClassName}
+        />
 
         {hasHelperText ? (
           <HelperText id={helperId} disabled={disabled} size={size}>
@@ -76,4 +73,4 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
   },
 );
 
-SelectField.displayName = 'SelectField';
+TextareaField.displayName = 'TextareaField';

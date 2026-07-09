@@ -1,28 +1,28 @@
 import { forwardRef, useId } from 'react';
 
+import { Checkbox } from '../../base/Checkbox';
 import { ErrorMessage } from '../../base/ErrorMessage';
 import { HelperText } from '../../base/HelperText';
 import { Label } from '../../base/Label';
-import { Select } from '../../base/Select';
 import { getFieldRootClassName } from '../field/field.styles';
 import { buildAriaDescribedBy } from '../field/fieldAccessibility';
-import type { SelectFieldProps } from './SelectField.types';
+import { getCheckboxFieldControlRowClassName } from './CheckboxField.styles';
+import type { CheckboxFieldProps } from './CheckboxField.types';
 
-export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
-  function SelectField(props, ref) {
+export const CheckboxField = forwardRef<HTMLInputElement, CheckboxFieldProps>(
+  function CheckboxField(props, ref) {
     const {
       label,
       helperText,
       error: errorMessage,
       required,
       className,
-      selectRootClassName,
-      children,
+      checkboxRootClassName,
       id: idProp,
       disabled,
       size,
       'aria-describedby': ariaDescribedByProp,
-      ...selectProps
+      ...checkboxProps
     } = props;
 
     const generatedId = useId();
@@ -41,24 +41,24 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
 
     return (
       <div className={getFieldRootClassName({ className })}>
-        {label ? (
-          <Label htmlFor={id} required={required} disabled={disabled} size={size}>
-            {label}
-          </Label>
-        ) : null}
+        <div className={getCheckboxFieldControlRowClassName({})}>
+          <Checkbox
+            {...checkboxProps}
+            ref={ref}
+            id={id}
+            disabled={disabled}
+            size={size}
+            invalid={hasError}
+            aria-describedby={ariaDescribedBy}
+            className={checkboxRootClassName}
+          />
 
-        <Select
-          {...selectProps}
-          ref={ref}
-          id={id}
-          disabled={disabled}
-          size={size}
-          invalid={hasError}
-          aria-describedby={ariaDescribedBy}
-          className={selectRootClassName}
-        >
-          {children}
-        </Select>
+          {label ? (
+            <Label htmlFor={id} required={required} disabled={disabled} size={size}>
+              {label}
+            </Label>
+          ) : null}
+        </div>
 
         {hasHelperText ? (
           <HelperText id={helperId} disabled={disabled} size={size}>
@@ -76,4 +76,4 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
   },
 );
 
-SelectField.displayName = 'SelectField';
+CheckboxField.displayName = 'CheckboxField';

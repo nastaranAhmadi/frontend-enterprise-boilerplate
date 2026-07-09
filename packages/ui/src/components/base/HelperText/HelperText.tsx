@@ -13,9 +13,9 @@ export const HelperText = forwardRef<HTMLParagraphElement, HelperTextProps>(
 
     return (
       <p
+        {...helperTextProps}
         ref={ref}
         className={getHelperTextClassName({ size, disabled, className })}
-        {...helperTextProps}
       >
         {children}
       </p>
