@@ -7,3 +7,5 @@ export type UiInfrastructureProps = {
 export interface DesignSystemProviderComponent {
   (props: UiInfrastructureProps): ReactNode;
 }
+
+export { Button } from './components/base/Button';

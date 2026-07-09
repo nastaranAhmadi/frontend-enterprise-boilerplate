@@ -1,0 +1,8 @@
+:root[data-app='admin'],
+[data-theme='light'][data-app='admin'] {
+  --color-primary: #eab308;
+}
+
+[data-theme='dark'][data-app='admin'] {
+  --color-primary: #facc15;
+}

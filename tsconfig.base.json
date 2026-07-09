@@ -22,7 +22,8 @@
       "@enterprise/ui": ["packages/ui/src/index.ts"],
       "@enterprise/utils": ["packages/utils/src/index.ts"],
       "@enterprise/validation": ["packages/validation/src/index.ts"]
-    }
+    },
+    "skipLibCheck": true
   },
   "exclude": ["node_modules", "dist", "build", "out", ".next", "coverage"]
 }

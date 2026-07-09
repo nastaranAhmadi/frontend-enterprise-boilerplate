@@ -1,0 +1,23 @@
+{
+  "explorer.excludeGitIgnore": true,
+  "files.watcherExclude": {
+    "**/dist/**": true,
+    "**/.nx/**": true,
+    "**/node_modules/**": true
+  },
+  "search.exclude": {
+    "**/dist": true,
+    "**/node_modules": true
+  },
+  "tailwindCSS.experimental.configFile": {
+    "packages/ui/**": "${workspaceFolder}/packages/ui/tailwind.config.cjs",
+    "apps/frontend/dashboard/**": "${workspaceFolder}/apps/frontend/dashboard/tailwind.config.cjs",
+    "apps/frontend/admin/**": "${workspaceFolder}/apps/frontend/admin/tailwind.config.cjs",
+    "apps/frontend/landing/**": "${workspaceFolder}/apps/frontend/landing/tailwind.config.cjs"
+  },
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "css.validate": false
+}

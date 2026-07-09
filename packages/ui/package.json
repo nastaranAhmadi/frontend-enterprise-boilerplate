@@ -22,11 +22,27 @@
     "@enterprise/types": "workspace:*"
   },
   "devDependencies": {
+    "@enterprise/tailwind-config": "workspace:*",
     "@enterprise/tsconfig": "workspace:*",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/react": "^19.1.0",
-    "react": "^19.1.0"
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "autoprefixer": "^10.5.2",
+    "jsdom": "^26.1.0",
+    "postcss": "^8.5.16",
+    "react": "^19.1.0",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^3.4.19",
+    "vitest": "^3.2.7"
   },
   "peerDependencies": {
     "react": "^19.0.0"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
   }
 }

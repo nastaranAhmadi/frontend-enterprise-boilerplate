@@ -5,11 +5,13 @@
   "description": "Shared Tailwind CSS and PostCSS configuration for enterprise frontend workspace.",
   "files": [
     "preset.cjs",
+    "content.cjs",
     "postcss.config.cjs",
     "README.md"
   ],
   "exports": {
     ".": "./preset.cjs",
+    "./content": "./content.cjs",
     "./postcss": "./postcss.config.cjs"
   },
   "dependencies": {

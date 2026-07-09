@@ -21,6 +21,14 @@
         "command": "tsc --build tsconfig.lib.json --pretty false",
         "cwd": "packages/ui"
       }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "dependsOn": [],
+      "options": {
+        "command": "vitest run",
+        "cwd": "packages/ui"
+      }
     }
   }
 }

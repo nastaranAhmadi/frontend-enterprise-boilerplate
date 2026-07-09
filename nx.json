@@ -19,7 +19,8 @@
       "!{projectRoot}/**/*.stories.@(js|jsx|ts|tsx|mdx)",
       "!{projectRoot}/.storybook/**/*",
       "!{projectRoot}/src/test-setup.[jt]s",
-      "!{projectRoot}/**/?(*.)+(e2e-spec|spec).[jt]s?(x)"
+      "!{projectRoot}/**/?(*.)+(e2e-spec|spec).[jt]s?(x)",
+      "!{projectRoot}/tsconfig.storybook.json"
     ],
     "sharedGlobals": [
       "{workspaceRoot}/tsconfig.base.json",
@@ -91,6 +92,17 @@
       "options": {
         "targetName": "lint"
       }
+    },
+    {
+      "plugin": "@nx/storybook/plugin",
+      "options": {
+        "serveStorybookTargetName": "storybook",
+        "buildStorybookTargetName": "build-storybook",
+        "testStorybookTargetName": "test-storybook",
+        "staticStorybookTargetName": "static-storybook",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
     }
   ],
   "generators": {
@@ -113,5 +125,6 @@
       }
     }
   },
-  "nxCloudId": null
+  "nxCloudId": null,
+  "analytics": true
 }
