@@ -29,6 +29,14 @@
         "command": "vitest run",
         "cwd": "packages/ui"
       }
+    },
+    "storybook": {
+      "executor": "nx:run-commands",
+      "continuous": true,
+      "options": {
+        "command": "storybook dev --port 3000",
+        "cwd": "packages/ui"
+      }
     }
   }
 }

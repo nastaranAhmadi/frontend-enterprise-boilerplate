@@ -9,8 +9,10 @@
     "pnpm": ">=10.0.0"
   },
   "scripts": {
+    "setup:clean": "pnpm reset",
     "build": "nx run-many -t build",
     "test": "nx run-many -t test",
+    "test:no-daemon": "NX_DAEMON=false nx run-many -t test",
     "lint": "nx run-many -t lint",
     "lint:fix": "nx run-many -t lint -- --fix",
     "typecheck": "nx run-many -t typecheck",
@@ -23,6 +25,7 @@
     "affected:lint": "nx affected -t lint",
     "affected:typecheck": "nx affected -t typecheck",
     "affected:validate": "pnpm affected:typecheck && pnpm affected:build",
+    "affected:no-daemon": "NX_DAEMON=false nx affected",
     "reset": "nx reset",
     "validate:boundaries": "node scripts/validate-boundaries.mjs",
     "prepare": "husky"
