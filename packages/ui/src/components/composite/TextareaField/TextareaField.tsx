@@ -1,11 +1,7 @@
-import { forwardRef, useId } from 'react';
+import { forwardRef } from 'react';
 
-import { ErrorMessage } from '../../base/ErrorMessage';
-import { HelperText } from '../../base/HelperText';
-import { Label } from '../../base/Label';
 import { Textarea } from '../../base/Textarea';
-import { getFieldRootClassName } from '../field/field.styles';
-import { buildAriaDescribedBy } from '../field/fieldAccessibility';
+import { FieldShell } from '../field/FieldShell';
 import type { TextareaFieldProps } from './TextareaField.types';
 
 export const TextareaField = forwardRef<HTMLTextAreaElement, TextareaFieldProps>(
@@ -17,58 +13,37 @@ export const TextareaField = forwardRef<HTMLTextAreaElement, TextareaFieldProps>
       required,
       className,
       textareaRootClassName,
-      id: idProp,
+      id,
       disabled,
       size,
       'aria-describedby': ariaDescribedByProp,
       ...textareaProps
     } = props;
 
-    const generatedId = useId();
-    const id = idProp ?? generatedId;
-    const helperId = `${id}-helper`;
-    const errorId = `${id}-error`;
-
-    const hasHelperText = Boolean(helperText);
-    const hasError = Boolean(errorMessage);
-
-    const ariaDescribedBy = buildAriaDescribedBy(
-      hasHelperText ? helperId : undefined,
-      hasError ? errorId : undefined,
-      ariaDescribedByProp,
-    );
-
     return (
-      <div className={getFieldRootClassName({ className })}>
-        {label ? (
-          <Label htmlFor={id} required={required} disabled={disabled} size={size}>
-            {label}
-          </Label>
-        ) : null}
-
-        <Textarea
-          {...textareaProps}
-          ref={ref}
-          id={id}
-          disabled={disabled}
-          size={size}
-          invalid={hasError}
-          aria-describedby={ariaDescribedBy}
-          className={textareaRootClassName}
-        />
-
-        {hasHelperText ? (
-          <HelperText id={helperId} disabled={disabled} size={size}>
-            {helperText}
-          </HelperText>
-        ) : null}
-
-        {hasError ? (
-          <ErrorMessage id={errorId} size={size}>
-            {errorMessage}
-          </ErrorMessage>
-        ) : null}
-      </div>
+      <FieldShell
+        id={id}
+        label={label}
+        helperText={helperText}
+        error={errorMessage}
+        required={required}
+        className={className}
+        disabled={disabled}
+        size={size}
+        aria-describedby={ariaDescribedByProp}
+        control={(field) => (
+          <Textarea
+            {...textareaProps}
+            ref={ref}
+            id={field.id}
+            disabled={disabled}
+            size={size}
+            invalid={field.hasError}
+            aria-describedby={field.ariaDescribedBy}
+            className={textareaRootClassName}
+          />
+        )}
+      />
     );
   },
 );

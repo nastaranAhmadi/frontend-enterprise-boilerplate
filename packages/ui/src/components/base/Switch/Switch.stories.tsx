@@ -1,6 +1,5 @@
 import type { ComponentProps, ReactElement } from 'react';
 
-import { RtlDecorator } from '../../../storybook/decorators/RtlDecorator';
 import { Label } from '../Label';
 import { Switch } from './Switch';
 
@@ -40,6 +39,7 @@ type SwitchStory = {
   args?: Partial<ComponentProps<typeof Switch>>;
   render?: (args: ComponentProps<typeof Switch>) => ReactElement;
   decorators?: Array<(Story: () => ReactElement) => ReactElement>;
+  parameters?: Record<string, unknown>;
 };
 
 export const Playground: SwitchStory = {};
@@ -88,7 +88,6 @@ export const Disabled: SwitchStory = {
 };
 
 export const Rtl: SwitchStory = {
-  decorators: [RtlDecorator],
   render: (args) => (
     <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
       <Switch {...args} id="notifications-rtl" defaultChecked />
@@ -97,5 +96,13 @@ export const Rtl: SwitchStory = {
   ),
   args: {
     'aria-label': undefined,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Use the Storybook Direction toolbar (RTL + fa-IR locale) to preview mirrored layout.',
+      },
+    },
   },
 };

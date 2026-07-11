@@ -1,11 +1,7 @@
-import { forwardRef, useId } from 'react';
+import { forwardRef } from 'react';
 
-import { ErrorMessage } from '../../base/ErrorMessage';
-import { HelperText } from '../../base/HelperText';
-import { Label } from '../../base/Label';
 import { Select } from '../../base/Select';
-import { getFieldRootClassName } from '../field/field.styles';
-import { buildAriaDescribedBy } from '../field/fieldAccessibility';
+import { FieldShell } from '../field/FieldShell';
 import type { SelectFieldProps } from './SelectField.types';
 
 export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
@@ -18,60 +14,39 @@ export const SelectField = forwardRef<HTMLSelectElement, SelectFieldProps>(
       className,
       selectRootClassName,
       children,
-      id: idProp,
+      id,
       disabled,
       size,
       'aria-describedby': ariaDescribedByProp,
       ...selectProps
     } = props;
 
-    const generatedId = useId();
-    const id = idProp ?? generatedId;
-    const helperId = `${id}-helper`;
-    const errorId = `${id}-error`;
-
-    const hasHelperText = Boolean(helperText);
-    const hasError = Boolean(errorMessage);
-
-    const ariaDescribedBy = buildAriaDescribedBy(
-      hasHelperText ? helperId : undefined,
-      hasError ? errorId : undefined,
-      ariaDescribedByProp,
-    );
-
     return (
-      <div className={getFieldRootClassName({ className })}>
-        {label ? (
-          <Label htmlFor={id} required={required} disabled={disabled} size={size}>
-            {label}
-          </Label>
-        ) : null}
-
-        <Select
-          {...selectProps}
-          ref={ref}
-          id={id}
-          disabled={disabled}
-          size={size}
-          invalid={hasError}
-          aria-describedby={ariaDescribedBy}
-          className={selectRootClassName}
-        >
-          {children}
-        </Select>
-
-        {hasHelperText ? (
-          <HelperText id={helperId} disabled={disabled} size={size}>
-            {helperText}
-          </HelperText>
-        ) : null}
-
-        {hasError ? (
-          <ErrorMessage id={errorId} size={size}>
-            {errorMessage}
-          </ErrorMessage>
-        ) : null}
-      </div>
+      <FieldShell
+        id={id}
+        label={label}
+        helperText={helperText}
+        error={errorMessage}
+        required={required}
+        className={className}
+        disabled={disabled}
+        size={size}
+        aria-describedby={ariaDescribedByProp}
+        control={(field) => (
+          <Select
+            {...selectProps}
+            ref={ref}
+            id={field.id}
+            disabled={disabled}
+            size={size}
+            invalid={field.hasError}
+            aria-describedby={field.ariaDescribedBy}
+            className={selectRootClassName}
+          >
+            {children}
+          </Select>
+        )}
+      />
     );
   },
 );

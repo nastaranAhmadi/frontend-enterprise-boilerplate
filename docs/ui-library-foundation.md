@@ -156,3 +156,71 @@ For each component, execute in order:
 7. Review and refactor.
 
 No step may be skipped.
+
+## 7) Internationalization and layout direction
+
+### Separation of concerns
+
+| Concern               | Owner                                     | Responsibility                                                                 |
+| --------------------- | ----------------------------------------- | ------------------------------------------------------------------------------ |
+| **Layout direction**  | `@enterprise/ui` (`DesignSystemProvider`) | Sets `dir` and `lang` on the provider subtree                                  |
+| **Copy / formatting** | `@enterprise/i18n` + app `messages/`      | Translation dictionaries and `t()` lookups                                     |
+| **Component text**    | Application                               | Pass translated strings into UI via props (`label`, `title`, `description`, …) |
+
+The UI library does **not** bundle translations. Components remain locale-agnostic and receive human-readable text from the app.
+
+### `DesignSystemProvider` contract
+
+```tsx
+<DesignSystemProvider locale="fa-IR" theme="light">
+  {children}
+</DesignSystemProvider>
+```
+
+- `locale` — BCP 47 tag (for example `en`, `en-US`, `fa-IR`).
+- `dir` — optional override; defaults to `resolveDirFromLocale(locale)`.
+- `lang` — optional override; defaults to the locale language subtag.
+
+`useDesignSystem()` exposes `{ theme, locale, dir, lang }` for components that need explicit direction (for example `Pagination`, `Carousel`).
+
+### RTL styling rules
+
+1. Prefer **logical** Tailwind utilities: `start-*`, `end-*`, `ms-*`, `me-*`, `ps-*`, `pe-*`, `border-s-*`.
+2. Avoid physical `left`/`right` and `ml`/`mr` unless the placement is intentionally symmetric (for example centered overlays).
+3. Use explicit `dir` or `rtl` props only when CSS logical properties are insufficient (carousel transforms, mirrored icons).
+4. Keyboard focus order follows DOM order; test focus traps and menus in both directions.
+
+### Storybook
+
+Global toolbar controls:
+
+- **Theme** — `data-theme` for token preview
+- **Locale** — derives default `lang` and auto direction
+- **Direction** — `auto` (from locale), `ltr`, or `rtl`
+
+Use `Composite/RTL` stories for form-control verification. Prefer the global toolbar over per-story `RtlDecorator` unless a story needs a fixed locale snippet.
+
+### Application wiring
+
+```tsx
+import { I18nProvider, useI18n } from '@enterprise/i18n';
+import { DesignSystemProvider } from '@enterprise/ui';
+
+function AppProviders({ children }: { children: React.ReactNode }) {
+  const { locale } = useI18n();
+
+  return <DesignSystemProvider locale={locale}>{children}</DesignSystemProvider>;
+}
+
+export function App({ children }: { children: React.ReactNode }) {
+  return (
+    <I18nProvider config={i18nConfig}>
+      <AppProviders>{children}</AppProviders>
+    </I18nProvider>
+  );
+}
+```
+
+Set `<html lang>` and `dir` at the app shell for SEO and accessibility. Keep them in sync with `I18nProvider` locale and `DesignSystemProvider` direction.
+
+See also: [`docs/internationalization.md`](./internationalization.md).

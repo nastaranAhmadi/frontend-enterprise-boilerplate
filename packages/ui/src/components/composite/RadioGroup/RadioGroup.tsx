@@ -1,17 +1,52 @@
-import { useId } from 'react';
+import {
+  type ChangeEvent,
+  Children,
+  cloneElement,
+  isValidElement,
+  type ReactElement,
+  useId,
+} from 'react';
 
+import type { Size } from '../../../types';
 import { ErrorMessage } from '../../base/ErrorMessage';
 import { HelperText } from '../../base/HelperText';
-import {
-  getLabelClassName,
-  REQUIRED_INDICATOR,
-  REQUIRED_INDICATOR_CLASS,
-} from '../../base/Label/Label.styles';
-import { RadioGroupContext } from '../../base/Radio';
+import { FieldLegend } from '../../base/Label';
+import type { RadioProps } from '../../base/Radio/Radio.types';
 import { getFieldRootClassName } from '../field/field.styles';
 import { buildAriaDescribedBy } from '../field/fieldAccessibility';
 import { getRadioGroupOptionsClassName } from './RadioGroup.styles';
 import type { RadioGroupProps } from './RadioGroup.types';
+
+interface RadioGroupInjection {
+  name?: string;
+  value?: string;
+  defaultValue?: string;
+  disabled?: boolean;
+  invalid?: boolean;
+  size?: Size;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+const enhanceRadioChild = (
+  child: ReactElement<RadioProps>,
+  group: RadioGroupInjection,
+): ReactElement<RadioProps> => {
+  const isControlled = group.value !== undefined;
+  const childValue = child.props.value;
+
+  return cloneElement(child, {
+    name: group.name ?? child.props.name,
+    disabled: group.disabled ?? child.props.disabled,
+    size: group.size ?? child.props.size,
+    invalid: group.invalid ?? child.props.invalid,
+    onChange: group.onChange ?? child.props.onChange,
+    checked: isControlled ? group.value === childValue : child.props.checked,
+    defaultChecked:
+      !isControlled && group.defaultValue !== undefined
+        ? group.defaultValue === childValue
+        : child.props.defaultChecked,
+  });
+};
 
 export const RadioGroup = function RadioGroup(props: RadioGroupProps) {
   const {
@@ -29,7 +64,7 @@ export const RadioGroup = function RadioGroup(props: RadioGroupProps) {
     children,
   } = props;
 
-  const labelId = useId();
+  const legendId = useId();
   const helperId = useId();
   const errorId = useId();
 
@@ -41,6 +76,16 @@ export const RadioGroup = function RadioGroup(props: RadioGroupProps) {
     hasError ? errorId : undefined,
   );
 
+  const groupInjection: RadioGroupInjection = {
+    name,
+    value,
+    defaultValue,
+    disabled,
+    invalid: hasError,
+    size,
+    onChange,
+  };
+
   return (
     <div className={getFieldRootClassName({ className })}>
       <fieldset
@@ -49,29 +94,20 @@ export const RadioGroup = function RadioGroup(props: RadioGroupProps) {
         aria-invalid={hasError || undefined}
       >
         {label ? (
-          <legend className={getLabelClassName({ size, disabled })} id={labelId}>
+          <FieldLegend id={legendId} required={required} disabled={disabled} size={size}>
             {label}
-            {required ? (
-              <span aria-hidden="true" className={REQUIRED_INDICATOR_CLASS}>
-                {REQUIRED_INDICATOR}
-              </span>
-            ) : null}
-          </legend>
+          </FieldLegend>
         ) : null}
 
-        <RadioGroupContext.Provider
-          value={{
-            name,
-            value,
-            defaultValue,
-            disabled,
-            invalid: hasError,
-            size,
-            onChange,
-          }}
-        >
-          <div className={getRadioGroupOptionsClassName({})}>{children}</div>
-        </RadioGroupContext.Provider>
+        <div className={getRadioGroupOptionsClassName({})}>
+          {Children.map(children, (child) => {
+            if (!isValidElement<RadioProps>(child)) {
+              return child;
+            }
+
+            return enhanceRadioChild(child, groupInjection);
+          })}
+        </div>
       </fieldset>
 
       {hasHelperText ? (

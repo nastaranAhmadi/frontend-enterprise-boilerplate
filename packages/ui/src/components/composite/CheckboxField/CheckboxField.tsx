@@ -1,11 +1,7 @@
-import { forwardRef, useId } from 'react';
+import { forwardRef } from 'react';
 
 import { Checkbox } from '../../base/Checkbox';
-import { ErrorMessage } from '../../base/ErrorMessage';
-import { HelperText } from '../../base/HelperText';
-import { Label } from '../../base/Label';
-import { getFieldRootClassName } from '../field/field.styles';
-import { buildAriaDescribedBy } from '../field/fieldAccessibility';
+import { FieldShell } from '../field/FieldShell';
 import { getCheckboxFieldControlRowClassName } from './CheckboxField.styles';
 import type { CheckboxFieldProps } from './CheckboxField.types';
 
@@ -18,60 +14,39 @@ export const CheckboxField = forwardRef<HTMLInputElement, CheckboxFieldProps>(
       required,
       className,
       checkboxRootClassName,
-      id: idProp,
+      id,
       disabled,
       size,
       'aria-describedby': ariaDescribedByProp,
       ...checkboxProps
     } = props;
 
-    const generatedId = useId();
-    const id = idProp ?? generatedId;
-    const helperId = `${id}-helper`;
-    const errorId = `${id}-error`;
-
-    const hasHelperText = Boolean(helperText);
-    const hasError = Boolean(errorMessage);
-
-    const ariaDescribedBy = buildAriaDescribedBy(
-      hasHelperText ? helperId : undefined,
-      hasError ? errorId : undefined,
-      ariaDescribedByProp,
-    );
-
     return (
-      <div className={getFieldRootClassName({ className })}>
-        <div className={getCheckboxFieldControlRowClassName({})}>
+      <FieldShell
+        id={id}
+        label={label}
+        helperText={helperText}
+        error={errorMessage}
+        required={required}
+        className={className}
+        disabled={disabled}
+        size={size}
+        aria-describedby={ariaDescribedByProp}
+        labelPlacement="inline-control-first"
+        controlRowClassName={getCheckboxFieldControlRowClassName({})}
+        control={(field) => (
           <Checkbox
             {...checkboxProps}
             ref={ref}
-            id={id}
+            id={field.id}
             disabled={disabled}
             size={size}
-            invalid={hasError}
-            aria-describedby={ariaDescribedBy}
+            invalid={field.hasError}
+            aria-describedby={field.ariaDescribedBy}
             className={checkboxRootClassName}
           />
-
-          {label ? (
-            <Label htmlFor={id} required={required} disabled={disabled} size={size}>
-              {label}
-            </Label>
-          ) : null}
-        </div>
-
-        {hasHelperText ? (
-          <HelperText id={helperId} disabled={disabled} size={size}>
-            {helperText}
-          </HelperText>
-        ) : null}
-
-        {hasError ? (
-          <ErrorMessage id={errorId} size={size}>
-            {errorMessage}
-          </ErrorMessage>
-        ) : null}
-      </div>
+        )}
+      />
     );
   },
 );
