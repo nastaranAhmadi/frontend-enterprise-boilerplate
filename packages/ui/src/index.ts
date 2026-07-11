@@ -30,6 +30,8 @@ export type { RadioProps } from './components/base/Radio';
 export { Radio } from './components/base/Radio';
 export type { SelectProps } from './components/base/Select';
 export { Select } from './components/base/Select';
+export type { SkeletonProps, SkeletonVariant } from './components/base/Skeleton';
+export { Skeleton } from './components/base/Skeleton';
 export type { SwitchProps } from './components/base/Switch';
 export { Switch } from './components/base/Switch';
 export type { TextareaProps } from './components/base/Textarea';
