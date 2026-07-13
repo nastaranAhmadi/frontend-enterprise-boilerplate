@@ -1,0 +1,8 @@
+{
+  "title": "Something went wrong",
+  "description": "Please try again.",
+  "retry": "Retry",
+  "notFoundTitle": "Page not found",
+  "notFoundDescription": "The page you requested does not exist.",
+  "goHome": "Go home"
+}

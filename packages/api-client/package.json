@@ -21,6 +21,7 @@
     "@enterprise/types": "workspace:*"
   },
   "devDependencies": {
-    "@enterprise/tsconfig": "workspace:*"
+    "@enterprise/tsconfig": "workspace:*",
+    "vitest": "^3.2.7"
   }
 }

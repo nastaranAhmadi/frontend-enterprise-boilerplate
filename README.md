@@ -2,6 +2,8 @@
 
 Production-grade Frontend Monorepo built with Nx, React, Next.js, TypeScript and modern engineering practices. Designed as a scalable foundation for large-scale enterprise and e-commerce applications.
 
+**Long-term direction:** evolve into an opinionated **Application Platform** (Easy Mode + Advanced Mode). See [docs/FUTURE-PLAN.md](./docs/FUTURE-PLAN.md) for the architecture assessment and version roadmap.
+
 ## Commands
 
 ### Setup
@@ -37,7 +39,7 @@ Production-grade Frontend Monorepo built with Nx, React, Next.js, TypeScript and
 - Watch UI tests: `cd packages/ui && pnpm test:watch`
 - Build UI library output: `pnpm nx build ui`
 - Typecheck UI library: `pnpm nx typecheck ui`
-- Run UI Storybook: `pnpm nx storybook ui`
+- Run UI Storybook: `pnpm nx storybook ui` → [http://localhost:3000](http://localhost:3000)
 - Build static Storybook: `pnpm nx build-storybook ui`
 
 ### Frontend apps
@@ -46,13 +48,15 @@ Current app projects are:
 
 - `dashboard` (`apps/frontend/dashboard`)
 - `admin` (`apps/frontend/admin`)
-- `landing` (`apps/frontend/landing`)
+- `landing` (`apps/frontend/landing`) — Next.js marketing site with SSR/SSG, i18n (`en` / `fa`), and Route Handlers for client mutations
 
-At the moment, these projects expose `typecheck` targets in Nx (serve/build executors are placeholders):
+| App         | Dev                           | Build / test                                    |
+| ----------- | ----------------------------- | ----------------------------------------------- |
+| `landing`   | `pnpm nx dev landing` → :4200 | `pnpm nx build landing`, `pnpm nx test landing` |
+| `dashboard` | —                             | `pnpm nx typecheck dashboard`                   |
+| `admin`     | —                             | `pnpm nx typecheck admin`                       |
 
-- `pnpm nx typecheck dashboard`
-- `pnpm nx typecheck admin`
-- `pnpm nx typecheck landing`
+See [`apps/frontend/README.md`](./apps/frontend/README.md) for landing details and demo links.
 
 ### Nx target pattern (any project)
 

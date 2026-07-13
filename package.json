@@ -40,6 +40,7 @@
     "@enterprise/eslint-config": "workspace:*",
     "@nx/eslint": "23.0.1",
     "@nx/js": "23.0.1",
+    "@nx/next": "23.0.1",
     "@nx/react": "23.0.1",
     "@nx/storybook": "23.0.1",
     "@nx/vite": "23.0.1",

@@ -6,7 +6,7 @@ const FOCUSABLE_SELECTOR =
 export const getFocusableElements = (container: HTMLElement): HTMLElement[] =>
   Array.from(container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR));
 
-interface UseOverlayBehaviorOptions {
+export interface UseOverlayBehaviorOptions {
   open: boolean;
   onClose: () => void;
   closeOnEscape?: boolean;

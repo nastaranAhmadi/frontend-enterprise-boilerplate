@@ -46,3 +46,5 @@ export type AuthMiddlewareConfig = {
   getAccessToken: () => string | undefined;
   refreshToken?: () => Promise<string | undefined>;
 };
+
+export { createApiClient } from './create-api-client';

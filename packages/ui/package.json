@@ -8,6 +8,31 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "default": "./dist/index.js"
+    },
+    "./hooks": {
+      "types": "./dist/hooks/index.d.ts",
+      "import": "./dist/hooks/index.js",
+      "default": "./dist/hooks/index.js"
+    },
+    "./locale": {
+      "types": "./dist/locale/index.d.ts",
+      "import": "./dist/locale/index.js",
+      "default": "./dist/locale/index.js"
+    },
+    "./providers": {
+      "types": "./dist/providers/index.d.ts",
+      "import": "./dist/providers/index.js",
+      "default": "./dist/providers/index.js"
+    },
+    "./skeleton": {
+      "types": "./dist/components/base/Skeleton/index.d.ts",
+      "import": "./dist/components/base/Skeleton/index.js",
+      "default": "./dist/components/base/Skeleton/index.js"
+    },
+    "./button": {
+      "types": "./dist/components/base/Button/index.d.ts",
+      "import": "./dist/components/base/Button/index.js",
+      "default": "./dist/components/base/Button/index.js"
     }
   },
   "main": "./dist/index.js",

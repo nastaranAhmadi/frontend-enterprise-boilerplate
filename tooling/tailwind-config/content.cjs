@@ -13,6 +13,7 @@ function createContentGlobs(appRoot) {
   const workspaceRoot = path.resolve(__dirname, '../..');
 
   return [
+    path.join(absoluteAppRoot, 'app', SOURCE_GLOB),
     path.join(absoluteAppRoot, 'src', SOURCE_GLOB),
     path.join(workspaceRoot, 'packages', 'ui', 'src', SOURCE_GLOB),
     path.join(workspaceRoot, 'packages', 'theme', 'src', SOURCE_GLOB),

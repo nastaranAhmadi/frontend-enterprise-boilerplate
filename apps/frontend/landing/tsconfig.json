@@ -1,6 +1,41 @@
 {
-  "extends": "../../../tsconfig.base.json",
-  "files": [],
-  "include": [],
-  "references": [{ "path": "./tsconfig.app.json" }]
+  "extends": ["../../../tsconfig.base.json", "@enterprise/tsconfig/nextjs"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noEmit": true,
+    "jsx": "preserve",
+    "plugins": [{ "name": "next" }],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@enterprise/ui": ["../../../packages/ui/src/index.ts"],
+      "@enterprise/ui/button": ["../../../packages/ui/src/components/base/Button/index.ts"],
+      "@enterprise/ui/hooks": ["../../../packages/ui/src/hooks/index.ts"],
+      "@enterprise/ui/locale": ["../../../packages/ui/src/locale/index.ts"],
+      "@enterprise/ui/providers": ["../../../packages/ui/src/providers/index.ts"],
+      "@enterprise/ui/skeleton": ["../../../packages/ui/src/components/base/Skeleton/index.ts"]
+    },
+    "allowJs": true,
+    "incremental": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "next.config.ts",
+    "vitest.config.ts",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "middleware.ts",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"],
+  "references": [
+    { "path": "../../../packages/api-client/tsconfig.lib.json" },
+    { "path": "../../../packages/hooks/tsconfig.lib.json" },
+    { "path": "../../../packages/i18n/tsconfig.lib.json" },
+    { "path": "../../../packages/theme/tsconfig.lib.json" },
+    { "path": "../../../packages/types/tsconfig.lib.json" },
+    { "path": "../../../packages/ui/tsconfig.lib.json" }
+  ]
 }

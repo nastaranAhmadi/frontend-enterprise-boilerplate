@@ -111,5 +111,6 @@ export type {
   ToastVariant,
 } from './components/composite/Toast';
 export { Toast, ToastProvider, useToast } from './components/composite/Toast';
+export { getFocusableElements, useOverlayBehavior } from './hooks/useOverlayBehavior';
 export type { Color } from './types/color';
 export type { Size } from './types/size';

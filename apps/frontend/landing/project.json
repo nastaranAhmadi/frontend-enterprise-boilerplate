@@ -2,20 +2,60 @@
   "name": "landing",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/frontend/landing/src",
+  "sourceRoot": "apps/frontend/landing",
   "tags": ["scope:app", "type:app", "platform:web", "domain:frontend"],
   "targets": {
     "build": {
-      "executor": "nx:noop",
-      "metadata": {
-        "description": "Next.js build will be configured in the applications section."
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/frontend/landing"
+      }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "rm -rf .next",
+        "cwd": "apps/frontend/landing"
+      }
+    },
+    "dev:reset": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx run landing:clean", "nx run landing:dev"],
+        "parallel": false
+      }
+    },
+    "dev": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "landing:build",
+        "dev": true,
+        "port": 4200
+      }
+    },
+    "start": {
+      "executor": "@nx/next:server",
+      "options": {
+        "buildTarget": "landing:build:production",
+        "dev": false,
+        "port": 4200
       }
     },
     "typecheck": {
       "executor": "nx:run-commands",
       "dependsOn": ["^build"],
       "options": {
-        "command": "tsc -p tsconfig.app.json --noEmit --pretty false",
+        "command": "tsc -p tsconfig.json --noEmit --pretty false",
+        "cwd": "apps/frontend/landing"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest run",
         "cwd": "apps/frontend/landing"
       }
     }
