@@ -33,6 +33,11 @@
       "types": "./dist/components/base/Button/index.d.ts",
       "import": "./dist/components/base/Button/index.js",
       "default": "./dist/components/base/Button/index.js"
+    },
+    "./floating-button": {
+      "types": "./dist/components/base/FloatingButton/index.d.ts",
+      "import": "./dist/components/base/FloatingButton/index.js",
+      "default": "./dist/components/base/FloatingButton/index.js"
     }
   },
   "main": "./dist/index.js",

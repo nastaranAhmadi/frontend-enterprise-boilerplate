@@ -31,6 +31,7 @@ const meta = {
     rtl: { control: 'boolean' },
     loop: { control: 'boolean' },
     autoPlay: { control: 'boolean' },
+    draggable: { control: 'boolean' },
     slidesPerView: { control: { type: 'number', min: 1, max: 3, step: 1 } },
     spaceBetween: { control: { type: 'number', min: 0, max: 32, step: 4 } },
     className: { control: false },
@@ -71,26 +72,20 @@ const SlideCard = ({ title, body }: { title: string; body: string }) => (
   </Card>
 );
 
-const BasicSlides = () => (
-  <>
-    <CarouselSlide>
-      <SlideCard title="Design systems" body="Reusable primitives and patterns." />
-    </CarouselSlide>
-    <CarouselSlide>
-      <SlideCard title="Accessibility" body="Keyboard and screen reader support." />
-    </CarouselSlide>
-    <CarouselSlide>
-      <SlideCard title="RTL ready" body="Logical layout for mirrored locales." />
-    </CarouselSlide>
-  </>
-);
+const basicSlides = [
+  <CarouselSlide key="design">
+    <SlideCard title="Design systems" body="Reusable primitives and patterns." />
+  </CarouselSlide>,
+  <CarouselSlide key="accessibility">
+    <SlideCard title="Accessibility" body="Keyboard and screen reader support." />
+  </CarouselSlide>,
+  <CarouselSlide key="rtl">
+    <SlideCard title="RTL ready" body="Logical layout for mirrored locales." />
+  </CarouselSlide>,
+];
 
 export const Playground: CarouselStory = {
-  render: (args) => (
-    <Carousel {...args}>
-      <BasicSlides />
-    </Carousel>
-  ),
+  render: (args) => <Carousel {...args}>{basicSlides}</Carousel>,
 };
 
 export const NavigationAndPagination: CarouselStory = {
@@ -98,11 +93,7 @@ export const NavigationAndPagination: CarouselStory = {
     navigation: true,
     pagination: 'bullets',
   },
-  render: (args) => (
-    <Carousel {...args}>
-      <BasicSlides />
-    </Carousel>
-  ),
+  render: (args) => <Carousel {...args}>{basicSlides}</Carousel>,
 };
 
 export const Vertical: CarouselStory = {
@@ -111,11 +102,7 @@ export const Vertical: CarouselStory = {
     navigation: true,
     pagination: 'fraction',
   },
-  render: (args) => (
-    <Carousel {...args}>
-      <BasicSlides />
-    </Carousel>
-  ),
+  render: (args) => <Carousel {...args}>{basicSlides}</Carousel>,
 };
 
 export const CardsEffect: CarouselStory = {
@@ -124,11 +111,7 @@ export const CardsEffect: CarouselStory = {
     navigation: true,
     pagination: 'bullets',
   },
-  render: (args) => (
-    <Carousel {...args}>
-      <BasicSlides />
-    </Carousel>
-  ),
+  render: (args) => <Carousel {...args}>{basicSlides}</Carousel>,
 };
 
 export const Rtl: CarouselStory = {
@@ -158,8 +141,17 @@ export const SlideableMenu: CarouselStory = {
   args: {
     navigation: false,
     pagination: false,
+    draggable: true,
     slidesPerView: 3,
     spaceBetween: 8,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Shows three category chips at a time. Drag or swipe horizontally to reveal the rest — no arrows or dots needed.',
+      },
+    },
   },
   render: (args) => (
     <Carousel {...args} aria-label="Category menu">

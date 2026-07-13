@@ -17,6 +17,7 @@ export interface CarouselOwnProps {
   spaceBetween?: number;
   autoPlay?: boolean;
   autoPlayInterval?: number;
+  draggable?: boolean;
   index?: number;
   defaultIndex?: number;
   onIndexChange?: (index: number) => void;

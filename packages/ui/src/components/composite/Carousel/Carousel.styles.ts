@@ -10,6 +10,9 @@ const normalizeEffect = (effect: CarouselProps['effect']): CarouselEffect => {
 
 export const CAROUSEL_ROOT_CLASS = 'relative w-full font-sans';
 export const CAROUSEL_VIEWPORT_CLASS = 'overflow-hidden';
+export const CAROUSEL_VIEWPORT_DRAGGABLE_CLASS =
+  'cursor-grab touch-none select-none active:cursor-grabbing';
+export const CAROUSEL_TRACK_DRAGGING_CLASS = '!transition-none';
 export const CAROUSEL_TRACK_BASE_CLASS = 'flex transition-transform duration-normal ease-out';
 export const CAROUSEL_TRACK_VERTICAL_CLASS = 'flex-col';
 export const CAROUSEL_SLIDE_BASE_CLASS = 'shrink-0 grow-0';
@@ -35,10 +38,12 @@ export const getCarouselRootClassName = ({ className }: { className?: string } =
 export const getCarouselViewportClassName = ({
   vertical,
   effect,
+  draggable,
   className,
 }: {
   vertical?: boolean;
   effect?: CarouselProps['effect'];
+  draggable?: boolean;
   className?: string;
 }): string =>
   joinClassNames(
@@ -46,21 +51,25 @@ export const getCarouselViewportClassName = ({
     normalizeEffect(effect) !== 'slide' && 'relative',
     vertical && effect === 'slide' && 'h-80',
     !vertical && effect === 'slide' && 'w-full',
+    draggable && effect === 'slide' && CAROUSEL_VIEWPORT_DRAGGABLE_CLASS,
     className,
   );
 
 export const getCarouselTrackClassName = ({
   vertical,
   effect,
+  dragging,
   className,
 }: {
   vertical?: boolean;
   effect?: CarouselProps['effect'];
+  dragging?: boolean;
   className?: string;
 }): string =>
   joinClassNames(
     normalizeEffect(effect) === 'slide' && CAROUSEL_TRACK_BASE_CLASS,
     vertical && normalizeEffect(effect) === 'slide' && CAROUSEL_TRACK_VERTICAL_CLASS,
+    dragging && CAROUSEL_TRACK_DRAGGING_CLASS,
     className,
   );
 

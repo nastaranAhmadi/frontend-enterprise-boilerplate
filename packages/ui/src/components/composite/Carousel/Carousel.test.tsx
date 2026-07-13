@@ -1,7 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { type ComponentProps, createRef } from 'react';
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { Carousel, CarouselSlide } from './Carousel';
 
@@ -19,6 +19,28 @@ const renderCarousel = (props: Partial<ComponentProps<typeof Carousel>> = {}) =>
   );
 
 describe('Carousel', () => {
+  beforeEach(() => {
+    class PolyfillPointerEvent extends MouseEvent {
+      readonly pointerId: number;
+
+      constructor(type: string, init: PointerEventInit = {}) {
+        super(type, init);
+        this.pointerId = init.pointerId ?? 0;
+      }
+    }
+
+    vi.stubGlobal('PointerEvent', PolyfillPointerEvent);
+
+    HTMLElement.prototype.setPointerCapture = vi.fn();
+    HTMLElement.prototype.releasePointerCapture = vi.fn();
+    HTMLElement.prototype.hasPointerCapture = vi.fn(() => true);
+  });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
+  });
+
   it('renders slides inside a carousel region', () => {
     renderCarousel({ 'aria-label': 'Featured items' });
     expect(screen.getByRole('region', { name: 'Featured items' })).toBeInTheDocument();
@@ -83,5 +105,66 @@ describe('Carousel', () => {
       'true',
     );
     expect(screen.getByRole('button', { name: 'Next slide' })).toBeDisabled();
+  });
+
+  it('enables drag styling when draggable is true', () => {
+    render(
+      <Carousel draggable aria-label="Draggable menu">
+        {slides.map((label) => (
+          <CarouselSlide key={label}>{label}</CarouselSlide>
+        ))}
+      </Carousel>,
+    );
+
+    const viewport = screen.getByRole('region', { name: 'Draggable menu' }).firstElementChild;
+    expect(viewport).toHaveClass('cursor-grab', 'touch-none');
+  });
+
+  it('advances to the next slide after a pointer drag', async () => {
+    render(
+      <Carousel draggable pagination aria-label="Draggable carousel">
+        {slides.map((label) => (
+          <CarouselSlide key={label}>{label}</CarouselSlide>
+        ))}
+      </Carousel>,
+    );
+
+    const viewport = screen.getByRole('region', { name: 'Draggable carousel' })
+      .firstElementChild as HTMLElement;
+
+    viewport.dispatchEvent(
+      new PointerEvent('pointerdown', {
+        bubbles: true,
+        clientX: 200,
+        clientY: 0,
+        pointerId: 1,
+        buttons: 1,
+      }),
+    );
+    viewport.dispatchEvent(
+      new PointerEvent('pointermove', {
+        bubbles: true,
+        clientX: 100,
+        clientY: 0,
+        pointerId: 1,
+        buttons: 1,
+      }),
+    );
+    viewport.dispatchEvent(
+      new PointerEvent('pointerup', {
+        bubbles: true,
+        clientX: 100,
+        clientY: 0,
+        pointerId: 1,
+        buttons: 0,
+      }),
+    );
+
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: 'Go to slide 2' })).toHaveAttribute(
+        'aria-current',
+        'true',
+      );
+    });
   });
 });

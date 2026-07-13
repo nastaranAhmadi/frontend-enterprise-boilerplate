@@ -14,12 +14,30 @@ export type UiInfrastructureProps = {
   children?: ReactNode;
 };
 
+export type {
+  BadgeAnchorHorizontal,
+  BadgeAnchorOrigin,
+  BadgeAnchorVertical,
+  BadgeColor,
+  BadgeOverlap,
+  BadgeProps,
+  BadgeVariant,
+} from './components/base/Badge';
+export { Badge } from './components/base/Badge';
 export type { ButtonProps } from './components/base/Button';
 export { Button } from './components/base/Button';
 export type { CheckboxProps } from './components/base/Checkbox';
 export { Checkbox } from './components/base/Checkbox';
+export type { ChipColor, ChipProps, ChipSize, ChipVariant } from './components/base/Chip';
+export { Chip } from './components/base/Chip';
 export type { ErrorMessageProps } from './components/base/ErrorMessage';
 export { ErrorMessage } from './components/base/ErrorMessage';
+export type {
+  FloatingButtonColor,
+  FloatingButtonProps,
+  FloatingButtonVariant,
+} from './components/base/FloatingButton';
+export { FloatingButton } from './components/base/FloatingButton';
 export type { HelperTextProps } from './components/base/HelperText';
 export { HelperText } from './components/base/HelperText';
 export type { InputProps } from './components/base/Input';
@@ -36,6 +54,8 @@ export type { SwitchProps } from './components/base/Switch';
 export { Switch } from './components/base/Switch';
 export type { TextareaProps } from './components/base/Textarea';
 export { Textarea } from './components/base/Textarea';
+export type { TooltipPlacement, TooltipProps } from './components/base/Tooltip';
+export { Tooltip } from './components/base/Tooltip';
 export type { BottomSheetProps, BottomSheetSize } from './components/composite/BottomSheet';
 export { BottomSheet } from './components/composite/BottomSheet';
 export type {
@@ -81,6 +101,12 @@ export type { RadioGroupProps } from './components/composite/RadioGroup';
 export { RadioGroup } from './components/composite/RadioGroup';
 export type { SelectFieldProps } from './components/composite/SelectField';
 export { SelectField } from './components/composite/SelectField';
+export type {
+  SpeedDialActionProps,
+  SpeedDialDirection,
+  SpeedDialProps,
+} from './components/composite/SpeedDial';
+export { SpeedDial, SpeedDialAction } from './components/composite/SpeedDial';
 export type {
   TableBodyProps,
   TableCellProps,

@@ -4,12 +4,16 @@ import {
   createContext,
   type CSSProperties,
   forwardRef,
+  Fragment,
   isValidElement,
+  type PointerEvent,
   type ReactElement,
+  type ReactNode,
   useCallback,
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 
@@ -80,9 +84,36 @@ const getWrappedIndex = (index: number, count: number, loop: boolean): number =>
   return ((index % count) + count) % count;
 };
 
+const collectSlides = (children: ReactNode): ReactElement<CarouselSlideProps>[] => {
+  const slides: ReactElement<CarouselSlideProps>[] = [];
+
+  Children.forEach(children, (child) => {
+    if (!isValidElement(child)) return;
+
+    if (child.type === Fragment) {
+      const fragmentChildren = (child.props as { children?: ReactNode }).children;
+      slides.push(...collectSlides(fragmentChildren));
+      return;
+    }
+
+    slides.push(child as ReactElement<CarouselSlideProps>);
+  });
+
+  return slides;
+};
+
 const num = (value: number): string => String(value);
 const percent = (value: number): string => `${num(value)}%`;
 const pixels = (value: number): string => `${num(value)}px`;
+
+const DRAG_THRESHOLD_PX = 48;
+const DRAG_EDGE_RESISTANCE = 0.35;
+
+interface DragState {
+  pointerId: number;
+  startX: number;
+  startY: number;
+}
 
 export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(function Carousel(props, ref) {
   const {
@@ -99,6 +130,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(function Carou
     spaceBetween = 0,
     autoPlay = false,
     autoPlayInterval = 4000,
+    draggable = false,
     index,
     defaultIndex,
     onIndexChange,
@@ -106,9 +138,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(function Carou
     ...carouselProps
   } = props;
 
-  const slides = Children.toArray(children).filter(
-    isValidElement,
-  ) as ReactElement<CarouselSlideProps>[];
+  const slides = collectSlides(children);
   const slideCount = slides.length;
   const perView = normalizeSlidesPerView(slidesPerView);
   const maxIndex = Math.max(slideCount - perView, 0);
@@ -136,6 +166,85 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(function Carou
     goTo(currentIndex - 1);
   }, [currentIndex, goTo]);
 
+  const dragStateRef = useRef<DragState | null>(null);
+  const [dragDelta, setDragDelta] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const isSlideDraggable = draggable && effect === 'slide';
+
+  const getOrientedDragDelta = useCallback(
+    (clientX: number, clientY: number): number => {
+      const dragState = dragStateRef.current;
+      if (!dragState) return 0;
+
+      const delta = vertical ? clientY - dragState.startY : clientX - dragState.startX;
+      return rtl && !vertical ? -delta : delta;
+    },
+    [rtl, vertical],
+  );
+
+  const applyDragResistance = useCallback(
+    (delta: number): number => {
+      if (loop) return delta;
+      if (currentIndex <= 0 && delta > 0) return delta * DRAG_EDGE_RESISTANCE;
+      if (currentIndex >= maxIndex && delta < 0) return delta * DRAG_EDGE_RESISTANCE;
+      return delta;
+    },
+    [currentIndex, loop, maxIndex],
+  );
+
+  const handlePointerDown = useCallback(
+    (event: PointerEvent<HTMLDivElement>) => {
+      if (!isSlideDraggable) return;
+
+      dragStateRef.current = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+      };
+      setIsDragging(true);
+      setDragDelta(0);
+      if (typeof event.currentTarget.setPointerCapture === 'function') {
+        event.currentTarget.setPointerCapture(event.pointerId);
+      }
+    },
+    [isSlideDraggable],
+  );
+
+  const handlePointerMove = useCallback(
+    (event: PointerEvent<HTMLDivElement>) => {
+      if (!dragStateRef.current || dragStateRef.current.pointerId !== event.pointerId) return;
+      setDragDelta(applyDragResistance(getOrientedDragDelta(event.clientX, event.clientY)));
+    },
+    [applyDragResistance, getOrientedDragDelta],
+  );
+
+  const finishDrag = useCallback(
+    (event: PointerEvent<HTMLDivElement>) => {
+      if (!dragStateRef.current || dragStateRef.current.pointerId !== event.pointerId) return;
+
+      const orientedDelta = getOrientedDragDelta(event.clientX, event.clientY);
+
+      if (orientedDelta <= -DRAG_THRESHOLD_PX && canGoNext) {
+        goNext();
+      } else if (orientedDelta >= DRAG_THRESHOLD_PX && canGoPrev) {
+        goPrev();
+      }
+
+      dragStateRef.current = null;
+      setIsDragging(false);
+      setDragDelta(0);
+
+      const target = event.currentTarget;
+      if (
+        typeof target.hasPointerCapture === 'function' &&
+        target.hasPointerCapture(event.pointerId)
+      ) {
+        target.releasePointerCapture(event.pointerId);
+      }
+    },
+    [canGoNext, canGoPrev, getOrientedDragDelta, goNext, goPrev],
+  );
+
   useEffect(() => {
     if (!autoPlay || slideCount <= 1) return;
 
@@ -151,12 +260,12 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(function Carou
   const trackStyle = useMemo((): CSSProperties => {
     if (effect !== 'slide') return {};
 
-    const offsetPercent = (100 / perView) * currentIndex;
+    const offsetPercent = slideCount > 0 ? (100 * currentIndex) / slideCount : 0;
     const gap = spaceBetween;
 
     if (vertical) {
       return {
-        transform: `translateY(-${percent(offsetPercent)})`,
+        transform: `translateY(calc(-${percent(offsetPercent)} + ${pixels(dragDelta)}))`,
         gap,
         height: percent((slideCount * 100) / perView),
       };
@@ -164,13 +273,13 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(function Carou
 
     const direction = rtl ? 1 : -1;
     return {
-      transform: `translateX(${percent(direction * offsetPercent)})`,
+      transform: `translateX(calc(${percent(direction * offsetPercent)} + ${pixels(dragDelta)}))`,
       gap,
       width: percent((slideCount * 100) / perView),
     };
-  }, [currentIndex, effect, perView, rtl, slideCount, spaceBetween, vertical]);
+  }, [currentIndex, dragDelta, effect, perView, rtl, slideCount, spaceBetween, vertical]);
 
-  const slideBasis = percent(100 / perView);
+  const slideBasis = slideCount > 0 ? percent(100 / slideCount) : '100%';
   const paginationType = pagination === true ? 'bullets' : pagination;
 
   return (
@@ -184,9 +293,18 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(function Carou
       aria-label={ariaLabel}
       aria-live={autoPlay ? 'polite' : undefined}
     >
-      <div className={getCarouselViewportClassName({ vertical, effect })}>
+      <div
+        className={getCarouselViewportClassName({ vertical, effect, draggable: isSlideDraggable })}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={finishDrag}
+        onPointerCancel={finishDrag}
+      >
         <CarouselContext.Provider value={{ effect, slideClassName }}>
-          <div className={getCarouselTrackClassName({ vertical, effect })} style={trackStyle}>
+          <div
+            className={getCarouselTrackClassName({ vertical, effect, dragging: isDragging })}
+            style={trackStyle}
+          >
             {slides.map((slide, slideIndex) => {
               const isActive = slideIndex === currentIndex;
               const distance = Math.abs(slideIndex - currentIndex);
