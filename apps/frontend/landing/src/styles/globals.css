@@ -1,4 +1,5 @@
 @import '@enterprise/theme/styles';
+@import './theme-overrides.css';
 
 @tailwind base;
 @tailwind components;

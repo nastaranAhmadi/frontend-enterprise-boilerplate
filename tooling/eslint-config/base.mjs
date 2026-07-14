@@ -9,6 +9,7 @@ export const baseConfig = [
       '**/build/**',
       '**/out/**',
       '**/.next/**',
+      '**/next-env.d.ts',
       '**/coverage/**',
       '**/node_modules/**',
       '**/.nx/**',

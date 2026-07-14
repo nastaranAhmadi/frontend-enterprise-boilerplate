@@ -24,7 +24,7 @@ export const BlogListPage = async ({ locale }: BlogListPageProps) => {
       breadcrumbs={breadcrumbs}
     >
       {posts.length === 0 ? (
-        <p className="text-muted">{dictionary.blog.empty}</p>
+        <p className="text-muted-foreground">{dictionary.blog.empty}</p>
       ) : (
         <ul className="flex flex-col gap-md">
           {posts.map((post) => (

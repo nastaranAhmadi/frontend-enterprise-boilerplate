@@ -15,7 +15,7 @@ export const ContentPage = ({ title, description, breadcrumbs, children }: Conte
     <BreadcrumbJsonLd items={breadcrumbs} />
     <header className="mb-xl flex flex-col gap-sm">
       <h1 className="text-3xl font-medium tracking-tight md:text-4xl">{title}</h1>
-      {description ? <p className="text-lg text-muted">{description}</p> : null}
+      {description ? <p className="text-lg text-muted-foreground">{description}</p> : null}
     </header>
     {children}
   </main>

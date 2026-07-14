@@ -26,7 +26,7 @@ const ICON_SIZE_CLASS_MAP: Record<Size, string> = {
 
 const COLOR_CLASS_MAP: Record<TokenColor, string> = {
   primary: 'text-primary',
-  muted: 'text-muted',
+  muted: 'text-muted-foreground',
   border: 'text-border',
 };
 
@@ -64,7 +64,7 @@ const variantValue = (variant: ButtonProps['variant']): KnownVariant => {
 const variantClasses = (variant: KnownVariant, color: TokenColor): string => {
   switch (variant) {
     case 'filled':
-      return 'bg-primary text-background hover:bg-muted';
+      return 'bg-primary text-primary-foreground hover:opacity-90';
     case 'outlined':
       return 'bg-background border border-border text-foreground hover:bg-muted';
     case 'ghost':

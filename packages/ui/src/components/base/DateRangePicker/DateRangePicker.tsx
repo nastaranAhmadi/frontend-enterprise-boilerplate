@@ -280,7 +280,7 @@ export const DateRangePicker = forwardRef<HTMLInputElement, DateRangePickerProps
               />
 
               <div className={`${DATE_PICKER_ACTIONS_CLASS} border-t border-border`}>
-                <span className="text-xs text-muted sm:text-sm">
+                <span className="text-xs text-muted-foreground sm:text-sm">
                   {isCompleteDateRange(draftRange)
                     ? formatDateRangeValue(draftRange, {
                         calendar,

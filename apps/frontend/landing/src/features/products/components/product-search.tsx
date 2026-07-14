@@ -57,11 +57,11 @@ export const ProductSearch = ({ locale, labels }: ProductSearchProps) => {
 
       {!showInitialLoading && !isError ? (
         <>
-          <p className="text-sm text-muted" aria-live="polite">
+          <p className="text-sm text-muted-foreground" aria-live="polite">
             {labels.resultCount.replace('{count}', String(products.length))}
           </p>
 
-          {showEmpty ? <p className="text-muted">{labels.empty}</p> : null}
+          {showEmpty ? <p className="text-muted-foreground">{labels.empty}</p> : null}
 
           {products.length > 0 ? (
             <ul className="flex flex-col gap-md">

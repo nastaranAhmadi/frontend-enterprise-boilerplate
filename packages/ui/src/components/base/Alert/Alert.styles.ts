@@ -18,10 +18,10 @@ const normalizeVariant = (variant: AlertProps['variant']): AlertVariant => {
 };
 
 const VARIANT_CLASS_MAP: Record<AlertVariant, string> = {
-  success: 'border-success bg-success/10 text-foreground',
-  error: 'border-error bg-error/10 text-foreground',
-  warning: 'border-warning bg-warning/10 text-foreground',
-  info: 'border-info bg-info/10 text-foreground',
+  success: 'border-success bg-success-muted text-foreground',
+  error: 'border-error bg-error-muted text-foreground',
+  warning: 'border-warning bg-warning-muted text-foreground',
+  info: 'border-info bg-info-muted text-foreground',
   neutral: 'border-border bg-muted text-foreground',
 };
 
@@ -30,7 +30,7 @@ const VARIANT_ICON_CLASS_MAP: Record<AlertVariant, string> = {
   error: 'text-error',
   warning: 'text-warning',
   info: 'text-info',
-  neutral: 'text-muted',
+  neutral: 'text-muted-foreground',
 };
 
 export const ALERT_BASE_CLASS =
@@ -42,10 +42,10 @@ export const ALERT_CONTENT_CLASS = 'flex min-w-0 flex-1 flex-col gap-xs';
 
 export const ALERT_TITLE_CLASS = 'text-md font-medium text-foreground';
 
-export const ALERT_DESCRIPTION_CLASS = 'text-sm text-muted';
+export const ALERT_DESCRIPTION_CLASS = 'text-sm text-muted-foreground';
 
 export const ALERT_CLOSE_BUTTON_CLASS =
-  'inline-flex shrink-0 cursor-pointer rounded-sm border-0 bg-transparent p-0 text-lg leading-none text-muted transition-colors duration-normal hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary';
+  'inline-flex shrink-0 cursor-pointer rounded-sm border-0 bg-transparent p-0 text-lg leading-none text-muted-foreground transition-colors duration-normal hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary';
 
 export const getAlertClassName = ({
   variant,

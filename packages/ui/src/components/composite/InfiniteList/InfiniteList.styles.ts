@@ -26,10 +26,10 @@ export const INFINITE_LIST_ROOT_CLASS = 'flex w-full flex-col font-sans text-for
 export const INFINITE_LIST_ITEMS_CLASS = 'flex w-full flex-col';
 export const INFINITE_LIST_ITEM_CLASS = 'w-full';
 export const INFINITE_LIST_STATUS_CLASS = 'flex flex-col items-center justify-center text-center';
-export const INFINITE_LIST_EMPTY_CLASS = 'text-muted';
-export const INFINITE_LIST_END_CLASS = 'text-muted';
+export const INFINITE_LIST_EMPTY_CLASS = 'text-muted-foreground';
+export const INFINITE_LIST_END_CLASS = 'text-muted-foreground';
 export const INFINITE_LIST_ERROR_CLASS = 'text-error';
-export const INFINITE_LIST_LOADER_CLASS = 'text-muted';
+export const INFINITE_LIST_LOADER_CLASS = 'text-muted-foreground';
 export const INFINITE_LIST_SENTINEL_CLASS = 'h-px w-full';
 
 export const getInfiniteListRootClassName = ({

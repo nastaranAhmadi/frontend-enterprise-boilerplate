@@ -9,7 +9,7 @@ type ButtonLinkProps = Omit<ComponentProps<typeof Link>, 'className'> & {
 };
 
 const variantClassNames: Record<ButtonLinkVariant, string> = {
-  filled: 'bg-primary text-background hover:bg-muted',
+  filled: 'bg-primary text-primary-foreground hover:opacity-90',
   outlined: 'border border-border bg-background text-foreground hover:bg-muted',
   ghost: 'bg-transparent text-foreground hover:bg-muted',
 };

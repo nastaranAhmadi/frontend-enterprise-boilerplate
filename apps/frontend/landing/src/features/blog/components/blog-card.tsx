@@ -13,7 +13,7 @@ type BlogCardProps = {
 
 export const BlogCard = ({ locale, post, readMoreLabel }: BlogCardProps) => (
   <article className="rounded-lg border border-border bg-background p-lg">
-    <time className="text-sm text-muted" dateTime={post.publishedAt}>
+    <time className="text-sm text-muted-foreground" dateTime={post.publishedAt}>
       {formatPublishedDate(locale, post.publishedAt)}
     </time>
     <h2 className="mt-sm text-xl font-medium text-foreground">
@@ -24,7 +24,7 @@ export const BlogCard = ({ locale, post, readMoreLabel }: BlogCardProps) => (
         {post.title}
       </Link>
     </h2>
-    <p className="mt-sm text-muted">{post.excerpt}</p>
+    <p className="mt-sm text-muted-foreground">{post.excerpt}</p>
     <Link
       href={buildLocalizedBlogPostPath(locale, post.slug)}
       className="mt-md inline-flex text-sm font-medium text-primary transition-colors hover:text-foreground"

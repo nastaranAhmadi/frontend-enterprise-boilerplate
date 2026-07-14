@@ -33,7 +33,7 @@ export const TermsPage = ({ locale }: TermsPageProps) => {
               <h2 id={`terms-${key}`} className="text-xl font-medium text-foreground">
                 {section.title}
               </h2>
-              <p className="mt-sm text-muted">{section.body}</p>
+              <p className="mt-sm text-muted-foreground">{section.body}</p>
             </section>
           );
         })}

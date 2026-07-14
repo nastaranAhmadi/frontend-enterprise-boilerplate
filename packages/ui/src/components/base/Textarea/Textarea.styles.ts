@@ -8,7 +8,7 @@ export const CONTROL_BASE_CLASS =
   'inline-flex w-full min-w-0 transition-colors duration-normal focus-within:ring-2';
 
 export const TEXTAREA_BASE_CLASS =
-  'w-full min-w-0 flex-1 bg-transparent text-inherit placeholder:text-muted focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 resize-y';
+  'w-full min-w-0 flex-1 bg-transparent text-inherit placeholder:text-muted-foreground focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 resize-y';
 
 const CONTROL_SIZE_CLASS_MAP: Record<TextareaSize, string> = {
   small: 'px-sm py-xs',

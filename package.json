@@ -32,7 +32,7 @@
   },
   "lint-staged": {
     "*.{js,mjs,cjs,ts,tsx,json,md,css,scss,yaml,yml}": "prettier --write",
-    "*.{js,mjs,cjs,ts,tsx}": "eslint --fix"
+    "*.{js,mjs,cjs,ts,tsx}": "eslint --fix --no-warn-ignored"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",

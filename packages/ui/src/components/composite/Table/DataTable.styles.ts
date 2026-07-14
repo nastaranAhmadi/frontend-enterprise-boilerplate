@@ -6,4 +6,4 @@ export const DATA_TABLE_SELECTION_CELL_CLASS = 'w-12';
 
 export const DATA_TABLE_COLUMN_PICKER_MENU_CLASS = 'min-w-[12rem] p-xs';
 
-export const DATA_TABLE_EMPTY_CLASS = 'px-md py-lg text-center text-muted';
+export const DATA_TABLE_EMPTY_CLASS = 'px-md py-lg text-center text-muted-foreground';

@@ -43,14 +43,14 @@ export const MobileNav = ({ items, labels, menuLabel, closeLabel }: MobileNavPro
           <button
             type="button"
             aria-label={closeLabel}
-            className="fixed inset-0 z-dropdown bg-black/20"
+            className="fixed inset-0 z-dropdown bg-overlay"
             onClick={close}
           />
           <nav
             ref={panelRef}
             id="mobile-navigation"
             aria-label="Main"
-            className="absolute inset-x-0 top-full z-dropdown border-b border-border bg-background px-md py-md shadow-md"
+            className="absolute inset-x-0 top-full z-dropdown border-b border-border bg-surface-elevated px-md py-md shadow-md"
           >
             <ul className="flex flex-col gap-sm">
               {items.map((item) => (

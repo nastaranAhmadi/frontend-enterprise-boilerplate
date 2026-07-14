@@ -1,8 +1,68 @@
+/**
+ * Admin — "Control plane"
+ * Serious, sparse authority chrome. Slate primary; amber only as warning.
+ */
 :root[data-app='admin'],
 [data-theme='light'][data-app='admin'] {
-  --color-primary: #eab308;
+  --color-background: #f1f3f5;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-foreground: #0c0f14;
+  --color-muted: #d9dee5;
+  --color-muted-foreground: #5c6570;
+  --color-border: #d9dee5;
+  --color-border-subtle: #e8ebef;
+  --color-primary: #1e293b;
+  --color-primary-foreground: #f8fafc;
+  --color-primary-muted: #e2e8f0;
+  --color-secondary: #b91c1c;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #fee2e2;
+  --color-accent-foreground: #7f1d1d;
+  --color-success: #166534;
+  --color-success-foreground: #ffffff;
+  --color-success-muted: #dcfce7;
+  --color-warning: #ca8a04;
+  --color-warning-foreground: #422006;
+  --color-warning-muted: #fef9c3;
+  --color-error: #dc2626;
+  --color-error-foreground: #ffffff;
+  --color-error-muted: #fee2e2;
+  --color-info: #0369a1;
+  --color-info-foreground: #ffffff;
+  --color-info-muted: #e0f2fe;
+  --color-ring: #1e293b;
+  --color-overlay: rgb(12 15 20 / 0.5);
 }
 
 [data-theme='dark'][data-app='admin'] {
-  --color-primary: #facc15;
+  --color-background: #090b0e;
+  --color-surface: #12151a;
+  --color-surface-elevated: #1a1f27;
+  --color-foreground: #eef1f5;
+  --color-muted: #2c333d;
+  --color-muted-foreground: #8b949e;
+  --color-border: #2c333d;
+  --color-border-subtle: #1a1f27;
+  --color-primary: #e2e8f0;
+  --color-primary-foreground: #0f172a;
+  --color-primary-muted: #334155;
+  --color-secondary: #f87171;
+  --color-secondary-foreground: #450a0a;
+  --color-accent: #3f1515;
+  --color-accent-foreground: #fecaca;
+  --color-success: #4ade80;
+  --color-success-foreground: #052e16;
+  --color-success-muted: #14532d;
+  --color-warning: #facc15;
+  --color-warning-foreground: #422006;
+  --color-warning-muted: #713f12;
+  --color-error: #ef4444;
+  --color-error-foreground: #ffffff;
+  --color-error-muted: #7f1d1d;
+  --color-info: #38bdf8;
+  --color-info-foreground: #082f49;
+  --color-info-muted: #075985;
+  --color-ring: #e2e8f0;
+  --color-overlay: rgb(0 0 0 / 0.65);
 }

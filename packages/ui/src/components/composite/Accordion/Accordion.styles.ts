@@ -26,7 +26,7 @@ export const ACCORDION_SUMMARY_BASE_CLASS =
 export const ACCORDION_SUMMARY_CONTENT_CLASS = 'flex min-w-0 flex-1 items-center gap-sm';
 
 export const ACCORDION_EXPAND_ICON_CLASS =
-  'inline-flex shrink-0 text-muted transition-transform duration-normal';
+  'inline-flex shrink-0 text-muted-foreground transition-transform duration-normal';
 
 export const ACCORDION_EXPAND_ICON_EXPANDED_CLASS = 'rotate-180';
 

@@ -5,15 +5,54 @@ module.exports = {
     extend: {
       colors: {
         background: 'var(--color-background)',
+        surface: {
+          DEFAULT: 'var(--color-surface)',
+          elevated: 'var(--color-surface-elevated)',
+        },
         foreground: 'var(--color-foreground)',
-        primary: 'var(--color-primary)',
-        secondary: 'var(--color-secondary)',
-        success: 'var(--color-success)',
-        warning: 'var(--color-warning)',
-        error: 'var(--color-error)',
-        info: 'var(--color-info)',
-        muted: 'var(--color-muted)',
-        border: 'var(--color-border)',
+        muted: {
+          DEFAULT: 'var(--color-muted)',
+          foreground: 'var(--color-muted-foreground)',
+        },
+        border: {
+          DEFAULT: 'var(--color-border)',
+          subtle: 'var(--color-border-subtle)',
+        },
+        primary: {
+          DEFAULT: 'var(--color-primary)',
+          foreground: 'var(--color-primary-foreground)',
+          muted: 'var(--color-primary-muted)',
+        },
+        secondary: {
+          DEFAULT: 'var(--color-secondary)',
+          foreground: 'var(--color-secondary-foreground)',
+        },
+        accent: {
+          DEFAULT: 'var(--color-accent)',
+          foreground: 'var(--color-accent-foreground)',
+        },
+        success: {
+          DEFAULT: 'var(--color-success)',
+          foreground: 'var(--color-success-foreground)',
+          muted: 'var(--color-success-muted)',
+        },
+        warning: {
+          DEFAULT: 'var(--color-warning)',
+          foreground: 'var(--color-warning-foreground)',
+          muted: 'var(--color-warning-muted)',
+        },
+        error: {
+          DEFAULT: 'var(--color-error)',
+          foreground: 'var(--color-error-foreground)',
+          muted: 'var(--color-error-muted)',
+        },
+        info: {
+          DEFAULT: 'var(--color-info)',
+          foreground: 'var(--color-info-foreground)',
+          muted: 'var(--color-info-muted)',
+        },
+        ring: 'var(--color-ring)',
+        overlay: 'var(--color-overlay)',
       },
       spacing: {
         xs: 'var(--spacing-xs)',

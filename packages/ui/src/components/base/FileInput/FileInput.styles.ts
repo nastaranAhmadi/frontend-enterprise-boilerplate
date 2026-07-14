@@ -22,13 +22,13 @@ export const FILE_INPUT_DROPZONE_INVALID_CLASS = 'border-error';
 export const FILE_INPUT_HIDDEN_INPUT_CLASS = 'sr-only';
 
 export const FILE_INPUT_ICON_CLASS =
-  'inline-flex h-10 w-10 items-center justify-center rounded-full bg-muted text-muted';
+  'inline-flex h-10 w-10 items-center justify-center rounded-full bg-muted text-muted-foreground';
 
 export const FILE_INPUT_TITLE_CLASS = 'text-sm font-medium text-foreground';
 
 export const FILE_INPUT_SUBTITLE_CLASS = 'text-sm text-primary';
 
-export const FILE_INPUT_HINT_CLASS = 'text-sm text-muted';
+export const FILE_INPUT_HINT_CLASS = 'text-sm text-muted-foreground';
 
 export const FILE_INPUT_LIST_CLASS = 'flex flex-col gap-sm';
 
@@ -38,13 +38,13 @@ export const FILE_INPUT_ITEM_BASE_CLASS =
 export const FILE_INPUT_ITEM_BODY_CLASS = 'flex items-center gap-sm px-md py-sm';
 
 export const FILE_INPUT_ITEM_ICON_CLASS =
-  'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted text-muted';
+  'inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-muted text-muted-foreground';
 
 export const FILE_INPUT_ITEM_CONTENT_CLASS = 'flex min-w-0 flex-1 flex-col gap-0.5';
 
 export const FILE_INPUT_ITEM_NAME_CLASS = 'truncate text-sm font-medium text-foreground';
 
-export const FILE_INPUT_ITEM_META_CLASS = 'text-xs text-muted';
+export const FILE_INPUT_ITEM_META_CLASS = 'text-xs text-muted-foreground';
 
 export const FILE_INPUT_ITEM_ACTIONS_CLASS = 'flex shrink-0 items-center gap-xs';
 
@@ -58,7 +58,7 @@ export const FILE_INPUT_RETRY_BUTTON_CLASS =
   'cursor-pointer border-0 bg-transparent p-0 text-sm font-medium text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary';
 
 export const FILE_INPUT_REMOVE_BUTTON_CLASS =
-  'inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-muted transition-colors duration-normal hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary';
+  'inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border-0 bg-transparent text-muted-foreground transition-colors duration-normal hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary';
 
 const DROPZONE_SIZE_CLASS_MAP: Record<FileInputSize, string> = {
   small: 'px-sm py-md',
@@ -67,7 +67,7 @@ const DROPZONE_SIZE_CLASS_MAP: Record<FileInputSize, string> = {
 };
 
 const STATUS_TEXT_CLASS_MAP: Record<FileUploadItemStatus, string> = {
-  pending: 'text-muted',
+  pending: 'text-muted-foreground',
   uploading: 'text-primary',
   complete: 'text-success',
   failed: 'text-error',

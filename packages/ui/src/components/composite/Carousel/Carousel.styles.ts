@@ -30,7 +30,7 @@ export const CAROUSEL_PAGINATION_CLASS = 'mt-sm flex items-center justify-center
 export const CAROUSEL_BULLET_BASE_CLASS =
   'h-2 w-2 rounded-full border border-border bg-background transition-colors duration-normal';
 export const CAROUSEL_BULLET_ACTIVE_CLASS = 'bg-primary border-primary';
-export const CAROUSEL_FRACTION_CLASS = 'text-sm text-muted';
+export const CAROUSEL_FRACTION_CLASS = 'text-sm text-muted-foreground';
 
 export const getCarouselRootClassName = ({ className }: { className?: string } = {}): string =>
   joinClassNames(CAROUSEL_ROOT_CLASS, className);

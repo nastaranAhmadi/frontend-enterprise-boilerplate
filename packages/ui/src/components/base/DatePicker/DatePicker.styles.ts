@@ -11,10 +11,10 @@ export const DATE_PICKER_TRIGGER_CLASS =
   'inline-flex w-full min-w-0 cursor-pointer items-center gap-xs transition-colors duration-normal focus-within:ring-2';
 
 export const DATE_PICKER_INPUT_CLASS =
-  'min-w-0 flex-1 cursor-pointer bg-transparent font-inherit text-inherit placeholder:text-muted focus:outline-none';
+  'min-w-0 flex-1 cursor-pointer bg-transparent font-inherit text-inherit placeholder:text-muted-foreground focus:outline-none';
 
 export const DATE_PICKER_ICON_BUTTON_CLASS =
-  'inline-flex shrink-0 items-center justify-center text-muted';
+  'inline-flex shrink-0 items-center justify-center text-muted-foreground';
 
 export const DATE_PICKER_PANEL_CLASS =
   'absolute start-0 top-[calc(100%+0.25rem)] z-dropdown w-full min-w-[17.5rem] sm:w-auto';

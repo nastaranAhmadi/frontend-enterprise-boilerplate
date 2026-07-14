@@ -19,7 +19,7 @@ const GAP_CLASS_MAP: Record<Size, string> = {
 export const PAGINATION_ROOT_CLASS = 'inline-flex max-w-full flex-wrap items-center font-sans';
 export const PAGINATION_ITEMS_CLASS = 'inline-flex max-w-full flex-wrap items-center';
 export const PAGINATION_ELLIPSIS_CLASS =
-  'inline-flex min-w-8 items-center justify-center text-muted';
+  'inline-flex min-w-8 items-center justify-center text-muted-foreground';
 
 export const getPaginationRootClassName = ({
   size,

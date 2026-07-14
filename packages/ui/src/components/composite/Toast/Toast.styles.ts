@@ -31,14 +31,14 @@ export const TOAST_VIEWPORT_CLASS =
   'pointer-events-none fixed z-toast flex w-full max-w-sm flex-col gap-sm';
 
 export const TOAST_BASE_CLASS =
-  'pointer-events-auto flex w-full items-start gap-sm rounded-md border border-s-4 bg-background p-md font-sans shadow-md';
+  'pointer-events-auto flex w-full items-start gap-sm rounded-md border border-s-4 bg-surface-elevated p-md font-sans shadow-md';
 
 export const TOAST_CONTENT_CLASS = 'flex min-w-0 flex-1 flex-col gap-xs';
 export const TOAST_TITLE_CLASS = 'text-md font-medium text-foreground';
-export const TOAST_DESCRIPTION_CLASS = 'text-sm text-muted';
+export const TOAST_DESCRIPTION_CLASS = 'text-sm text-muted-foreground';
 export const TOAST_ACTIONS_CLASS = 'flex shrink-0 items-center gap-xs';
 export const TOAST_DISMISS_BUTTON_CLASS =
-  'inline-flex shrink-0 cursor-pointer rounded-sm border-0 bg-transparent p-0 text-lg leading-none text-muted transition-colors duration-normal hover:text-foreground';
+  'inline-flex shrink-0 cursor-pointer rounded-sm border-0 bg-transparent p-0 text-lg leading-none text-muted-foreground transition-colors duration-normal hover:text-foreground';
 
 export const getToastViewportClassName = ({
   position = 'top-end',

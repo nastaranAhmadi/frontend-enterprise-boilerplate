@@ -2,7 +2,7 @@ import type { HelperTextProps } from './HelperText.types';
 
 type HelperTextSize = NonNullable<HelperTextProps['size']>;
 
-export const HELPER_TEXT_BASE_CLASS = 'font-sans text-muted';
+export const HELPER_TEXT_BASE_CLASS = 'font-sans text-muted-foreground';
 
 const TEXT_SIZE_CLASS_MAP: Record<HelperTextSize, string> = {
   small: 'text-sm',

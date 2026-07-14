@@ -19,7 +19,9 @@ export const HeroSection = ({ locale }: HeroSectionProps) => {
         <h1 id="hero-heading" className="text-3xl font-medium tracking-tight md:text-5xl">
           {dictionary.home.title}
         </h1>
-        <p className="max-w-2xl text-lg text-muted md:text-xl">{dictionary.home.description}</p>
+        <p className="max-w-2xl text-lg text-muted-foreground md:text-xl">
+          {dictionary.home.description}
+        </p>
         <ButtonLink href={buildLocalizedPath(locale, 'contact')} className="mt-sm">
           {dictionary.home.cta}
         </ButtonLink>

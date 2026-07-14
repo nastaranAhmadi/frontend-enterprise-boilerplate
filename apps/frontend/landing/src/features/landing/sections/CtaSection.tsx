@@ -17,7 +17,7 @@ export const CtaSection = ({ locale }: CtaSectionProps) => {
         <h2 id="cta-heading" className="text-2xl font-medium tracking-tight md:text-3xl">
           {title}
         </h2>
-        <p className="max-w-2xl text-muted">{description}</p>
+        <p className="max-w-2xl text-muted-foreground">{description}</p>
         <div className="flex flex-wrap items-center justify-center gap-sm">
           <ButtonLink href={buildLocalizedPath(locale, 'contact')}>{primary}</ButtonLink>
           <ButtonLink href={buildLocalizedPath(locale, 'about')} variant="outlined">

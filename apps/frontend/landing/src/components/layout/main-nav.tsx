@@ -14,7 +14,7 @@ export const MainNav = ({ items, labels }: MainNavProps) => (
         <li key={item.key}>
           <Link
             href={item.href}
-            className="text-sm text-muted transition-colors hover:text-foreground"
+            className="text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             {labels[item.key]}
           </Link>

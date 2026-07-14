@@ -44,12 +44,12 @@ const DELETE_SIZE_CLASS_MAP: Record<ChipSize, string> = {
 };
 
 const FILLED_COLOR_CLASS_MAP: Record<SemanticColor, string> = {
-  primary: 'bg-primary text-background',
-  secondary: 'bg-secondary text-background',
-  success: 'bg-success text-background',
-  warning: 'bg-warning text-background',
-  error: 'bg-error text-background',
-  info: 'bg-info text-background',
+  primary: 'bg-primary text-primary-foreground',
+  secondary: 'bg-secondary text-secondary-foreground',
+  success: 'bg-success text-success-foreground',
+  warning: 'bg-warning text-warning-foreground',
+  error: 'bg-error text-error-foreground',
+  info: 'bg-info text-info-foreground',
   neutral: 'bg-muted text-foreground',
 };
 

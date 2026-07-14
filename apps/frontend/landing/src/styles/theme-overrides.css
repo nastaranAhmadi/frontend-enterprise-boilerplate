@@ -1,0 +1,68 @@
+/**
+ * Landing — "Publisher"
+ * Marketing trust: blue primary + cyan secondary, airy near-white canvas.
+ */
+:root[data-app='landing'],
+[data-theme='light'][data-app='landing'] {
+  --color-background: #fafbfc;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-foreground: #0b1220;
+  --color-muted: #e6eaf0;
+  --color-muted-foreground: #5b6575;
+  --color-border: #e6eaf0;
+  --color-border-subtle: #f1f4f8;
+  --color-primary: #1d4ed8;
+  --color-primary-foreground: #ffffff;
+  --color-primary-muted: #dbeafe;
+  --color-secondary: #0e7490;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #eff6ff;
+  --color-accent-foreground: #1e3a8a;
+  --color-success: #15803d;
+  --color-success-foreground: #ffffff;
+  --color-success-muted: #dcfce7;
+  --color-warning: #b45309;
+  --color-warning-foreground: #ffffff;
+  --color-warning-muted: #fef3c7;
+  --color-error: #b91c1c;
+  --color-error-foreground: #ffffff;
+  --color-error-muted: #fee2e2;
+  --color-info: #0369a1;
+  --color-info-foreground: #ffffff;
+  --color-info-muted: #e0f2fe;
+  --color-ring: #1d4ed8;
+  --color-overlay: rgb(11 18 32 / 0.45);
+}
+
+[data-theme='dark'][data-app='landing'] {
+  --color-background: #0a0e14;
+  --color-surface: #12171f;
+  --color-surface-elevated: #1a222d;
+  --color-foreground: #f1f5f9;
+  --color-muted: #1e293b;
+  --color-muted-foreground: #9aa4b5;
+  --color-border: #252d3a;
+  --color-border-subtle: #1a222d;
+  --color-primary: #60a5fa;
+  --color-primary-foreground: #0b1220;
+  --color-primary-muted: #1e3a8a;
+  --color-secondary: #22d3ee;
+  --color-secondary-foreground: #083344;
+  --color-accent: #172554;
+  --color-accent-foreground: #dbeafe;
+  --color-success: #4ade80;
+  --color-success-foreground: #052e16;
+  --color-success-muted: #14532d;
+  --color-warning: #fbbf24;
+  --color-warning-foreground: #422006;
+  --color-warning-muted: #78350f;
+  --color-error: #f87171;
+  --color-error-foreground: #450a0a;
+  --color-error-muted: #7f1d1d;
+  --color-info: #38bdf8;
+  --color-info-foreground: #082f49;
+  --color-info-muted: #075985;
+  --color-ring: #60a5fa;
+  --color-overlay: rgb(2 6 23 / 0.65);
+}

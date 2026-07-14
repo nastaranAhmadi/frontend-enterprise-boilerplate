@@ -37,8 +37,8 @@ const LOADING_SIZE_CLASS_MAP: Record<FloatingButtonSize, string> = {
 };
 
 const COLOR_CLASS_MAP: Record<FloatingButtonColor, string> = {
-  primary: 'bg-primary text-background hover:bg-primary/90',
-  secondary: 'bg-secondary text-background hover:bg-secondary/90',
+  primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
+  secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/90',
 };
 
 const joinClassNames = (...classes: Array<string | undefined | false>): string =>

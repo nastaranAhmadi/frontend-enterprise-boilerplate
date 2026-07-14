@@ -22,7 +22,7 @@ export const LocaleSwitcher = ({ currentLocale, labels }: LocaleSwitcherProps) =
           <li key={locale}>
             <Link
               href={swapLocaleInPath(pathname, locale)}
-              className="rounded-sm px-sm py-xs text-sm text-muted transition-colors hover:text-foreground"
+              className="rounded-sm px-sm py-xs text-sm text-muted-foreground transition-colors hover:text-foreground"
               hrefLang={locale}
               lang={locale}
             >

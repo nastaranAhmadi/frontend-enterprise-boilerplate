@@ -21,7 +21,7 @@ export const FeaturesSection = ({ locale }: FeaturesSectionProps) => {
           <h2 id="features-heading" className="text-2xl font-medium tracking-tight md:text-3xl">
             {title}
           </h2>
-          <p className="mt-sm text-muted">{subtitle}</p>
+          <p className="mt-sm text-muted-foreground">{subtitle}</p>
         </div>
 
         <ul className="grid gap-md md:grid-cols-3">
@@ -32,7 +32,7 @@ export const FeaturesSection = ({ locale }: FeaturesSectionProps) => {
               <li key={key}>
                 <article className="flex h-full flex-col gap-sm rounded-lg border border-border bg-background p-lg">
                   <h3 className="text-lg font-medium text-foreground">{feature.title}</h3>
-                  <p className="text-sm text-muted">{feature.description}</p>
+                  <p className="text-sm text-muted-foreground">{feature.description}</p>
                 </article>
               </li>
             );

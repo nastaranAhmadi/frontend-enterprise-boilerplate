@@ -86,7 +86,7 @@ export const Controlled = {
       return (
         <div className="flex flex-col gap-sm">
           <OTPInput length={4} value={value} onChange={setValue} />
-          <p className="text-sm text-muted">Value: {value || '—'}</p>
+          <p className="text-sm text-muted-foreground">Value: {value || '—'}</p>
         </div>
       );
     };

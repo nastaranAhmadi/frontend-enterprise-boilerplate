@@ -86,7 +86,7 @@ const TabsExample = ({
         <Tabs.Panel key={item.id} id={item.id}>
           <div className="rounded-lg border border-border bg-background p-lg">
             <h3 className="text-lg font-semibold text-foreground">{item.label}</h3>
-            <p className="mt-sm text-sm text-muted">
+            <p className="mt-sm text-sm text-muted-foreground">
               Content for the {item.label.toLowerCase()} tab.
             </p>
           </div>

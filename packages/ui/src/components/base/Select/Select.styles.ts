@@ -10,7 +10,7 @@ export const CONTROL_BASE_CLASS =
 export const SELECT_BASE_CLASS =
   'min-w-0 flex-1 cursor-pointer bg-transparent font-inherit text-inherit focus:outline-none disabled:cursor-not-allowed disabled:opacity-50';
 
-export const ADORNMENT_CLASS = 'inline-flex shrink-0 items-center text-muted';
+export const ADORNMENT_CLASS = 'inline-flex shrink-0 items-center text-muted-foreground';
 
 const CONTROL_SIZE_CLASS_MAP: Record<SelectSize, string> = {
   small: 'px-sm py-xs',

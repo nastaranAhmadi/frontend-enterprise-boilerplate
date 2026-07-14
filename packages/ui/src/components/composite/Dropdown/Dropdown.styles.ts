@@ -29,7 +29,7 @@ const ITEM_SIZE_CLASS_MAP: Record<Size, string> = {
 
 export const DROPDOWN_ROOT_CLASS = 'relative inline-flex';
 export const DROPDOWN_MENU_BASE_CLASS =
-  'absolute z-dropdown mt-xs overflow-hidden rounded-md border border-border bg-background shadow-md focus:outline-none';
+  'absolute z-dropdown mt-xs overflow-hidden rounded-md border border-border bg-surface-elevated shadow-md focus:outline-none';
 
 const ALIGN_CLASS_MAP: Record<DropdownAlign, string> = {
   start: 'start-0',

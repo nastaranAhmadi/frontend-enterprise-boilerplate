@@ -47,7 +47,7 @@ export const FaqPage = ({ locale }: FaqPageProps) => {
               <summary className="cursor-pointer list-none py-sm text-base font-medium text-foreground marker:content-none [&::-webkit-details-marker]:hidden">
                 {item.question}
               </summary>
-              <p className="text-sm text-muted">{item.answer}</p>
+              <p className="text-sm text-muted-foreground">{item.answer}</p>
             </details>
           );
         })}

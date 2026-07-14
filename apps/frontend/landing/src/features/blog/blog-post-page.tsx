@@ -38,10 +38,10 @@ export const BlogPostPage = async ({ locale, slug }: BlogPostPageProps) => {
         url={buildAbsoluteUrl(pathname)}
       />
       <article>
-        <time className="text-sm text-muted" dateTime={post.publishedAt}>
+        <time className="text-sm text-muted-foreground" dateTime={post.publishedAt}>
           {formatPublishedDate(locale, post.publishedAt)}
         </time>
-        <div className="mt-lg flex flex-col gap-md text-muted">
+        <div className="mt-lg flex flex-col gap-md text-muted-foreground">
           {post.content.split('\n\n').map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}

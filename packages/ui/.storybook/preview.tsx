@@ -36,6 +36,7 @@ const StorybookShell = ({
   const lang = resolveLangFromLocale(locale);
 
   useEffect(() => {
+    document.documentElement.setAttribute('data-app', 'ui');
     document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.setAttribute('dir', dir);
     document.documentElement.setAttribute('lang', lang);

@@ -6,12 +6,7 @@
   "tags": ["scope:app", "type:app", "platform:web", "domain:frontend"],
   "targets": {
     "build": {
-      "executor": "@nx/next:build",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
-      "options": {
-        "outputPath": "dist/apps/frontend/landing"
-      }
+      "defaultConfiguration": "production"
     },
     "clean": {
       "executor": "nx:run-commands",
@@ -28,19 +23,13 @@
       }
     },
     "dev": {
-      "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "landing:build",
-        "dev": true,
         "port": 4200
       }
     },
     "start": {
-      "executor": "@nx/next:server",
       "options": {
-        "buildTarget": "landing:build:production",
-        "dev": false,
         "port": 4200
       }
     },

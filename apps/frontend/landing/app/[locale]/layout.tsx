@@ -74,7 +74,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const fontClassName = locale === 'fa' ? vazirmatn.variable : inter.variable;
 
   return (
-    <html lang={locale} dir={dir} data-theme={theme} suppressHydrationWarning>
+    <html lang={locale} dir={dir} data-app="landing" data-theme={theme} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <OrganizationJsonLd locale={locale} />

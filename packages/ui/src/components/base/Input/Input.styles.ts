@@ -8,9 +8,9 @@ export const CONTROL_BASE_CLASS =
   'inline-flex w-full min-w-0 items-center gap-xs transition-colors duration-normal focus-within:ring-2';
 
 export const INPUT_BASE_CLASS =
-  'min-w-0 flex-1 bg-transparent font-inherit text-inherit placeholder:text-muted focus:outline-none';
+  'min-w-0 flex-1 bg-transparent font-inherit text-inherit placeholder:text-muted-foreground focus:outline-none';
 
-export const ADORNMENT_CLASS = 'inline-flex shrink-0 items-center text-muted';
+export const ADORNMENT_CLASS = 'inline-flex shrink-0 items-center text-muted-foreground';
 
 const CONTROL_SIZE_CLASS_MAP: Record<InputSize, string> = {
   small: 'px-sm py-xs',

@@ -1,8 +1,68 @@
+/**
+ * Dashboard (user panel) — "My space"
+ * Customer account/app: indigo-blue primary + teal secondary. Soft app canvas.
+ */
 :root[data-app='dashboard'],
 [data-theme='light'][data-app='dashboard'] {
-  --color-primary: #7c3aed;
+  --color-background: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-surface-elevated: #ffffff;
+  --color-foreground: #121826;
+  --color-muted: #e4e7ec;
+  --color-muted-foreground: #667085;
+  --color-border: #e4e7ec;
+  --color-border-subtle: #f2f4f7;
+  --color-primary: #3451b2;
+  --color-primary-foreground: #ffffff;
+  --color-primary-muted: #e8eeff;
+  --color-secondary: #0f766e;
+  --color-secondary-foreground: #ffffff;
+  --color-accent: #eef2ff;
+  --color-accent-foreground: #312e81;
+  --color-success: #15803d;
+  --color-success-foreground: #ffffff;
+  --color-success-muted: #dcfce7;
+  --color-warning: #b45309;
+  --color-warning-foreground: #ffffff;
+  --color-warning-muted: #fef3c7;
+  --color-error: #b91c1c;
+  --color-error-foreground: #ffffff;
+  --color-error-muted: #fee2e2;
+  --color-info: #0369a1;
+  --color-info-foreground: #ffffff;
+  --color-info-muted: #e0f2fe;
+  --color-ring: #3451b2;
+  --color-overlay: rgb(18 24 38 / 0.45);
 }
 
 [data-theme='dark'][data-app='dashboard'] {
-  --color-primary: #a78bfa;
+  --color-background: #0d1118;
+  --color-surface: #161c26;
+  --color-surface-elevated: #1e2633;
+  --color-foreground: #e9eef6;
+  --color-muted: #243044;
+  --color-muted-foreground: #98a2b3;
+  --color-border: #2a3344;
+  --color-border-subtle: #1e2633;
+  --color-primary: #7c9cff;
+  --color-primary-foreground: #0b1220;
+  --color-primary-muted: #1e2a4a;
+  --color-secondary: #2dd4bf;
+  --color-secondary-foreground: #042f2e;
+  --color-accent: #1a2338;
+  --color-accent-foreground: #c7d2fe;
+  --color-success: #4ade80;
+  --color-success-foreground: #052e16;
+  --color-success-muted: #14532d;
+  --color-warning: #fbbf24;
+  --color-warning-foreground: #422006;
+  --color-warning-muted: #78350f;
+  --color-error: #f87171;
+  --color-error-foreground: #450a0a;
+  --color-error-muted: #7f1d1d;
+  --color-info: #38bdf8;
+  --color-info-foreground: #082f49;
+  --color-info-muted: #075985;
+  --color-ring: #7c9cff;
+  --color-overlay: rgb(2 6 23 / 0.65);
 }

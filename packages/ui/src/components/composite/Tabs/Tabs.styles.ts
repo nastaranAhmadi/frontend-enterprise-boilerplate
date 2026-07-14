@@ -43,7 +43,7 @@ const TAB_BASE_CLASS =
   'inline-flex items-center justify-center gap-xs rounded-md font-medium leading-none transition-colors duration-normal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
 
 const TAB_SELECTED_CLASS_MAP: Record<TabsVariant, string> = {
-  'button-brand': 'bg-primary text-background',
+  'button-brand': 'bg-primary text-primary-foreground',
   'button-gray': 'bg-muted text-foreground',
   'button-border': 'border border-border bg-background text-foreground shadow-sm',
   'button-minimal': 'bg-muted/50 text-foreground',
@@ -52,12 +52,12 @@ const TAB_SELECTED_CLASS_MAP: Record<TabsVariant, string> = {
 };
 
 const TAB_UNSELECTED_CLASS_MAP: Record<TabsVariant, string> = {
-  'button-brand': 'text-muted hover:bg-muted hover:text-foreground',
-  'button-gray': 'text-muted hover:bg-muted/70 hover:text-foreground',
-  'button-border': 'border border-transparent text-muted hover:bg-muted',
-  'button-minimal': 'text-muted hover:bg-muted/30 hover:text-foreground',
-  underline: 'border-b-2 border-transparent text-muted hover:text-foreground',
-  line: 'border-b-2 border-transparent text-muted hover:text-foreground',
+  'button-brand': 'text-muted-foreground hover:bg-muted hover:text-foreground',
+  'button-gray': 'text-muted-foreground hover:bg-muted/70 hover:text-foreground',
+  'button-border': 'border border-transparent text-muted-foreground hover:bg-muted',
+  'button-minimal': 'text-muted-foreground hover:bg-muted/30 hover:text-foreground',
+  underline: 'border-b-2 border-transparent text-muted-foreground hover:text-foreground',
+  line: 'border-b-2 border-transparent text-muted-foreground hover:text-foreground',
 };
 
 const TAB_UNDERLINE_SELECTED_CLASS = 'border-b-2 border-primary -mb-px pb-sm text-primary';
@@ -65,7 +65,7 @@ const TAB_UNDERLINE_SELECTED_CLASS = 'border-b-2 border-primary -mb-px pb-sm tex
 const TAB_LINE_SELECTED_CLASS = 'border-b-2 border-primary -mb-px pb-sm text-primary';
 
 const TAB_VERTICAL_UNDERLINE_UNSELECTED =
-  'border-e-2 border-transparent text-muted hover:text-foreground';
+  'border-e-2 border-transparent text-muted-foreground hover:text-foreground';
 const TAB_VERTICAL_UNDERLINE_SELECTED = 'border-e-2 border-primary text-primary';
 
 export const TABS_PANEL_CLASS = 'focus-visible:outline-none';
@@ -181,14 +181,17 @@ export const getTabsBadgeClassName = ({
   variant: TabsVariant;
 }): string => {
   if (!selected) {
-    return joinClassNames(TABS_BADGE_BASE_CLASS, 'bg-muted text-muted');
+    return joinClassNames(TABS_BADGE_BASE_CLASS, 'bg-muted text-muted-foreground');
   }
 
   if (variant === 'button-brand') {
-    return joinClassNames(TABS_BADGE_BASE_CLASS, 'bg-background/20 text-background');
+    return joinClassNames(
+      TABS_BADGE_BASE_CLASS,
+      'bg-primary-foreground/20 text-primary-foreground',
+    );
   }
 
-  return joinClassNames(TABS_BADGE_BASE_CLASS, 'bg-primary text-background');
+  return joinClassNames(TABS_BADGE_BASE_CLASS, 'bg-primary text-primary-foreground');
 };
 
 export const getTabsPanelClassName = ({ className }: { className?: string } = {}): string =>

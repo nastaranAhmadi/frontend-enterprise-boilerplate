@@ -125,7 +125,7 @@ const StatefulDataTable = (props: Partial<ComponentProps<typeof DataTable<Employ
 
   const toolbar = useMemo(
     () => (
-      <span className="text-sm text-muted">
+      <span className="text-sm text-muted-foreground">
         {selectedRowIds.length > 0
           ? `${String(selectedRowIds.length)} selected`
           : `${String(rows.length)} employees`}

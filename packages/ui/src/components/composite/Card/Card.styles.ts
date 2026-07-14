@@ -22,8 +22,8 @@ const PADDING_CLASS_MAP: Record<Size, string> = {
 };
 
 const VARIANT_CLASS_MAP: Record<CardVariant, string> = {
-  outlined: 'border border-border bg-background',
-  elevated: 'border border-transparent bg-background shadow-md',
+  outlined: 'border border-border bg-surface',
+  elevated: 'border border-transparent bg-surface-elevated shadow-md',
 };
 
 export const CARD_BASE_CLASS =
@@ -36,7 +36,7 @@ export const CARD_ACTIONABLE_RESET_CLASS = 'block w-full text-start appearance-n
 
 export const CARD_HEADER_CLASS = 'flex flex-col gap-1';
 export const CARD_TITLE_CLASS = 'font-medium text-foreground';
-export const CARD_DESCRIPTION_CLASS = 'text-sm text-muted';
+export const CARD_DESCRIPTION_CLASS = 'text-sm text-muted-foreground';
 export const CARD_CONTENT_CLASS = 'text-foreground';
 export const CARD_FOOTER_CLASS = 'flex items-center gap-sm';
 

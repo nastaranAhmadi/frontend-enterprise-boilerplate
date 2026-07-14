@@ -28,7 +28,7 @@ export const TABLE_WRAPPER_STACKED_CLASS = [
   'max-md:overflow-x-visible',
   'max-md:[&_thead]:hidden',
   'max-md:[&_tbody_tr]:mb-sm max-md:[&_tbody_tr]:block max-md:[&_tbody_tr]:overflow-hidden max-md:[&_tbody_tr]:rounded-md max-md:[&_tbody_tr]:border max-md:[&_tbody_tr]:border-border max-md:[&_tbody_tr]:bg-background max-md:[&_tbody_tr]:shadow-sm',
-  'max-md:[&_td]:flex max-md:[&_td]:items-center max-md:[&_td]:justify-between max-md:[&_td]:gap-sm max-md:[&_td]:border-b max-md:[&_td]:border-border max-md:[&_td]:py-xs max-md:[&_td]:before:me-sm max-md:[&_td]:before:shrink-0 max-md:[&_td]:before:font-medium max-md:[&_td]:before:text-muted max-md:[&_td]:before:content-[attr(data-label)]',
+  'max-md:[&_td]:flex max-md:[&_td]:items-center max-md:[&_td]:justify-between max-md:[&_td]:gap-sm max-md:[&_td]:border-b max-md:[&_td]:border-border max-md:[&_td]:py-xs max-md:[&_td]:before:me-sm max-md:[&_td]:before:shrink-0 max-md:[&_td]:before:font-medium max-md:[&_td]:before:text-muted-foreground max-md:[&_td]:before:content-[attr(data-label)]',
   'max-md:[&_td:last-child]:border-b-0',
 ].join(' ');
 export const TABLE_HEADER_CLASS = 'bg-muted text-start font-medium text-foreground';
@@ -68,7 +68,7 @@ export const TABLE_HEAD_SORTABLE_CLASS =
 export const TABLE_HEAD_SORT_BUTTON_CLASS =
   'inline-flex w-full items-center gap-xs border-0 bg-transparent p-0 font-inherit text-inherit';
 
-export const TABLE_HEAD_SORT_ICON_CLASS = 'inline-flex shrink-0 text-muted';
+export const TABLE_HEAD_SORT_ICON_CLASS = 'inline-flex shrink-0 text-muted-foreground';
 
 export const TABLE_SORT_ICON_STACK_CLASS = 'inline-flex shrink-0 flex-col gap-0';
 
@@ -76,7 +76,7 @@ export const TABLE_SORT_ICON_BASE_CLASS = 'h-3 w-3';
 
 export const TABLE_SORT_ICON_ACTIVE_CLASS = 'text-primary';
 
-export const TABLE_SORT_ICON_INACTIVE_CLASS = 'text-muted/50';
+export const TABLE_SORT_ICON_INACTIVE_CLASS = 'text-muted-foreground/50';
 
 export const getTableSortIconClassName = ({ active }: { active: boolean }): string =>
   joinClassNames(

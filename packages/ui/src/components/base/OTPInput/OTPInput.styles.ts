@@ -14,7 +14,7 @@ export const OTP_INPUT_CELL_BASE_CLASS =
 
 export const OTP_INPUT_CELL_INVALID_CLASS = 'border-error focus-visible:ring-error';
 
-export const OTP_INPUT_SEPARATOR_CLASS = 'text-lg font-medium text-muted';
+export const OTP_INPUT_SEPARATOR_CLASS = 'text-lg font-medium text-muted-foreground';
 
 const CELL_SIZE_CLASS_MAP: Record<OTPInputSize, string> = {
   small: 'h-10 w-10 text-md',
