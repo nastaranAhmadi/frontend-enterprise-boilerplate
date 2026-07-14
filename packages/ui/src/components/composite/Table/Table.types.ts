@@ -1,11 +1,20 @@
-import type { HTMLAttributes, ReactNode, TdHTMLAttributes, ThHTMLAttributes } from 'react';
+import type {
+  CSSProperties,
+  HTMLAttributes,
+  ReactNode,
+  TdHTMLAttributes,
+  ThHTMLAttributes,
+} from 'react';
 
 import type { Size } from '../../../types';
+
+export type TableLayout = 'scroll' | 'stacked';
 
 export interface TableOwnProps {
   children?: ReactNode;
   className?: string;
   wrapperClassName?: string;
+  layout?: TableLayout;
   size?: Size;
   striped?: boolean;
   bordered?: boolean;
@@ -38,17 +47,26 @@ export type TableRowProps = TableRowOwnProps &
   Omit<HTMLAttributes<HTMLTableRowElement>, keyof TableRowOwnProps>;
 
 export interface TableHeadOwnProps {
+  align?: 'center' | 'end' | 'start';
   children?: ReactNode;
   className?: string;
+  onSort?: () => void;
   scope?: 'col' | 'row';
+  sortable?: boolean;
+  sortDirection?: 'asc' | 'desc' | null;
+  style?: CSSProperties;
 }
 
 export type TableHeadProps = TableHeadOwnProps &
   Omit<ThHTMLAttributes<HTMLTableCellElement>, keyof TableHeadOwnProps>;
 
 export interface TableCellOwnProps {
+  align?: 'center' | 'end' | 'start';
   children?: ReactNode;
   className?: string;
+  /** Column label shown in stacked mobile layout (`layout="stacked"`). */
+  label?: string;
+  style?: CSSProperties;
 }
 
 export type TableCellProps = TableCellOwnProps &

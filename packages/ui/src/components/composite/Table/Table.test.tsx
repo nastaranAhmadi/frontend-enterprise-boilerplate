@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { createRef } from 'react';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './Table';
 import {
@@ -91,5 +92,48 @@ describe('Table', () => {
     );
 
     expect(container.firstChild).toHaveClass('custom-wrapper');
+  });
+
+  it('applies stacked layout classes on the wrapper', () => {
+    const { container } = render(
+      <Table layout="stacked">
+        <TableBody>
+          <TableRow>
+            <TableCell label="Name">Ada</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>,
+    );
+
+    expect(container.firstChild).toHaveClass('max-md:overflow-x-visible');
+    expect(screen.getByRole('cell', { name: 'Ada' })).toHaveAttribute('data-label', 'Name');
+  });
+
+  it('renders sort arrows and handles sort clicks', async () => {
+    const user = userEvent.setup();
+    const onSort = vi.fn();
+
+    const { container } = render(
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead sortable sortDirection="asc" onSort={onSort}>
+              Name
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+      </Table>,
+    );
+
+    const sortButton = screen.getByRole('button', { name: /Name/i });
+    expect(sortButton).toBeInTheDocument();
+    expect(screen.getByRole('columnheader', { name: /Name/i })).toHaveAttribute(
+      'aria-sort',
+      'ascending',
+    );
+    expect(container.querySelectorAll('svg')).toHaveLength(2);
+
+    await user.click(sortButton);
+    expect(onSort).toHaveBeenCalledTimes(1);
   });
 });

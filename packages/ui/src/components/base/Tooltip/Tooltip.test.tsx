@@ -1,8 +1,9 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { afterEach,beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { Button } from '../Button';
 import { Tooltip } from './Tooltip';
+import * as TooltipPosition from './Tooltip.position';
 
 const mockRect = (rect: Partial<DOMRect>): DOMRect => ({
   x: rect.left ?? 0,
@@ -140,6 +141,28 @@ describe('Tooltip', () => {
 
     await waitFor(() => {
       expect(screen.queryByRole('tooltip')).not.toBeInTheDocument();
+    });
+  });
+
+  it('mirrors placement in rtl layouts', async () => {
+    const computeSpy = vi.spyOn(TooltipPosition, 'computeTooltipPosition');
+
+    render(
+      <div dir="rtl" lang="fa">
+        <Tooltip placement="right" title="Hint" enterDelay={0}>
+          <Button>Action</Button>
+        </Tooltip>
+      </div>,
+    );
+
+    fireEvent.mouseEnter(screen.getByRole('button', { name: 'Action' }));
+
+    await waitFor(() => {
+      expect(computeSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
+          placement: 'left',
+        }),
+      );
     });
   });
 });

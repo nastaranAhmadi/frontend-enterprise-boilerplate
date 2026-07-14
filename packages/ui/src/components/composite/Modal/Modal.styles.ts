@@ -9,13 +9,14 @@ const normalizeSize = (size: ModalProps['size']): ModalSize => {
 };
 
 const SIZE_CLASS_MAP: Record<ModalSize, string> = {
-  small: 'max-w-sm',
-  medium: 'max-w-md',
-  large: 'max-w-2xl',
-  full: 'max-w-[calc(100%-2rem)] w-full',
+  small: 'w-full max-w-[calc(100%-2rem)] sm:max-w-sm',
+  medium: 'w-full max-w-[calc(100%-2rem)] sm:max-w-md',
+  large: 'w-full max-w-[calc(100%-2rem)] sm:max-w-2xl',
+  full: 'w-full max-w-[calc(100%-2rem)]',
 };
 
-export const MODAL_BACKDROP_CLASS = 'fixed inset-0 z-modal flex items-center justify-center p-md';
+export const MODAL_BACKDROP_CLASS =
+  'fixed inset-0 z-modal flex items-center justify-center p-sm sm:p-md';
 
 export const MODAL_BACKDROP_SCRIM_CLASS = 'absolute inset-0 bg-foreground/40';
 
@@ -30,7 +31,7 @@ export const MODAL_TITLE_CLASS = 'font-sans text-lg font-medium text-foreground'
 export const MODAL_DESCRIPTION_CLASS = 'font-sans text-sm text-muted';
 export const MODAL_BODY_CLASS = 'overflow-y-auto px-lg py-md text-foreground';
 export const MODAL_FOOTER_CLASS =
-  'flex items-center justify-end gap-sm border-t border-border px-lg py-md';
+  'flex flex-wrap items-center justify-end gap-sm border-t border-border px-lg py-md';
 
 export const getModalBackdropClassName = ({ className }: { className?: string } = {}): string =>
   joinClassNames(MODAL_BACKDROP_CLASS, className);

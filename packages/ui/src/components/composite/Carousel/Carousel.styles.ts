@@ -49,7 +49,7 @@ export const getCarouselViewportClassName = ({
   joinClassNames(
     CAROUSEL_VIEWPORT_CLASS,
     normalizeEffect(effect) !== 'slide' && 'relative',
-    vertical && effect === 'slide' && 'h-80',
+    vertical && effect === 'slide' && 'h-48 sm:h-64 md:h-80',
     !vertical && effect === 'slide' && 'w-full',
     draggable && effect === 'slide' && CAROUSEL_VIEWPORT_DRAGGABLE_CLASS,
     className,

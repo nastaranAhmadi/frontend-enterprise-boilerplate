@@ -14,6 +14,7 @@ import {
   useState,
 } from 'react';
 
+import { useTextDirection } from '../../../hooks/useTextDirection';
 import { FloatingButton } from '../../base/FloatingButton';
 import {
   getSpeedDialActionButtonClassName,
@@ -126,7 +127,8 @@ export const SpeedDial = forwardRef<HTMLDivElement, SpeedDialProps>(function Spe
   const menuRef = useRef<HTMLDivElement | null>(null);
   const { isOpen, setOpen } = useControllableOpen({ open, defaultOpen, onOpenChange });
   const actions = collectActions(children);
-  const navigationKeys = getSpeedDialNavigationKeys(direction);
+  const { isRtl } = useTextDirection();
+  const navigationKeys = getSpeedDialNavigationKeys(direction, isRtl);
 
   const closeMenu = useCallback(() => {
     setOpen(false);

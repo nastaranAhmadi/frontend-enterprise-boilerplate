@@ -10,6 +10,7 @@ export interface CarouselOwnProps {
   navigation?: boolean;
   pagination?: boolean | CarouselPaginationType;
   vertical?: boolean;
+  /** When omitted, direction is inherited from `DesignSystemProvider` or document `dir`. */
   rtl?: boolean;
   effect?: CarouselEffect;
   loop?: boolean;

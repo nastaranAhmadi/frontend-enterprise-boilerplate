@@ -54,7 +54,7 @@ export default meta;
 
 type SpeedDialStory = {
   args?: Partial<ComponentProps<typeof SpeedDial>>;
-  render?: (args: Partial<ComponentProps<typeof SpeedDial>>) => ReactElement;
+  render?: (args: ComponentProps<typeof SpeedDial>) => ReactElement;
 };
 
 export const Playground: SpeedDialStory = {
@@ -96,7 +96,7 @@ export const PersistentTooltips: SpeedDialStory = {
 export const FixedPosition: SpeedDialStory = {
   render: (args) => (
     <div className="relative h-64 w-full rounded-lg border border-border bg-background">
-      <div className="absolute bottom-lg right-lg">
+      <div className="absolute bottom-lg end-lg">
         <SpeedDial {...args}>
           <SpeedDial.Action icon={<CopyIcon />} tooltip="Copy" />
           <SpeedDial.Action icon={<SaveIcon />} tooltip="Save" />

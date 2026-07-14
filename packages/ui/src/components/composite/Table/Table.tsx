@@ -4,6 +4,7 @@ import {
   getTableCellClassName,
   getTableClassName,
   getTableHeadClassName,
+  getTableHeadSortButtonClassName,
   getTableRowClassName,
   getTableSectionClassName,
   getTableWrapperClassName,
@@ -20,6 +21,7 @@ import type {
   TableProps,
   TableRowProps,
 } from './Table.types';
+import { TableSortIcon } from './TableSortIcon';
 
 interface TableContextValue {
   size?: TableProps['size'];
@@ -31,10 +33,19 @@ const TableContext = createContext<TableContextValue | null>(null);
 const useTableContext = (): TableContextValue => useContext(TableContext) ?? {};
 
 export const Table = forwardRef<HTMLTableElement, TableProps>(function Table(props, ref) {
-  const { children, className, wrapperClassName, size, striped, bordered, ...tableProps } = props;
+  const {
+    children,
+    className,
+    wrapperClassName,
+    layout = 'scroll',
+    size,
+    striped,
+    bordered,
+    ...tableProps
+  } = props;
 
   return (
-    <div className={getTableWrapperClassName({ className: wrapperClassName })}>
+    <div className={getTableWrapperClassName({ className: wrapperClassName, layout })}>
       <TableContext.Provider value={{ size, striped }}>
         <table
           {...tableProps}
@@ -125,17 +136,47 @@ TableRow.displayName = 'TableRow';
 
 export const TableHead = forwardRef<HTMLTableCellElement, TableHeadProps>(
   function TableHead(props, ref) {
-    const { children, className, scope = 'col', ...headProps } = props;
+    const {
+      align = 'start',
+      children,
+      className,
+      onSort,
+      scope = 'col',
+      sortable = false,
+      sortDirection = null,
+      style,
+      ...headProps
+    } = props;
     const { size } = useTableContext();
+
+    const ariaSort =
+      sortable && sortDirection
+        ? sortDirection === 'asc'
+          ? 'ascending'
+          : 'descending'
+        : sortable
+          ? 'none'
+          : undefined;
+
+    const content = sortable ? (
+      <button type="button" className={getTableHeadSortButtonClassName({ align })} onClick={onSort}>
+        <span>{children}</span>
+        <TableSortIcon direction={sortDirection} />
+      </button>
+    ) : (
+      children
+    );
 
     return (
       <th
         {...headProps}
         ref={ref}
         scope={scope}
-        className={getTableHeadClassName({ size, className })}
+        style={style}
+        aria-sort={ariaSort}
+        className={getTableHeadClassName({ size, align, sortable, className })}
       >
-        {children}
+        {content}
       </th>
     );
   },
@@ -145,11 +186,17 @@ TableHead.displayName = 'TableHead';
 
 export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
   function TableCell(props, ref) {
-    const { children, className, ...cellProps } = props;
+    const { align = 'start', children, className, label, style, ...cellProps } = props;
     const { size } = useTableContext();
 
     return (
-      <td {...cellProps} ref={ref} className={getTableCellClassName({ size, className })}>
+      <td
+        {...cellProps}
+        ref={ref}
+        data-label={label}
+        style={style}
+        className={getTableCellClassName({ size, align, className })}
+      >
         {children}
       </td>
     );

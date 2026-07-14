@@ -22,6 +22,57 @@ export function SignupForm() {
 
 For RTL, pass a locale such as `fa-IR` or set `dir="rtl"` explicitly. Pair with `@enterprise/i18n` for translated copy — see [`docs/internationalization.md`](../../docs/internationalization.md).
 
+### Direction, theme, and responsive layout
+
+```tsx
+import {
+  DesignSystemProvider,
+  Pagination,
+  Carousel,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+  useTextDirection,
+} from '@enterprise/ui';
+
+export function AppShell() {
+  return (
+    <DesignSystemProvider locale="fa-IR" defaultTheme="dark">
+      <Pagination page={1} totalPages={10} onPageChange={() => undefined} />
+      <Carousel navigation pagination>
+        {/* slides */}
+      </Carousel>
+      <Table layout="stacked">
+        <TableHeader>
+          <TableRow>
+            <TableHead>Name</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell label="Name">Ada</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </DesignSystemProvider>
+  );
+}
+
+// Inside new interactive components:
+function MyNav() {
+  const { isRtl } = useTextDirection();
+  // mirror keyboard arrows, placement, etc.
+  return null;
+}
+```
+
+Components inherit `dir` and `data-theme` from the provider. Override only when needed (`Pagination dir="ltr"`, `Carousel rtl={false}`). For portaled UI, call `resolveTextDirection({ element })` at interaction time (see `Tooltip`).
+
+Responsive behavior uses Tailwind breakpoints (`sm:`, `md:`) on overlays such as `Modal`, `Carousel`, and `Table layout="stacked"`.
+
 Consumers must compile Tailwind with content paths that include `packages/ui/src`. Use `@enterprise/tailwind-config/content` to avoid drift.
 
 ## What's inside

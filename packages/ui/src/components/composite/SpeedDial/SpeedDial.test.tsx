@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { createRef } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
+import { DesignSystemProvider } from '../../../providers/DesignSystemProvider';
 import { SpeedDial, SpeedDialAction } from './index';
 
 describe('SpeedDial', () => {
@@ -149,5 +150,40 @@ describe('SpeedDial', () => {
 
     await user.click(screen.getByRole('button', { name: 'Create' }));
     expect(screen.getByRole('tooltip', { name: 'Copy' })).toBeInTheDocument();
+  });
+
+  it('uses logical positioning classes for horizontal directions', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <SpeedDial aria-label="Create" direction="right">
+        <SpeedDial.Action icon={<span>C</span>} tooltip="Copy" />
+      </SpeedDial>,
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Create' }));
+
+    const menu = screen.getByRole('menu');
+    expect(menu.className).toContain('start-full');
+    expect(menu.className).not.toContain('left-full');
+  });
+
+  it('reverses horizontal arrow navigation in rtl', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <DesignSystemProvider locale="fa-IR">
+        <SpeedDial aria-label="Create" direction="right">
+          <SpeedDial.Action icon={<span>A</span>} tooltip="A" />
+          <SpeedDial.Action icon={<span>B</span>} tooltip="B" />
+        </SpeedDial>
+      </DesignSystemProvider>,
+    );
+
+    await user.click(screen.getByRole('button', { name: 'Create' }));
+    expect(screen.getByRole('menuitem', { name: 'A' })).toHaveFocus();
+
+    await user.keyboard('{ArrowLeft}');
+    expect(screen.getByRole('menuitem', { name: 'B' })).toHaveFocus();
   });
 });

@@ -167,4 +167,13 @@ describe('Carousel', () => {
       );
     });
   });
+
+  it('uses responsive vertical viewport heights', () => {
+    const { container } = renderCarousel({ vertical: true });
+
+    const viewport = container.querySelector('[aria-roledescription="carousel"] > div');
+    expect(viewport?.className).toContain('h-48');
+    expect(viewport?.className).toContain('sm:h-64');
+    expect(viewport?.className).toContain('md:h-80');
+  });
 });

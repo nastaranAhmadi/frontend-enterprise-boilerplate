@@ -12,11 +12,15 @@ const meta = {
     docs: {
       description: {
         component:
-          'Semantic table primitives for tabular data with size, striped, and bordered variants.',
+          'Semantic table primitives for tabular data with size, striped, bordered, and responsive layout variants. Use `layout="stacked"` with `label` on `TableCell` for card-style rows below the `md` breakpoint.',
       },
     },
   },
   argTypes: {
+    layout: {
+      control: 'select',
+      options: ['scroll', 'stacked'],
+    },
     size: {
       control: 'select',
       options: ['small', 'medium', 'large'],
@@ -30,6 +34,7 @@ const meta = {
     size: 'medium',
     striped: false,
     bordered: false,
+    layout: 'scroll',
   },
   decorators: [
     (Story: () => ReactElement) => (
@@ -45,6 +50,7 @@ export default meta;
 type TableStory = {
   args?: Partial<ComponentProps<typeof Table>>;
   render?: (args: ComponentProps<typeof Table>) => ReactElement;
+  parameters?: Record<string, unknown>;
 };
 
 const sampleRows = [
@@ -74,8 +80,42 @@ const SampleTable = (args: ComponentProps<typeof Table>) => (
   </Table>
 );
 
+const StackedTable = (args: ComponentProps<typeof Table>) => (
+  <Table {...args} layout="stacked">
+    <TableHeader>
+      <TableRow>
+        <TableHead>Name</TableHead>
+        <TableHead>Role</TableHead>
+        <TableHead>Status</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      {sampleRows.map((row) => (
+        <TableRow key={row.name}>
+          <TableCell label="Name">{row.name}</TableCell>
+          <TableCell label="Role">{row.role}</TableCell>
+          <TableCell label="Status">{row.status}</TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+);
+
 export const Playground: TableStory = {
   render: (args) => <SampleTable {...args} />,
+};
+
+export const Stacked: TableStory = {
+  args: { layout: 'stacked', bordered: true },
+  render: (args) => <StackedTable {...args} />,
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Below the `md` breakpoint each row becomes a card. Pass `label` to every `TableCell`.',
+      },
+    },
+  },
 };
 
 export const Striped: TableStory = {

@@ -13,10 +13,10 @@ export const SPEED_DIAL_ACTION_BUTTON_CLASS =
   'inline-flex h-10 w-10 items-center justify-center rounded-full bg-background text-foreground shadow-md transition-[box-shadow,background-color] duration-normal hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
 
 const DIRECTION_CLASS_MAP: Record<SpeedDialDirection, string> = {
-  up: 'bottom-full left-1/2 mb-sm -translate-x-1/2 flex-col-reverse',
-  down: 'top-full left-1/2 mt-sm -translate-x-1/2 flex-col',
-  left: 'right-full top-1/2 mr-sm -translate-y-1/2 flex-row-reverse',
-  right: 'left-full top-1/2 ml-sm -translate-y-1/2 flex-row',
+  up: 'bottom-full start-1/2 mb-sm -translate-x-1/2 flex-col-reverse',
+  down: 'top-full start-1/2 mt-sm -translate-x-1/2 flex-col',
+  left: 'end-full top-1/2 me-sm -translate-y-1/2 flex-row-reverse',
+  right: 'start-full top-1/2 ms-sm -translate-y-1/2 flex-row',
 };
 
 const normalizeDirection = (direction: SpeedDialProps['direction']): SpeedDialDirection => {
@@ -61,10 +61,13 @@ export const getSpeedDialMenuOrientation = (
 
 export const getSpeedDialNavigationKeys = (
   direction: SpeedDialProps['direction'],
+  isRtl = false,
 ): { next: string; previous: string } => {
   const resolved = normalizeDirection(direction);
   if (resolved === 'left' || resolved === 'right') {
-    return { next: 'ArrowRight', previous: 'ArrowLeft' };
+    return isRtl
+      ? { next: 'ArrowLeft', previous: 'ArrowRight' }
+      : { next: 'ArrowRight', previous: 'ArrowLeft' };
   }
   return { next: 'ArrowDown', previous: 'ArrowUp' };
 };

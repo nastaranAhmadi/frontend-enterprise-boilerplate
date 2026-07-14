@@ -1,5 +1,7 @@
 import { useEffect, useMemo } from 'react';
 
+import { useTextDirection } from '../../../hooks/useTextDirection';
+import type { TextDirection } from '../../../locale/locale';
 import { Button } from '../../base/Button';
 import { getVisiblePages } from './getVisiblePages';
 import {
@@ -40,7 +42,9 @@ export const Pagination = function Pagination(props: PaginationProps) {
 
   const currentPage = clampPage(page, totalPages);
   const isDisabled = disabled || totalPages <= 1;
-  const isRtl = dir === 'rtl';
+  const resolvedDirProp: TextDirection | undefined =
+    dir === 'rtl' || dir === 'ltr' ? dir : undefined;
+  const { dir: resolvedDir, isRtl } = useTextDirection({ dir: resolvedDirProp });
   const navIcons = getPaginationNavIcons(isRtl);
   const visiblePages = useMemo(
     () => getVisiblePages(currentPage, totalPages, siblingCount, boundaryCount),
@@ -72,7 +76,7 @@ export const Pagination = function Pagination(props: PaginationProps) {
   return (
     <nav
       {...paginationProps}
-      dir={dir}
+      dir={resolvedDir}
       className={getPaginationRootClassName({ size, className })}
       aria-label={ariaLabel}
     >

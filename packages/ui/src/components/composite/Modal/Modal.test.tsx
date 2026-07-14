@@ -19,6 +19,17 @@ describe('Modal', () => {
     expect(screen.getByText('Body content')).toBeInTheDocument();
   });
 
+  it('uses responsive width classes on the panel', () => {
+    render(
+      <Modal open onClose={() => undefined} title="Confirm action" size="medium">
+        Body content
+      </Modal>,
+    );
+
+    expect(screen.getByRole('dialog').className).toContain('sm:max-w-md');
+    expect(screen.getByRole('dialog').className).toContain('max-w-[calc(100%-2rem)]');
+  });
+
   it('does not render when closed', () => {
     render(
       <Modal open={false} onClose={() => undefined} title="Hidden">

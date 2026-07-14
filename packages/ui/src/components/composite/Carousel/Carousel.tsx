@@ -17,6 +17,7 @@ import {
   useState,
 } from 'react';
 
+import { useTextDirection } from '../../../hooks/useTextDirection';
 import { Button } from '../../base/Button';
 import {
   CAROUSEL_FRACTION_CLASS,
@@ -123,7 +124,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(function Carou
     navigation = false,
     pagination = false,
     vertical = false,
-    rtl = false,
+    rtl,
     effect = 'slide',
     loop = false,
     slidesPerView = 1,
@@ -138,6 +139,8 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(function Carou
     ...carouselProps
   } = props;
 
+  const { isRtl: detectedRtl, dir: detectedDir } = useTextDirection();
+  const isRtl = rtl ?? detectedRtl;
   const slides = collectSlides(children);
   const slideCount = slides.length;
   const perView = normalizeSlidesPerView(slidesPerView);
@@ -286,7 +289,7 @@ export const Carousel = forwardRef<HTMLDivElement, CarouselProps>(function Carou
     <div
       {...carouselProps}
       ref={ref}
-      dir={rtl ? 'rtl' : carouselProps.dir}
+      dir={isRtl ? 'rtl' : (carouselProps.dir ?? detectedDir)}
       className={getCarouselRootClassName({ className })}
       role="region"
       aria-roledescription="carousel"

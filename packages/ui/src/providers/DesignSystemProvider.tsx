@@ -6,9 +6,9 @@ import {
   resolveLangFromLocale,
   type TextDirection,
 } from '../locale/locale';
-import { DesignSystemContextProvider } from './DesignSystemContext';
+import { DesignSystemContextProvider, type DesignSystemTheme } from './DesignSystemContext';
 
-export type DesignSystemTheme = 'light' | 'dark';
+export type { DesignSystemTheme } from './DesignSystemContext';
 
 export type DesignSystemProviderProps = {
   children?: ReactNode;

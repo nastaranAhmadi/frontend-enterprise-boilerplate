@@ -17,6 +17,10 @@ import {
 import { createPortal } from 'react-dom';
 
 import {
+  mirrorTooltipPlacementForRtl,
+  resolveTextDirection,
+} from '../../../direction/textDirection';
+import {
   computeTooltipPosition,
   getTooltipArrowStyle,
   getTooltipPopperStyle,
@@ -42,7 +46,9 @@ const setRef = <T,>(ref: Ref<T> | undefined, value: T | null): void => {
 const composeRefs =
   <T,>(...refs: Array<Ref<T> | undefined>) =>
   (value: T | null) => {
-    refs.forEach((ref) => { setRef(ref, value); });
+    refs.forEach((ref) => {
+      setRef(ref, value);
+    });
   };
 
 const isDisabledElement = (child: ReactElement): boolean => {
@@ -88,13 +94,14 @@ export const Tooltip = function Tooltip(props: TooltipProps) {
   const leaveTimerRef = useRef<number | undefined>(undefined);
   const touchTimerRef = useRef<number | undefined>(undefined);
   const isTouchRef = useRef(false);
+  const resolvedPlacement = normalizePlacement(placement);
 
   const [uncontrolledOpen, setUncontrolledOpen] = useState(false);
   const [position, setPosition] = useState({ top: 0, left: 0 });
+  const [renderedPlacement, setRenderedPlacement] = useState(resolvedPlacement);
 
   const isControlled = open !== undefined;
   const isOpen = Boolean(title) && (isControlled ? open : uncontrolledOpen);
-  const resolvedPlacement = normalizePlacement(placement);
 
   const clearTimers = useCallback(() => {
     if (enterTimerRef.current !== undefined) {
@@ -153,13 +160,17 @@ export const Tooltip = function Tooltip(props: TooltipProps) {
     const tooltip = tooltipRef.current;
     if (!anchor || !tooltip) return;
 
+    const { isRtl } = resolveTextDirection({ element: anchor });
+    const effectivePlacement = mirrorTooltipPlacementForRtl(resolvedPlacement, isRtl);
+
     const nextPosition = computeTooltipPosition({
       anchorRect: anchor.getBoundingClientRect(),
       tooltipRect: tooltip.getBoundingClientRect(),
-      placement: resolvedPlacement,
+      placement: effectivePlacement,
     });
 
     setPosition(nextPosition);
+    setRenderedPlacement(effectivePlacement);
   }, [resolvedPlacement]);
 
   useLayoutEffect(() => {
@@ -306,7 +317,7 @@ export const Tooltip = function Tooltip(props: TooltipProps) {
               <span
                 aria-hidden="true"
                 className={getTooltipArrowClassName()}
-                style={getTooltipArrowStyle(resolvedPlacement)}
+                style={getTooltipArrowStyle(renderedPlacement)}
               />
             ) : null}
           </div>,

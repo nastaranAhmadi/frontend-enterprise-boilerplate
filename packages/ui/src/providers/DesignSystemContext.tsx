@@ -1,7 +1,8 @@
 import { createContext, useContext } from 'react';
 
 import type { DesignSystemLocale, TextDirection } from '../locale/locale';
-import type { DesignSystemTheme } from './DesignSystemProvider';
+
+export type DesignSystemTheme = 'light' | 'dark';
 
 export type DesignSystemContextValue = {
   theme: DesignSystemTheme;
@@ -23,3 +24,6 @@ export const useDesignSystem = (): DesignSystemContextValue => {
 
   return context;
 };
+
+export const useOptionalDesignSystem = (): DesignSystemContextValue | null =>
+  useContext(DesignSystemContext);

@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 
+import { DesignSystemProvider } from '../../../providers/DesignSystemProvider';
 import { Pagination } from './Pagination';
 
 describe('Pagination', () => {
@@ -71,5 +72,16 @@ describe('Pagination', () => {
     expect(screen.getByRole('button', { name: 'Previous page' })).toHaveTextContent('›');
     expect(screen.getByRole('button', { name: 'Next page' })).toHaveTextContent('‹');
     expect(screen.getByRole('button', { name: 'Last page' })).toHaveTextContent('«');
+  });
+
+  it('inherits rtl direction from DesignSystemProvider when dir is omitted', () => {
+    render(
+      <DesignSystemProvider locale="fa-IR">
+        <Pagination page={2} totalPages={5} onPageChange={() => undefined} />
+      </DesignSystemProvider>,
+    );
+
+    expect(screen.getByRole('navigation', { name: 'Pagination' })).toHaveAttribute('dir', 'rtl');
+    expect(screen.getByRole('button', { name: 'Next page' })).toHaveTextContent('‹');
   });
 });
