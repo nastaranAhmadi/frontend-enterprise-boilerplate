@@ -1,16 +1,9 @@
-import {
-  forwardRef,
-  type KeyboardEvent,
-  useCallback,
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { forwardRef, type KeyboardEvent, useCallback, useId, useMemo, useRef } from 'react';
 
 import type { DateValue } from '../../../date/calendars';
 import { DEFAULT_DATE_FORMAT, formatDateValue, getCalendarAdapter } from '../../../date/calendars';
+import { useControllableBoolean, useControllableState } from '../../../hooks/useControllableState';
+import { usePickerPopover } from '../../../hooks/usePickerPopover';
 import { useResolvedLocale } from '../../../hooks/useResolvedLocale';
 import { useTextDirection } from '../../../hooks/useTextDirection';
 import { resolveDirFromLocale } from '../../../locale/locale';
@@ -42,50 +35,6 @@ const CalendarIcon = () => (
   </svg>
 );
 
-const useControllableValue = ({
-  value,
-  defaultValue = null,
-  onChange,
-}: Pick<DatePickerProps, 'value' | 'defaultValue' | 'onChange'>) => {
-  const [uncontrolledValue, setUncontrolledValue] = useState<DateValue | null>(defaultValue);
-  const isControlled = value !== undefined;
-  const resolvedValue = isControlled ? (value ?? null) : uncontrolledValue;
-
-  const setValue = useCallback(
-    (nextValue: DateValue | null) => {
-      if (!isControlled) {
-        setUncontrolledValue(nextValue);
-      }
-      onChange?.(nextValue);
-    },
-    [isControlled, onChange],
-  );
-
-  return { value: resolvedValue, setValue };
-};
-
-const useControllableOpen = ({
-  open,
-  defaultOpen,
-  onOpenChange,
-}: Pick<DatePickerProps, 'open' | 'defaultOpen' | 'onOpenChange'>) => {
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(Boolean(defaultOpen));
-  const isControlled = open !== undefined;
-  const isOpen = open ?? uncontrolledOpen;
-
-  const setOpen = useCallback(
-    (nextOpen: boolean) => {
-      if (!isControlled) {
-        setUncontrolledOpen(nextOpen);
-      }
-      onOpenChange?.(nextOpen);
-    },
-    [isControlled, onOpenChange],
-  );
-
-  return { isOpen, setOpen };
-};
-
 export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
   function DatePicker(props, ref) {
     const {
@@ -93,7 +42,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
       className,
       clearLabel = DEFAULT_CLEAR_LABEL,
       defaultOpen,
-      defaultValue,
+      defaultValue = null,
       disabled = false,
       disabledDates,
       disabledWeekdays,
@@ -127,12 +76,16 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
     const inputRef = useRef<HTMLInputElement | null>(null);
     const { isRtl } = useTextDirection({ dir: resolveDirFromLocale(locale) });
 
-    const { value: selectedValue, setValue } = useControllableValue({
+    const { value: selectedValue, setValue } = useControllableState<DateValue | null>({
       value,
       defaultValue,
       onChange,
     });
-    const { isOpen, setOpen } = useControllableOpen({ open, defaultOpen, onOpenChange });
+    const { value: isOpen, setValue: setOpen } = useControllableBoolean({
+      value: open,
+      defaultValue: defaultOpen,
+      onChange: onOpenChange,
+    });
 
     const adapter = useMemo(() => getCalendarAdapter(calendar, locale), [calendar, locale]);
     const resolvedFormat = format ?? DEFAULT_DATE_FORMAT[calendar];
@@ -174,32 +127,7 @@ export const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(
       setOpen(true);
     }, [disabled, readOnly, setOpen]);
 
-    useEffect(() => {
-      if (!isOpen) return;
-
-      const handlePointerDown = (event: MouseEvent | TouchEvent) => {
-        const target = event.target;
-        if (!(target instanceof Node) || !rootRef.current?.contains(target)) {
-          closePanel();
-        }
-      };
-
-      const handleKeyDown = (event: globalThis.KeyboardEvent) => {
-        if (event.key === 'Escape') {
-          closePanel();
-        }
-      };
-
-      document.addEventListener('mousedown', handlePointerDown);
-      document.addEventListener('touchstart', handlePointerDown);
-      document.addEventListener('keydown', handleKeyDown);
-
-      return () => {
-        document.removeEventListener('mousedown', handlePointerDown);
-        document.removeEventListener('touchstart', handlePointerDown);
-        document.removeEventListener('keydown', handleKeyDown);
-      };
-    }, [closePanel, isOpen]);
+    usePickerPopover({ isOpen, closePanel, rootRef });
 
     const handleSelect = (isoDate: DateValue) => {
       setValue(isoDate);

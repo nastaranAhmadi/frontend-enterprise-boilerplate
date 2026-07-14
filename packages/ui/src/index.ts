@@ -19,6 +19,8 @@ export type UiInfrastructureProps = {
   children?: ReactNode;
 };
 
+export type { AlertProps, AlertVariant } from './components/base/Alert';
+export { Alert } from './components/base/Alert';
 export type {
   BadgeAnchorHorizontal,
   BadgeAnchorOrigin,
