@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { siteKeywords } from '@/config/seo';
 import { isLocale, type Locale } from '@/config/site';
 import { LandingPage } from '@/features/landing/landing-page';
-import { getDictionary } from '@/i18n/get-dictionary';
+import { createT } from '@/i18n/t';
 import { createPageMetadata } from '@/lib/seo/metadata';
 
 type HomePageProps = {
@@ -17,13 +17,13 @@ export const generateMetadata = async ({ params }: HomePageProps): Promise<Metad
     return {};
   }
 
-  const dictionary = getDictionary(localeParam);
+  const t = createT(localeParam);
 
   return createPageMetadata({
     locale: localeParam,
     pathname: `/${localeParam}`,
-    title: dictionary.metadata.homeTitle,
-    description: dictionary.metadata.homeDescription,
+    title: t('metadata.homeTitle'),
+    description: t('metadata.homeDescription'),
     keywords: siteKeywords,
   });
 };

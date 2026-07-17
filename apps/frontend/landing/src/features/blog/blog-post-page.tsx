@@ -4,7 +4,7 @@ import { getBlogPost } from '@/application/blog/get-blog-post';
 import { ContentPage } from '@/components/layout/content-page';
 import { ArticleJsonLd } from '@/components/seo/article-json-ld';
 import type { Locale } from '@/config/site';
-import { getDictionary } from '@/i18n/get-dictionary';
+import { createT } from '@/i18n/t';
 import { formatPublishedDate } from '@/lib/i18n/format-date';
 import { buildAbsoluteUrl, buildLocalizedBlogPostPath } from '@/lib/seo/alternates';
 import { createBreadcrumbs } from '@/lib/seo/breadcrumbs';
@@ -15,7 +15,7 @@ type BlogPostPageProps = {
 };
 
 export const BlogPostPage = async ({ locale, slug }: BlogPostPageProps) => {
-  const dictionary = getDictionary(locale);
+  const t = createT(locale);
   const post = await getBlogPost(locale, slug);
 
   if (!post) {
@@ -24,8 +24,8 @@ export const BlogPostPage = async ({ locale, slug }: BlogPostPageProps) => {
 
   const pathname = buildLocalizedBlogPostPath(locale, post.slug);
   const breadcrumbs = createBreadcrumbs(locale, [
-    { label: dictionary.navigation.home, route: 'home' },
-    { label: dictionary.blog.title, route: 'blog' },
+    { label: t('navigation.home'), route: 'home' },
+    { label: t('blog.title'), route: 'blog' },
     { label: post.title, path: pathname },
   ]);
 

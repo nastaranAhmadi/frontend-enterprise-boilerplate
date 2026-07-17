@@ -137,9 +137,10 @@ export { DatePickerField } from './components/composite/DatePickerField';
 export type {
   DropdownAlign,
   DropdownItemProps,
+  DropdownLinkProps,
   DropdownProps,
 } from './components/composite/Dropdown';
-export { Dropdown, DropdownItem } from './components/composite/Dropdown';
+export { Dropdown, DropdownItem, DropdownLink } from './components/composite/Dropdown';
 export type { FileInputFieldProps } from './components/composite/FileInputField';
 export { FileInputField } from './components/composite/FileInputField';
 export type { FormFieldProps } from './components/composite/FormField';

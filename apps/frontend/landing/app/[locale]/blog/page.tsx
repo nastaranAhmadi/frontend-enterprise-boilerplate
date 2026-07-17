@@ -5,7 +5,7 @@ import { buildLocalizedPath } from '@/config/routes';
 import { siteKeywords } from '@/config/seo';
 import { isLocale, type Locale } from '@/config/site';
 import { BlogListPage } from '@/features/blog/blog-list-page';
-import { getDictionary } from '@/i18n/get-dictionary';
+import { createT } from '@/i18n/t';
 import { createPageMetadata } from '@/lib/seo/metadata';
 
 type BlogRouteProps = {
@@ -19,13 +19,13 @@ export const generateMetadata = async ({ params }: BlogRouteProps): Promise<Meta
     return {};
   }
 
-  const dictionary = getDictionary(localeParam);
+  const t = createT(localeParam);
 
   return createPageMetadata({
     locale: localeParam,
     pathname: buildLocalizedPath(localeParam, 'blog'),
-    title: dictionary.metadata.blogTitle,
-    description: dictionary.metadata.blogDescription,
+    title: t('metadata.blogTitle'),
+    description: t('metadata.blogDescription'),
     keywords: siteKeywords,
   });
 };

@@ -1,4 +1,6 @@
-import { createContext, type ReactNode,useCallback, useContext, useMemo, useState } from 'react';
+'use client';
+
+import { createContext, type ReactNode, useCallback, useContext, useMemo, useState } from 'react';
 
 export type Locale = string;
 

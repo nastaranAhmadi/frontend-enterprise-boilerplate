@@ -1,68 +1,68 @@
 /**
- * Landing — "Publisher"
- * Marketing trust: blue primary + cyan secondary, airy near-white canvas.
+ * Landing — "SHINSEI"
+ * Warm canvas, sage primary, muted botanical secondary.
  */
 :root[data-app='landing'],
 [data-theme='light'][data-app='landing'] {
-  --color-background: #fafbfc;
-  --color-surface: #ffffff;
+  --color-background: #f7f6f2;
+  --color-surface: #fdfcf9;
   --color-surface-elevated: #ffffff;
-  --color-foreground: #0b1220;
-  --color-muted: #e6eaf0;
-  --color-muted-foreground: #5b6575;
-  --color-border: #e6eaf0;
-  --color-border-subtle: #f1f4f8;
-  --color-primary: #1d4ed8;
-  --color-primary-foreground: #ffffff;
-  --color-primary-muted: #dbeafe;
-  --color-secondary: #0e7490;
-  --color-secondary-foreground: #ffffff;
-  --color-accent: #eff6ff;
-  --color-accent-foreground: #1e3a8a;
-  --color-success: #15803d;
+  --color-foreground: #1c2420;
+  --color-muted: #e8e6df;
+  --color-muted-foreground: #5c665f;
+  --color-border: #ddd9cf;
+  --color-border-subtle: #ece9e1;
+  --color-primary: #3d5248;
+  --color-primary-foreground: #f7f6f2;
+  --color-primary-muted: #d9e4dc;
+  --color-secondary: #7a8f78;
+  --color-secondary-foreground: #f7f6f2;
+  --color-accent: #eef1ea;
+  --color-accent-foreground: #2f4038;
+  --color-success: #4a7c59;
   --color-success-foreground: #ffffff;
-  --color-success-muted: #dcfce7;
-  --color-warning: #b45309;
+  --color-success-muted: #dceee1;
+  --color-warning: #b07a2a;
   --color-warning-foreground: #ffffff;
-  --color-warning-muted: #fef3c7;
-  --color-error: #b91c1c;
+  --color-warning-muted: #f6e8cf;
+  --color-error: #a33f3f;
   --color-error-foreground: #ffffff;
-  --color-error-muted: #fee2e2;
-  --color-info: #0369a1;
+  --color-error-muted: #f6dede;
+  --color-info: #4a6d7c;
   --color-info-foreground: #ffffff;
-  --color-info-muted: #e0f2fe;
-  --color-ring: #1d4ed8;
-  --color-overlay: rgb(11 18 32 / 0.45);
+  --color-info-muted: #dce8ee;
+  --color-ring: #3d5248;
+  --color-overlay: rgb(28 36 32 / 0.48);
 }
 
 [data-theme='dark'][data-app='landing'] {
-  --color-background: #0a0e14;
-  --color-surface: #12171f;
-  --color-surface-elevated: #1a222d;
-  --color-foreground: #f1f5f9;
-  --color-muted: #1e293b;
-  --color-muted-foreground: #9aa4b5;
-  --color-border: #252d3a;
-  --color-border-subtle: #1a222d;
-  --color-primary: #60a5fa;
-  --color-primary-foreground: #0b1220;
-  --color-primary-muted: #1e3a8a;
-  --color-secondary: #22d3ee;
-  --color-secondary-foreground: #083344;
-  --color-accent: #172554;
-  --color-accent-foreground: #dbeafe;
-  --color-success: #4ade80;
-  --color-success-foreground: #052e16;
-  --color-success-muted: #14532d;
-  --color-warning: #fbbf24;
-  --color-warning-foreground: #422006;
-  --color-warning-muted: #78350f;
-  --color-error: #f87171;
-  --color-error-foreground: #450a0a;
-  --color-error-muted: #7f1d1d;
-  --color-info: #38bdf8;
-  --color-info-foreground: #082f49;
-  --color-info-muted: #075985;
-  --color-ring: #60a5fa;
-  --color-overlay: rgb(2 6 23 / 0.65);
+  --color-background: #121816;
+  --color-surface: #1a211e;
+  --color-surface-elevated: #222b27;
+  --color-foreground: #eef1ed;
+  --color-muted: #2a332f;
+  --color-muted-foreground: #a2aea6;
+  --color-border: #313b36;
+  --color-border-subtle: #252e2a;
+  --color-primary: #8faa98;
+  --color-primary-foreground: #121816;
+  --color-primary-muted: #2f4038;
+  --color-secondary: #a3b59f;
+  --color-secondary-foreground: #121816;
+  --color-accent: #2a332f;
+  --color-accent-foreground: #dce5df;
+  --color-success: #6fbf8b;
+  --color-success-foreground: #0f1a14;
+  --color-success-muted: #1f3d2c;
+  --color-warning: #d4a04a;
+  --color-warning-foreground: #1f1608;
+  --color-warning-muted: #4a3618;
+  --color-error: #e07a7a;
+  --color-error-foreground: #1f0b0b;
+  --color-error-muted: #4a1f1f;
+  --color-info: #7eb3c9;
+  --color-info-foreground: #08161c;
+  --color-info-muted: #1a3340;
+  --color-ring: #8faa98;
+  --color-overlay: rgb(8 12 10 / 0.68);
 }

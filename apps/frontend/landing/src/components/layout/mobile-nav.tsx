@@ -1,73 +1,118 @@
 'use client';
 
+import { BottomSheet } from '@enterprise/ui';
 import { Button } from '@enterprise/ui/button';
-import { useOverlayBehavior } from '@enterprise/ui/hooks';
 import Link from 'next/link';
-import { useCallback, useRef, useState } from 'react';
+import { useState } from 'react';
 
-import type { NavigationItem } from '@/config/navigation';
+import { ButtonLink } from '@/components/chrome/button-link';
+import { ThemeAppearanceSwitch } from '@/components/chrome/theme-toggle';
+import { buildLocalizedPath } from '@/config/routes';
+import type { Locale } from '@/config/site';
+import { createT } from '@/i18n/t';
 
 type MobileNavProps = {
-  items: NavigationItem[];
-  labels: Record<NavigationItem['key'], string>;
-  menuLabel: string;
-  closeLabel: string;
+  locale: Locale;
 };
 
-export const MobileNav = ({ items, labels, menuLabel, closeLabel }: MobileNavProps) => {
-  const [open, setOpen] = useState(false);
-  const panelRef = useRef<HTMLElement>(null);
-  const close = useCallback(() => {
-    setOpen(false);
-  }, []);
+const BurgerIcon = () => (
+  <svg
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+    className="h-5 w-5 fill-none stroke-current stroke-[1.75]"
+  >
+    <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
+  </svg>
+);
 
-  useOverlayBehavior({ open, onClose: close, panelRef, lockBodyScroll: true });
+/**
+ * Phase 1: flat destination links only.
+ * Desktop mega-menu labels (header.menu / header.blog panels) are intentionally unused here.
+ */
+export const MobileNav = ({ locale }: MobileNavProps) => {
+  const t = createT(locale);
+  const [open, setOpen] = useState(false);
+
+  const close = () => {
+    setOpen(false);
+  };
+
+  const links = [
+    { href: buildLocalizedPath(locale, 'menu'), label: t('header.links.menu') },
+    { href: buildLocalizedPath(locale, 'blog'), label: t('header.links.blog') },
+    { href: buildLocalizedPath(locale, 'contact'), label: t('header.links.contact') },
+    { href: buildLocalizedPath(locale, 'faq'), label: t('header.links.faq') },
+    { href: buildLocalizedPath(locale, 'gallery'), label: t('header.links.gallery') },
+    { href: buildLocalizedPath(locale, 'about'), label: t('header.links.about') },
+  ];
 
   return (
-    <div className="md:hidden">
+    <div className="xl:hidden">
       <Button
         type="button"
         variant="ghost"
         size="small"
         aria-expanded={open}
-        aria-controls="mobile-navigation"
-        aria-haspopup="true"
+        aria-controls="mobile-navigation-sheet"
+        aria-haspopup="dialog"
+        aria-label={t('common.mobileMenu')}
         onClick={() => {
-          setOpen((current) => !current);
+          setOpen(true);
         }}
       >
-        {open ? closeLabel : menuLabel}
+        <BurgerIcon />
       </Button>
-      {open ? (
-        <>
-          <button
-            type="button"
-            aria-label={closeLabel}
-            className="fixed inset-0 z-dropdown bg-overlay"
-            onClick={close}
-          />
-          <nav
-            ref={panelRef}
-            id="mobile-navigation"
-            aria-label="Main"
-            className="absolute inset-x-0 top-full z-dropdown border-b border-border bg-surface-elevated px-md py-md shadow-md"
-          >
-            <ul className="flex flex-col gap-sm">
-              {items.map((item) => (
-                <li key={item.key}>
-                  <Link
-                    href={item.href}
-                    className="block py-xs text-sm text-foreground"
-                    onClick={close}
-                  >
-                    {labels[item.key]}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </>
-      ) : null}
+
+      <BottomSheet
+        open={open}
+        onClose={close}
+        title={t('common.mobileMenu')}
+        size="auto"
+        className="w-full max-w-none"
+        footer={
+          <div className="flex w-full flex-col gap-md">
+            <ThemeAppearanceSwitch
+              labels={{
+                light: t('theme.light'),
+                dark: t('theme.dark'),
+                switchToLight: t('theme.switchToLight'),
+                switchToDark: t('theme.switchToDark'),
+              }}
+            />
+            <div className="flex w-full flex-col gap-sm">
+              <ButtonLink
+                href={buildLocalizedPath(locale, 'contact')}
+                variant="filled"
+                className="w-full min-h-11 justify-center whitespace-nowrap px-lg py-md text-md font-medium"
+                onClick={close}
+              >
+                {t('header.reserve')}
+              </ButtonLink>
+              <ButtonLink
+                href={buildLocalizedPath(locale, 'contact')}
+                variant="outlined"
+                className="w-full min-h-11 justify-center whitespace-nowrap px-lg py-md text-md font-medium"
+                onClick={close}
+              >
+                {t('header.contact')}
+              </ButtonLink>
+            </div>
+          </div>
+        }
+      >
+        <nav id="mobile-navigation-sheet" aria-label="Main" className="flex flex-col gap-xs">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="rounded-md px-sm py-md text-lg font-medium text-foreground transition-colors hover:bg-muted"
+              onClick={close}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+      </BottomSheet>
     </div>
   );
 };

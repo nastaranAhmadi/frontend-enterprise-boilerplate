@@ -1,0 +1,371 @@
+{
+  "common": {
+    "siteName": "SHINSEI",
+    "skipToContent": "Zum Inhalt springen",
+    "loading": "Wird geladen",
+    "mobileMenu": "Menü"
+  },
+  "errors": {
+    "title": "Etwas ist schiefgelaufen",
+    "description": "Bitte versuche es erneut.",
+    "retry": "Erneut versuchen",
+    "notFoundTitle": "Seite nicht gefunden",
+    "notFoundDescription": "Die angeforderte Seite existiert nicht.",
+    "goHome": "Zur Startseite"
+  },
+  "routeTransition": {
+    "message": "Einen Moment, wir sind unterwegs"
+  },
+  "header": {
+    "openMenuPage": "Vollständige Speisekarte",
+    "links": {
+      "menu": "Speisekarte",
+      "blog": "Blog",
+      "contact": "Kontakt",
+      "faq": "FAQ",
+      "gallery": "Galerie",
+      "about": "Über uns"
+    },
+    "about": {
+      "philosophy": "Unsere Philosophie",
+      "chefs": "Die Köche"
+    },
+    "blog": {
+      "shareTaste": {
+        "title": "Teile deinen Geschmack",
+        "description": "Schlage eine Formel vor. Wenn Köche sie anrichten und Gäste bestellen, schaltest du künftige Rabatte frei."
+      },
+      "shareOrders": {
+        "title": "Teile deine Bestellungen",
+        "description": "Halte deinen Tisch fest. Freunde, die mit deinem Code nachbestellen, bringen euch beiden Vorteile."
+      },
+      "donation": {
+        "title": "2 kaufen, 1 teilen",
+        "description": "Ein sanfter Rabatt auf zwei Teller — der zweite speist still jemanden in Not."
+      },
+      "newOnMenu": {
+        "title": "Neu auf der Karte",
+        "description": "Saisonale Neuheiten und Notizen der Köche von dieser Woche."
+      },
+      "events": {
+        "title": "Events",
+        "description": "Counter-Abende, Verkostungen und Treffen, für die sich der Kalender lohnt."
+      },
+      "heritage": {
+        "title": "Kulinarisches Erbe",
+        "description": "Nationale Gerichte, ihre Geschichten und die Ernährung hinter jeder Tradition."
+      }
+    },
+    "menu": {
+      "drinks": {
+        "label": "Getränke",
+        "cold": "Kalt",
+        "hot": "Heiß",
+        "items": {
+          "yuzuSoda": "Yuzu-Soda",
+          "matchaLemonade": "Matcha-Limonade",
+          "hojicha": "Hojicha",
+          "sencha": "Sencha"
+        }
+      },
+      "snacks": {
+        "label": "Snacks",
+        "items": {
+          "edamame": "Gesalzene Edamame",
+          "riceCrackers": "Sesamcracker",
+          "misoNuts": "Miso-Mandeln"
+        }
+      },
+      "appetizer": {
+        "label": "Vorspeisen",
+        "items": {
+          "tunaTartare": "Thunfischtartar",
+          "cucumberSalad": "Gurkensalat",
+          "agedashi": "Agedashi-Tofu"
+        }
+      },
+      "mainMeal": {
+        "label": "Hauptgang",
+        "breakfast": "Frühstück",
+        "salad": "Salat",
+        "pasta": "Pasta",
+        "pizza": "Pizza",
+        "items": {
+          "tamagoBowl": "Tamago-Reisbowl",
+          "misoSalmon": "Miso-Lachs-Salat",
+          "uniPasta": "Uni-Butter-Pasta",
+          "trufflePizza": "Trüffel-Shimeji-Pizza"
+        }
+      },
+      "desserts": {
+        "label": "Desserts",
+        "frozen": "Gefroren",
+        "baked": "Gebacken",
+        "items": {
+          "matchaSoftServe": "Matcha Soft Serve",
+          "yuzuSorbet": "Yuzu-Sorbet",
+          "misoBrownie": "Miso-Brownie",
+          "blackSesameCake": "Schwarzsesamkuchen"
+        }
+      }
+    },
+    "contact": "Kontakt",
+    "reserve": "Platz reservieren"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Omakase · Saisonal · Intim",
+      "title": "Sushi in seiner reinsten Form",
+      "description": "Ein ruhiger Counter, an dem jedes Stück im Moment geformt wird — makelloser Fisch, warmer Reis und ein Rhythmus, der zum Langsamerwerden einlädt.",
+      "exploreMenu": "Speisekarte entdecken",
+      "reserve": "Platz reservieren"
+    },
+    "seasonal": {
+      "title": "Saisonale Auswahl",
+      "subtitle": "Ein kuratierter Einblick in das, was die Küche diese Woche ehrt.",
+      "items": {
+        "akami": {
+          "name": "Akami nigiri",
+          "description": "Magerer Blauflossenthun mit klarem, mineralischem Abgang.",
+          "price": "$14",
+          "ingredients": ["Bluefin tuna", "Shari rice", "Wasabi"]
+        },
+        "hamachi": {
+          "name": "Hamachi sashimi",
+          "description": "Buttriger Gelbschwanz mit zitrusgeküsster Soja.",
+          "price": "$16",
+          "ingredients": ["Yellowtail", "Yuzu", "Sea salt"]
+        },
+        "uni": {
+          "name": "Hokkaido uni",
+          "description": "Seidiger Seeigel über leicht geflämmtem Nori.",
+          "price": "$22",
+          "ingredients": ["Uni", "Nori", "Shari rice"]
+        },
+        "otoro": {
+          "name": "Ōtoro nigiri",
+          "description": "Reichhaltiger Thunbauch, der am Counter schmilzt.",
+          "price": "$24",
+          "ingredients": ["Ōtoro", "Shari rice", "Wasabi"]
+        },
+        "ebi": {
+          "name": "Ama ebi",
+          "description": "Süße Garnele, leicht vom Feuer geküsst.",
+          "price": "$12",
+          "ingredients": ["Sweet shrimp", "Citrus zest", "Shari rice"]
+        },
+        "hotate": {
+          "name": "Hotate nigiri",
+          "description": "Hokkaido-Jakobsmuschel mit einem Hauch Sudachi.",
+          "price": "$15",
+          "ingredients": ["Scallop", "Sudachi", "Shari rice"]
+        }
+      }
+    },
+    "philosophy": {
+      "title": "Präzision ist unsere Sprache",
+      "body": "Wir beziehen in kleinen Chargen, schärfen die Messer vor dem Service und richten mit Zurückhaltung an. Jede Geste am Counter soll den Fisch — nicht den Effekt — in den Mittelpunkt stellen.",
+      "quote": "„Stille, Stahl und der Duft des Meeres.“"
+    },
+    "experiences": {
+      "title": "Gästeerlebnisse",
+      "subtitle": "Stimmen vom Counter",
+      "items": {
+        "elena": {
+          "quote": "Das Tempo fühlte sich wie eine Meditation an. Jeder Gang kam genau dann, wenn wir bereit waren.",
+          "name": "Elena Morales",
+          "role": "Food-Autorin",
+          "rating": 5
+        },
+        "marcus": {
+          "quote": "Makelloser Fisch, null Pose. Das Omakase erzählte eine Geschichte von Anfang bis Ende.",
+          "name": "Marcus Chen",
+          "role": "Stammgast",
+          "rating": 5
+        },
+        "yuki": {
+          "quote": "Eine seltene Balance aus Wärme und Disziplin. Wir gingen umsorgt, nicht bespielt, nach Hause.",
+          "name": "Yuki Tanaka",
+          "role": "Chef-Gönnerin",
+          "rating": 5
+        }
+      }
+    },
+    "visit": {
+      "title": "Besucht uns",
+      "addressLabel": "Adresse",
+      "address": "128 Cedar Lane, San Francisco, CA",
+      "hoursLabel": "Öffnungszeiten",
+      "hours": "Di–Sa · 17:30 – 22:30",
+      "phoneLabel": "Reservierungen",
+      "phone": "+1 (415) 555-0192",
+      "emailLabel": "E-Mail",
+      "email": "hello@shinsei.example"
+    },
+    "gallery": {
+      "title": "Momente bei SHINSEI",
+      "subtitle": "Ein Blick auf die Theke, den Teller und die Stille dazwischen.",
+      "loadMore": "Zur vollständigen Galerie"
+    }
+  },
+  "navigation": {
+    "home": "Start",
+    "about": "Über uns",
+    "blog": "Blog",
+    "products": "Produkte",
+    "faq": "FAQ",
+    "contact": "Kontakt"
+  },
+  "locale": {
+    "en": "English",
+    "fa": "فارسی",
+    "de": "Deutsch",
+    "ar": "العربية"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "switchToLight": "Zum hellen Modus wechseln",
+    "switchToDark": "Zum dunklen Modus wechseln"
+  },
+  "footer": {
+    "copyright": "© {year} SHINSEI. Alle Rechte vorbehalten.",
+    "terms": "AGB",
+    "contact": "Kontakt"
+  },
+  "about": {
+    "title": "Über SHINSEI",
+    "description": "Ein intimer Omakase-Counter für saisonalen Fisch, warmen Reis und Gastfreundschaft, die das Essen nie hetzt.",
+    "sections": {
+      "mission": {
+        "title": "Unsere Philosophie",
+        "body": "SHINSEI serviert Sushi in seiner reinsten Form — Stück für Stück, für den Gast vor uns. Die Saison führt die Karte; ruhige Aufmerksamkeit formt den Raum."
+      },
+      "approach": {
+        "title": "Wie wir kochen",
+        "body": "Wir arbeiten nah am Fang, halten den Reis warm und lassen präzise Messerkunst lauter sprechen als Überfluss. Jede Sitzung ist ein kurzes Gespräch zwischen Koch, Fisch und Gast."
+      },
+      "values": {
+        "title": "Was wir hüten",
+        "body": "Frische, Zurückhaltung und ein Counter-Erlebnis, das persönlich bleibt — nie theatralisch, nie gehetzt."
+      }
+    }
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "description": "Bitte lies diese Bedingungen sorgfältig, bevor du die Enterprise-Landing nutzt.",
+    "sections": {
+      "acceptance": {
+        "title": "Annahme",
+        "body": "Durch den Zugriff auf diese Seite stimmst du diesen Bedingungen zu. Wenn du nicht einverstanden bist, nutze den Dienst nicht."
+      },
+      "use": {
+        "title": "Erlaubte Nutzung",
+        "body": "Du darfst diese Seite für rechtmäßige Zwecke im Zusammenhang mit der Bewertung oder Übernahme von Enterprise-Produkten nutzen. Du darfst den Dienst nicht stören, reverse-engineeren oder missbrauchen."
+      },
+      "liability": {
+        "title": "Haftungsbeschränkung",
+        "body": "Die Seite wird ohne Gewähr bereitgestellt. Enterprise haftet nicht für indirekte oder Folgeschäden aus der Nutzung."
+      },
+      "changes": {
+        "title": "Änderungen",
+        "body": "Wir können diese Bedingungen von Zeit zu Zeit aktualisieren. Die weitere Nutzung nach Änderungen gilt als Annahme der überarbeiteten Bedingungen."
+      }
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "description": "Architektur-Notizen und Produkt-Updates vom Enterprise-Team.",
+    "empty": "Noch keine Beiträge veröffentlicht.",
+    "readMore": "Weiterlesen"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "description": "Antworten auf häufige Fragen zum Enterprise-Landing-Stack und zur Architektur.",
+    "items": {
+      "stack": {
+        "question": "Welche Technologien treiben diese Landing-App an?",
+        "answer": "Next.js 15 App Router, React Server Components, Tailwind CSS und gemeinsame Monorepo-Pakete für UI, i18n und Theming."
+      },
+      "i18n": {
+        "question": "Wie wird Internationalisierung gehandhabt?",
+        "answer": "Locale-präfixierte Routen mit Server-Dictionaries für RSC und @enterprise/i18n für Client-Komponenten. RTL übernimmt das Design System."
+      },
+      "data": {
+        "question": "Wie funktioniert das Datenabrufen?",
+        "answer": "Server-Anwendungsfunktionen rufen Repositories mit injizierbaren Datasources auf. Mocks liegen in _mocks/; der API-Client erledigt nur HTTP."
+      },
+      "performance": {
+        "question": "Welche Performance-Praktiken gelten?",
+        "answer": "Statische Generierung für Marketingseiten, minimaler Client-JavaScript, explizite Performance-Budgets und server-first Rendering als Standard."
+      }
+    }
+  },
+  "contact": {
+    "title": "Kontaktiere uns",
+    "description": "Erzähl uns von deinem Projekt — wir melden uns.",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Dein Name",
+      "email": "E-Mail",
+      "emailPlaceholder": "you@company.com",
+      "message": "Nachricht",
+      "messagePlaceholder": "Wie können wir helfen?",
+      "submit": "Nachricht senden",
+      "submitting": "Wird gesendet…",
+      "validation": {
+        "nameRequired": "Name ist erforderlich.",
+        "emailRequired": "E-Mail ist erforderlich.",
+        "emailInvalid": "Gib eine gültige E-Mail-Adresse ein.",
+        "messageRequired": "Nachricht ist erforderlich."
+      },
+      "success": "Danke! Wir haben deine Nachricht erhalten und melden uns bald.",
+      "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+    }
+  },
+  "products": {
+    "title": "Produkte",
+    "description": "Entdecke die Bausteine der Enterprise-Landing-Foundation.",
+    "search": {
+      "searchLabel": "Produkte suchen",
+      "searchPlaceholder": "Nach Name, Kategorie oder Beschreibung suchen",
+      "loading": "Produkte werden gesucht…",
+      "empty": "Keine Produkte passen zur Suche.",
+      "error": "Produkte konnten nicht geladen werden. Bitte erneut versuchen.",
+      "resultCount": "{count} Produkt(e) gefunden"
+    }
+  },
+  "metadata": {
+    "siteTitle": "SHINSEI",
+    "siteDescription": "Omakase-Sushi in reinster Form — saisonaler Fisch, warmer Reis und ein intimes Counter-Erlebnis.",
+    "organizationDescription": "SHINSEI ist ein zeitgenössisches Omakase-Haus mit Fokus auf Präzision, Saisonalität und ruhige Gastfreundschaft.",
+    "homeTitle": "Sushi in seiner reinsten Form",
+    "homeDescription": "Saisonales Omakase, makelloser Fisch und ein ruhiges Counter-Erlebnis im Herzen der Stadt.",
+    "aboutTitle": "Über SHINSEI",
+    "aboutDescription": "Das Omakase-Haus hinter dem Counter — saisonaler Fisch, warmer Reis und ruhige Gastfreundschaft.",
+    "termsTitle": "Nutzungsbedingungen",
+    "termsDescription": "Bedingungen für die Nutzung der Enterprise-Landing-Seite.",
+    "faqTitle": "Häufig gestellte Fragen",
+    "faqDescription": "Häufige Fragen zur Enterprise-Landing-Anwendung und Architektur.",
+    "blogTitle": "Blog",
+    "blogDescription": "Architektur-Notizen und Produkt-Updates vom Enterprise-Team.",
+    "contactTitle": "Kontaktiere uns",
+    "contactDescription": "Nimm Kontakt mit dem Enterprise-Team für dein nächstes Projekt auf.",
+    "productsTitle": "Produkte",
+    "productsDescription": "Enterprise-Plattform-Bausteine suchen und erkunden.",
+    "galleryTitle": "Galerie",
+    "galleryDescription": "Momente vom SHINSEI-Counter, aus der Küche und dem Raum.",
+    "menuTitle": "Speisekarte",
+    "menuDescription": "Saisonale Teller, Getränke und Desserts vom SHINSEI-Counter."
+  },
+  "galleryPage": {
+    "title": "Galerie",
+    "description": "Momente von der Theke, aus der Küche und dem Raum.",
+    "comingSoon": "Die vollständige Galerie wird vorbereitet. Schau bald wieder vorbei."
+  },
+  "menuPage": {
+    "title": "Speisekarte",
+    "description": "Saisonale Gerichte, Getränke und Desserts vom SHINSEI-Counter.",
+    "comingSoon": "Die durchsuchbare Speisekarte wird vorbereitet."
+  }
+}

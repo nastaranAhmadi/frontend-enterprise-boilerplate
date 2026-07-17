@@ -40,4 +40,40 @@ export const blogPostsByLocale: Record<Locale, BlogPost[]> = {
       publishedAt: '2026-06-18',
     },
   ],
+  de: [
+    {
+      slug: 'launching-the-platform',
+      title: 'Launching the platform',
+      excerpt: 'Why we invested in a server-first landing architecture.',
+      content:
+        'We started with a clear goal: ship a landing experience that teams can extend without fighting the framework. Server Components keep the default path fast, while repositories isolate mock and API data sources behind one interface.\n\nFeature ownership keeps UI close to the product surface it serves. Shared chrome stays in app components; blog-specific cards stay inside the blog feature. That boundary makes reviews predictable and prevents a global components folder from becoming a junk drawer.\n\nThe result is a foundation you can grow into products, blog content, and contact flows without rewriting the shell every time.',
+      publishedAt: '2026-07-01',
+    },
+    {
+      slug: 'repository-pattern-in-practice',
+      title: 'Repository pattern in practice',
+      excerpt: 'How application functions, repositories, and datasources stay decoupled.',
+      content:
+        'Routes stay thin. Application functions orchestrate reads with React.cache(). Repositories express domain operations like getPosts and getPostBySlug. Datasources implement those operations against mocks or HTTP.\n\nMocks live in _mocks/ and never leak into the API client package. When the backend is ready, only the datasource implementation changes. Features and routes keep the same contracts.\n\nThat separation is what makes the landing app a reference implementation instead of a one-off marketing page.',
+      publishedAt: '2026-06-18',
+    },
+  ],
+  ar: [
+    {
+      slug: 'launching-the-platform',
+      title: 'Launching the platform',
+      excerpt: 'Why we invested in a server-first landing architecture.',
+      content:
+        'We started with a clear goal: ship a landing experience that teams can extend without fighting the framework. Server Components keep the default path fast, while repositories isolate mock and API data sources behind one interface.\n\nFeature ownership keeps UI close to the product surface it serves. Shared chrome stays in app components; blog-specific cards stay inside the blog feature. That boundary makes reviews predictable and prevents a global components folder from becoming a junk drawer.\n\nThe result is a foundation you can grow into products, blog content, and contact flows without rewriting the shell every time.',
+      publishedAt: '2026-07-01',
+    },
+    {
+      slug: 'repository-pattern-in-practice',
+      title: 'Repository pattern in practice',
+      excerpt: 'How application functions, repositories, and datasources stay decoupled.',
+      content:
+        'Routes stay thin. Application functions orchestrate reads with React.cache(). Repositories express domain operations like getPosts and getPostBySlug. Datasources implement those operations against mocks or HTTP.\n\nMocks live in _mocks/ and never leak into the API client package. When the backend is ready, only the datasource implementation changes. Features and routes keep the same contracts.\n\nThat separation is what makes the landing app a reference implementation instead of a one-off marketing page.',
+      publishedAt: '2026-06-18',
+    },
+  ],
 };

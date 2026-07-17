@@ -12,6 +12,15 @@ type WebpackConfiguration = {
 };
 
 const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        pathname: '/**',
+      },
+    ],
+  },
   transpilePackages: [
     '@enterprise/api-client',
     '@enterprise/hooks',

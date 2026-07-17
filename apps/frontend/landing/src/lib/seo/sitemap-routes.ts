@@ -14,6 +14,8 @@ export const sitemapStaticRoutes: readonly SitemapRouteKey[] = [
   'faq',
   'terms',
   'products',
+  'gallery',
+  'menu',
 ];
 
 type SitemapEntry = {
@@ -31,6 +33,8 @@ const routePriority: Record<SitemapRouteKey, number> = {
   contact: 0.7,
   faq: 0.7,
   terms: 0.5,
+  gallery: 0.6,
+  menu: 0.85,
 };
 
 const routeChangeFrequency = (route: SitemapRouteKey): 'weekly' | 'monthly' =>

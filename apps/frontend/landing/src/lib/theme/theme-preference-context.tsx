@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, type ReactNode, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, type ReactNode, useContext, useEffect, useState } from 'react';
 
 import type { ThemePreference } from '@/config/theme';
 import {
@@ -8,8 +8,9 @@ import {
   persistThemePreference,
 } from '@/lib/theme/persist-theme-preference';
 
-type ThemePreferenceContextValue = {
+export type ThemePreferenceContextValue = {
   theme: ThemePreference;
+  setThemePreference: (theme: ThemePreference) => void;
   toggleTheme: () => void;
 };
 
@@ -24,21 +25,25 @@ export const ThemePreferenceProvider = ({
   children,
   initialTheme,
 }: ThemePreferenceProviderProps) => {
-  const [theme, setTheme] = useState<ThemePreference>(initialTheme);
+  const [theme, setThemeState] = useState<ThemePreference>(initialTheme);
 
   useEffect(() => {
     persistThemePreference(theme);
   }, [theme]);
 
-  const value = useMemo(
-    () => ({
-      theme,
-      toggleTheme: () => {
-        setTheme((current) => getNextThemePreference(current));
-      },
-    }),
-    [theme],
-  );
+  const setThemePreference = (next: ThemePreference): void => {
+    setThemeState(next);
+  };
+
+  const toggleTheme = (): void => {
+    setThemeState((current) => getNextThemePreference(current));
+  };
+
+  const value: ThemePreferenceContextValue = {
+    theme,
+    setThemePreference,
+    toggleTheme,
+  };
 
   return (
     <ThemePreferenceContext.Provider value={value}>{children}</ThemePreferenceContext.Provider>

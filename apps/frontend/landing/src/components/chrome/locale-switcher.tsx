@@ -1,36 +1,60 @@
 'use client';
 
-import Link from 'next/link';
+import { Dropdown, DropdownLink } from '@enterprise/ui';
+import { Button } from '@enterprise/ui/button';
 import { usePathname } from 'next/navigation';
 
 import type { Locale } from '@/config/site';
-import { getAlternateLocales, swapLocaleInPath } from '@/lib/i18n/swap-locale-path';
+import { locales } from '@/config/site';
+import { swapLocaleInPath } from '@/lib/i18n/swap-locale-path';
 
 type LocaleSwitcherProps = {
   currentLocale: Locale;
   labels: Record<Locale, string>;
 };
 
+const localeFlags: Record<Locale, string> = {
+  en: '🇬🇧',
+  fa: '🇮🇷',
+  de: '🇩🇪',
+  ar: '🇸🇦',
+};
+
 export const LocaleSwitcher = ({ currentLocale, labels }: LocaleSwitcherProps) => {
   const pathname = usePathname();
-  const alternateLocales = getAlternateLocales(currentLocale);
 
   return (
-    <nav aria-label="Language">
-      <ul className="flex items-center gap-xs">
-        {alternateLocales.map((locale) => (
-          <li key={locale}>
-            <Link
-              href={swapLocaleInPath(pathname, locale)}
-              className="rounded-sm px-sm py-xs text-sm text-muted-foreground transition-colors hover:text-foreground"
-              hrefLang={locale}
-              lang={locale}
-            >
-              {labels[locale]}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <Dropdown
+      align="end"
+      trigger={
+        <Button
+          type="button"
+          variant="ghost"
+          size="small"
+          aria-label="Language"
+          className="gap-xs px-sm"
+        >
+          <span aria-hidden="true" className="text-md leading-none">
+            {localeFlags[currentLocale]}
+          </span>
+          <span className="hidden text-sm uppercase tracking-wide sm:inline">{currentLocale}</span>
+        </Button>
+      }
+    >
+      {locales.map((locale) => (
+        <DropdownLink
+          key={locale}
+          href={swapLocaleInPath(pathname, locale)}
+          hrefLang={locale}
+          lang={locale}
+          className={locale === currentLocale ? 'bg-muted font-medium' : undefined}
+        >
+          <span className="me-sm" aria-hidden="true">
+            {localeFlags[locale]}
+          </span>
+          {labels[locale]}
+        </DropdownLink>
+      ))}
+    </Dropdown>
   );
 };

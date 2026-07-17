@@ -153,4 +153,19 @@ describe('Dropdown', () => {
     await user.keyboard('{ArrowUp}');
     expect(profile).toHaveFocus();
   });
+
+  it('opens on hover when openOnHover is enabled', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <Dropdown openOnHover trigger={<Button>Hover menu</Button>}>
+        <DropdownItem>Profile</DropdownItem>
+      </Dropdown>,
+    );
+
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+
+    await user.hover(screen.getByRole('button', { name: 'Hover menu' }));
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+  });
 });

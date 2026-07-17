@@ -11,7 +11,7 @@ const normalizeSize = (size: DropdownProps['size']): Size => {
 };
 
 const normalizeAlign = (align: DropdownProps['align']): DropdownAlign => {
-  if (align === 'end') return 'end';
+  if (align === 'end' || align === 'center') return align;
   return 'start';
 };
 
@@ -27,13 +27,19 @@ const ITEM_SIZE_CLASS_MAP: Record<Size, string> = {
   large: 'px-lg py-md text-lg',
 };
 
-export const DROPDOWN_ROOT_CLASS = 'relative inline-flex';
-export const DROPDOWN_MENU_BASE_CLASS =
-  'absolute z-dropdown mt-xs overflow-hidden rounded-md border border-border bg-surface-elevated shadow-md focus:outline-none';
+export const DROPDOWN_ROOT_RELATIVE_CLASS = 'relative inline-flex';
+export const DROPDOWN_ROOT_STATIC_CLASS = 'static inline-flex';
+
+/** Outer shell: positioning + hover bridge (invisible padding keeps pointer connected). */
+export const DROPDOWN_MENU_SHELL_CLASS = 'absolute top-full z-dropdown pt-sm focus:outline-none';
+
+export const DROPDOWN_MENU_PANEL_CLASS =
+  'flex max-h-[min(80vh,40rem)] origin-top flex-col overflow-hidden rounded-lg border border-border bg-surface-elevated shadow-lg focus:outline-none animate-dropdown-in motion-reduce:animate-none';
 
 const ALIGN_CLASS_MAP: Record<DropdownAlign, string> = {
   start: 'start-0',
   end: 'end-0',
+  center: 'start-1/2 -translate-x-1/2',
 };
 
 export const DROPDOWN_ITEM_BASE_CLASS =
@@ -42,20 +48,26 @@ export const DROPDOWN_ITEM_BASE_CLASS =
 export const DROPDOWN_ITEM_DESTRUCTIVE_CLASS =
   'text-error hover:bg-error/10 focus-visible:bg-error/10';
 
-export const getDropdownRootClassName = ({ className }: { className?: string } = {}): string =>
-  joinClassNames(DROPDOWN_ROOT_CLASS, className);
+export const getDropdownRootClassName = ({
+  className,
+  position = 'relative',
+}: {
+  className?: string;
+  position?: DropdownProps['position'];
+} = {}): string =>
+  joinClassNames(
+    position === 'static' ? DROPDOWN_ROOT_STATIC_CLASS : DROPDOWN_ROOT_RELATIVE_CLASS,
+    className,
+  );
+
+export const getDropdownMenuShellClassName = ({ align }: Pick<DropdownProps, 'align'>): string =>
+  joinClassNames(DROPDOWN_MENU_SHELL_CLASS, ALIGN_CLASS_MAP[normalizeAlign(align)]);
 
 export const getDropdownMenuClassName = ({
   size,
-  align,
   className,
-}: Pick<DropdownProps, 'size' | 'align'> & { className?: string }): string =>
-  joinClassNames(
-    DROPDOWN_MENU_BASE_CLASS,
-    MENU_SIZE_CLASS_MAP[normalizeSize(size)],
-    ALIGN_CLASS_MAP[normalizeAlign(align)],
-    className,
-  );
+}: Pick<DropdownProps, 'size'> & { className?: string }): string =>
+  joinClassNames(DROPDOWN_MENU_PANEL_CLASS, MENU_SIZE_CLASS_MAP[normalizeSize(size)], className);
 
 export const getDropdownItemClassName = ({
   size,

@@ -16,9 +16,10 @@ import {
 import {
   getDropdownItemClassName,
   getDropdownMenuClassName,
+  getDropdownMenuShellClassName,
   getDropdownRootClassName,
 } from './Dropdown.styles';
-import type { DropdownItemProps, DropdownProps } from './Dropdown.types';
+import type { DropdownItemProps, DropdownLinkProps, DropdownProps } from './Dropdown.types';
 
 interface DropdownContextValue {
   size?: DropdownProps['size'];
@@ -76,6 +77,9 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(function Dropd
     menuClassName,
     size,
     align,
+    position = 'relative',
+    openOnHover = false,
+    hoverCloseDelay: hoverCloseDelayProp = 160,
     disabled,
     open,
     defaultOpen,
@@ -83,20 +87,57 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(function Dropd
     ...dropdownProps
   } = props;
 
+  const hoverCloseDelay: number = hoverCloseDelayProp;
   const menuId = useId();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const closeTimerRef = useRef<ReturnType<typeof window.setTimeout> | null>(null);
+  const openedByHoverRef = useRef(false);
   const { isOpen, setOpen } = useControllableOpen({ open, defaultOpen, onOpenChange });
 
+  const clearCloseTimer = useCallback(() => {
+    if (closeTimerRef.current !== null) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  }, []);
+
   const closeMenu = useCallback(() => {
+    clearCloseTimer();
+    openedByHoverRef.current = false;
     setOpen(false);
-  }, [setOpen]);
+  }, [clearCloseTimer, setOpen]);
+
+  const openMenu = useCallback(
+    (fromHover: boolean) => {
+      clearCloseTimer();
+      openedByHoverRef.current = fromHover;
+      setOpen(true);
+    },
+    [clearCloseTimer, setOpen],
+  );
+
+  const scheduleClose = useCallback(() => {
+    clearCloseTimer();
+    closeTimerRef.current = window.setTimeout(() => {
+      openedByHoverRef.current = false;
+      setOpen(false);
+      closeTimerRef.current = null;
+    }, hoverCloseDelay);
+  }, [clearCloseTimer, hoverCloseDelay, setOpen]);
+
+  useEffect(
+    () => () => {
+      clearCloseTimer();
+    },
+    [clearCloseTimer],
+  );
 
   useEffect(() => {
     if (!isOpen) return;
 
     const menu = menuRef.current;
-    if (menu) {
+    if (menu && !openedByHoverRef.current) {
       focusMenuItemAt(menu, 0);
     }
 
@@ -120,6 +161,9 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(function Dropd
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [closeMenu, isOpen]);
+
+  // When position is static, menu is outside root in the tree for hit-testing —
+  // still listen on document. Also attach hover leave to menu via shell handlers below.
 
   const handleMenuKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
     const menu = menuRef.current;
@@ -172,26 +216,60 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(function Dropd
             event,
           );
           if (!disabled) {
-            setOpen(!isOpen);
+            if (isOpen) {
+              closeMenu();
+            } else {
+              openMenu(false);
+            }
           }
         },
       } as Record<string, unknown>)
     : trigger;
 
+  const hoverHandlers = openOnHover
+    ? {
+        onMouseEnter: () => {
+          if (!disabled) {
+            openMenu(true);
+          }
+        },
+        onMouseLeave: () => {
+          if (!disabled) {
+            scheduleClose();
+          }
+        },
+      }
+    : {};
+
   return (
-    <div {...dropdownProps} ref={setRefs} className={getDropdownRootClassName({ className })}>
+    <div
+      {...dropdownProps}
+      {...hoverHandlers}
+      ref={setRefs}
+      className={getDropdownRootClassName({ className, position })}
+    >
       {triggerElement}
       {isOpen ? (
         <DropdownContext.Provider value={{ size, closeMenu }}>
           <div
-            id={menuId}
-            ref={menuRef}
-            role="menu"
-            tabIndex={-1}
-            onKeyDown={handleMenuKeyDown}
-            className={getDropdownMenuClassName({ size, align, className: menuClassName })}
+            className={getDropdownMenuShellClassName({ align })}
+            {...(openOnHover
+              ? {
+                  onMouseEnter: clearCloseTimer,
+                  onMouseLeave: scheduleClose,
+                }
+              : {})}
           >
-            {children}
+            <div
+              id={menuId}
+              ref={menuRef}
+              role="menu"
+              tabIndex={-1}
+              onKeyDown={handleMenuKeyDown}
+              className={getDropdownMenuClassName({ size, className: menuClassName })}
+            >
+              {children}
+            </div>
           </div>
         </DropdownContext.Provider>
       ) : null}
@@ -228,3 +306,30 @@ export const DropdownItem = forwardRef<HTMLButtonElement, DropdownItemProps>(
 );
 
 DropdownItem.displayName = 'DropdownItem';
+
+export const DropdownLink = forwardRef<HTMLAnchorElement, DropdownLinkProps>(
+  function DropdownLink(props, ref) {
+    const { children, className, href, onClick, rel, target, ...linkProps } = props;
+    const { size, closeMenu } = useDropdownContext();
+
+    return (
+      <a
+        {...linkProps}
+        ref={ref}
+        href={href}
+        rel={rel}
+        target={target}
+        role="menuitem"
+        className={getDropdownItemClassName({ size, className })}
+        onClick={(event) => {
+          onClick?.(event);
+          closeMenu();
+        }}
+      >
+        {children}
+      </a>
+    );
+  },
+);
+
+DropdownLink.displayName = 'DropdownLink';

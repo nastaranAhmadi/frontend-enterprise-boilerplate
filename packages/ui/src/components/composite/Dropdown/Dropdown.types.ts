@@ -1,8 +1,14 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ReactElement, ReactNode } from 'react';
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  HTMLAttributes,
+  ReactElement,
+  ReactNode,
+} from 'react';
 
 import type { Size } from '../../../types';
 
-export type DropdownAlign = 'start' | 'end';
+export type DropdownAlign = 'start' | 'end' | 'center';
 
 export interface DropdownOwnProps {
   trigger: ReactElement;
@@ -11,6 +17,12 @@ export interface DropdownOwnProps {
   menuClassName?: string;
   size?: Size;
   align?: DropdownAlign;
+  /** Root positioning. Use `static` so the menu anchors to a positioned ancestor (e.g. sticky header). */
+  position?: 'relative' | 'static';
+  /** Open on pointer hover; click / keyboard still work for accessibility. */
+  openOnHover?: boolean;
+  /** Delay before closing after pointer leaves (ms). Defaults to 160. */
+  hoverCloseDelay?: number;
   disabled?: boolean;
   open?: boolean;
   defaultOpen?: boolean;
@@ -29,3 +41,14 @@ export interface DropdownItemOwnProps {
 
 export type DropdownItemProps = DropdownItemOwnProps &
   Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof DropdownItemOwnProps>;
+
+export interface DropdownLinkOwnProps {
+  children?: ReactNode;
+  className?: string;
+  href: string;
+  rel?: string;
+  target?: string;
+}
+
+export type DropdownLinkProps = DropdownLinkOwnProps &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof DropdownLinkOwnProps>;

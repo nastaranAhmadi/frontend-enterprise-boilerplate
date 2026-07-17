@@ -8,6 +8,8 @@ export const localizedRoutes = {
   faq: 'faq',
   terms: 'terms',
   products: 'products',
+  gallery: 'gallery',
+  menu: 'menu',
 } as const;
 
 export type AppRouteKey = keyof typeof localizedRoutes;

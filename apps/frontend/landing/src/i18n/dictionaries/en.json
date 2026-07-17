@@ -1,10 +1,9 @@
 {
   "common": {
-    "siteName": "Enterprise",
+    "siteName": "SHINSEI",
     "skipToContent": "Skip to content",
     "loading": "Loading",
-    "mobileMenu": "Menu",
-    "mobileClose": "Close"
+    "mobileMenu": "Menu"
   },
   "errors": {
     "title": "Something went wrong",
@@ -14,33 +13,199 @@
     "notFoundDescription": "The page you requested does not exist.",
     "goHome": "Go home"
   },
-  "home": {
-    "title": "Build enterprise products faster",
-    "description": "A production-grade frontend foundation for scalable applications.",
-    "cta": "Get started",
-    "features": {
-      "title": "Built for production teams",
-      "subtitle": "Opinionated architecture, shared design system, and performance budgets from day one.",
-      "items": {
-        "architecture": {
-          "title": "Feature-based architecture",
-          "description": "Clear ownership boundaries between routes, features, repositories, and application logic."
-        },
-        "i18n": {
-          "title": "Internationalization",
-          "description": "Server dictionaries and client hooks with RTL-aware layout across locales."
-        },
-        "performance": {
-          "title": "Performance by default",
-          "description": "Server-first rendering, static generation, and minimal client JavaScript per route."
+  "routeTransition": {
+    "message": "Hang in there sailor"
+  },
+  "header": {
+    "openMenuPage": "View full menu",
+    "links": {
+      "menu": "Menu",
+      "blog": "Blog",
+      "contact": "Contact",
+      "faq": "FAQ",
+      "gallery": "Gallery",
+      "about": "About"
+    },
+    "about": {
+      "philosophy": "Our philosophy",
+      "chefs": "Meet the chefs"
+    },
+    "blog": {
+      "shareTaste": {
+        "title": "Share your taste",
+        "description": "Offer a formula. If chefs plate it and guests order it, you unlock future discounts."
+      },
+      "shareOrders": {
+        "title": "Share your orders",
+        "description": "Capture your table. Friends who reorder with your code earn rewards for both of you."
+      },
+      "donation": {
+        "title": "Buy 2, share 1",
+        "description": "A gentle discount on two plates — the second quietly feeds someone in need."
+      },
+      "newOnMenu": {
+        "title": "New on the menu",
+        "description": "Seasonal arrivals and chef notes from this week’s board."
+      },
+      "events": {
+        "title": "Events",
+        "description": "Counter nights, tastings, and gatherings worth clearing your calendar."
+      },
+      "heritage": {
+        "title": "Culinary heritage",
+        "description": "National dishes, their stories, and the nutrition behind each tradition."
+      }
+    },
+    "menu": {
+      "drinks": {
+        "label": "Drinks",
+        "cold": "Cold",
+        "hot": "Hot",
+        "items": {
+          "yuzuSoda": "Yuzu soda",
+          "matchaLemonade": "Matcha lemonade",
+          "hojicha": "Hojicha",
+          "sencha": "Sencha"
+        }
+      },
+      "snacks": {
+        "label": "Snacks",
+        "items": {
+          "edamame": "Salted edamame",
+          "riceCrackers": "Sesame crackers",
+          "misoNuts": "Miso almonds"
+        }
+      },
+      "appetizer": {
+        "label": "Appetizer",
+        "items": {
+          "tunaTartare": "Tuna tartare",
+          "cucumberSalad": "Cucumber salad",
+          "agedashi": "Agedashi tofu"
+        }
+      },
+      "mainMeal": {
+        "label": "Main meal",
+        "breakfast": "Breakfast",
+        "salad": "Salad",
+        "pasta": "Pasta",
+        "pizza": "Pizza",
+        "items": {
+          "tamagoBowl": "Tamago rice bowl",
+          "misoSalmon": "Miso salmon salad",
+          "uniPasta": "Uni butter pasta",
+          "trufflePizza": "Truffle shimeji pizza"
+        }
+      },
+      "desserts": {
+        "label": "Desserts",
+        "frozen": "Frozen",
+        "baked": "Baked",
+        "items": {
+          "matchaSoftServe": "Matcha soft serve",
+          "yuzuSorbet": "Yuzu sorbet",
+          "misoBrownie": "Miso brownie",
+          "blackSesameCake": "Black sesame cake"
         }
       }
     },
-    "ctaSection": {
-      "title": "Ready to ship your next landing?",
-      "description": "Start from a maintainable foundation instead of rebuilding the same shell on every project.",
-      "primary": "Contact us",
-      "secondary": "Learn more"
+    "contact": "Contact",
+    "reserve": "Reserve a seat"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Omakase · Seasonal · Intimate",
+      "title": "Sushi in its purest form",
+      "description": "A calm counter where each piece is shaped in the moment — pristine fish, warm rice, and a rhythm that invites you to slow down.",
+      "exploreMenu": "Explore menu",
+      "reserve": "Reserve a seat"
+    },
+    "seasonal": {
+      "title": "Seasonal selection",
+      "subtitle": "A curated taste of what the kitchen is honoring this week.",
+      "items": {
+        "akami": {
+          "name": "Akami nigiri",
+          "description": "Lean bluefin tuna with a clean, mineral finish.",
+          "price": "$14",
+          "ingredients": ["Bluefin tuna", "Shari rice", "Wasabi"]
+        },
+        "hamachi": {
+          "name": "Hamachi sashimi",
+          "description": "Buttery yellowtail with citrus-kissed soy.",
+          "price": "$16",
+          "ingredients": ["Yellowtail", "Yuzu", "Sea salt"]
+        },
+        "uni": {
+          "name": "Hokkaido uni",
+          "description": "Silky sea urchin over lightly torched nori.",
+          "price": "$22",
+          "ingredients": ["Uni", "Nori", "Shari rice"]
+        },
+        "otoro": {
+          "name": "Ōtoro nigiri",
+          "description": "Rich tuna belly that melts at the counter.",
+          "price": "$24",
+          "ingredients": ["Ōtoro", "Shari rice", "Wasabi"]
+        },
+        "ebi": {
+          "name": "Ama ebi",
+          "description": "Sweet shrimp lightly kissed with flame.",
+          "price": "$12",
+          "ingredients": ["Sweet shrimp", "Citrus zest", "Shari rice"]
+        },
+        "hotate": {
+          "name": "Hotate nigiri",
+          "description": "Hokkaido scallop with a whisper of sudachi.",
+          "price": "$15",
+          "ingredients": ["Scallop", "Sudachi", "Shari rice"]
+        }
+      }
+    },
+    "philosophy": {
+      "title": "Precision is our language",
+      "body": "We source in small lots, sharpen our knives before service, and plate with restraint. Every gesture at the counter is meant to keep the fish — not the flourish — at the center.",
+      "quote": "“Silence, steel, and the scent of the sea.”"
+    },
+    "experiences": {
+      "title": "Guest experiences",
+      "subtitle": "Voices from the counter",
+      "items": {
+        "elena": {
+          "quote": "The pacing felt like a meditation. Each course arrived exactly when we were ready for it.",
+          "name": "Elena Morales",
+          "role": "Food writer",
+          "rating": 5
+        },
+        "marcus": {
+          "quote": "Impeccable fish, zero pretense. The omakase told a story from start to finish.",
+          "name": "Marcus Chen",
+          "role": "Regular guest",
+          "rating": 5
+        },
+        "yuki": {
+          "quote": "A rare balance of warmth and discipline. We left feeling cared for, not performed at.",
+          "name": "Yuki Tanaka",
+          "role": "Chef patron",
+          "rating": 5
+        }
+      }
+    },
+    "visit": {
+      "title": "Visit us",
+      "addressLabel": "Address",
+      "address": "128 Cedar Lane, San Francisco, CA",
+      "hoursLabel": "Hours",
+      "hours": "Tue–Sat · 5:30pm – 10:30pm",
+      "phoneLabel": "Reservations",
+      "phone": "+1 (415) 555-0192",
+      "emailLabel": "Email",
+      "email": "hello@shinsei.example"
+    },
+    "gallery": {
+      "title": "Moments at SHINSEI",
+      "subtitle": "A glimpse of the counter, the plate, and the quiet in between.",
+      "loadMore": "View full gallery"
     }
   },
   "navigation": {
@@ -53,7 +218,9 @@
   },
   "locale": {
     "en": "English",
-    "fa": "فارسی"
+    "fa": "فارسی",
+    "de": "Deutsch",
+    "ar": "العربية"
   },
   "theme": {
     "light": "Light",
@@ -62,25 +229,25 @@
     "switchToDark": "Switch to dark mode"
   },
   "footer": {
-    "copyright": "© {year} Enterprise. All rights reserved.",
+    "copyright": "© {year} SHINSEI. All rights reserved.",
     "terms": "Terms",
     "contact": "Contact"
   },
   "about": {
-    "title": "About Enterprise",
-    "description": "We help product teams ship reliable frontend platforms with clear architecture and long-term maintainability.",
+    "title": "About SHINSEI",
+    "description": "An intimate omakase counter devoted to seasonal fish, warm rice, and hospitality that never rushes the meal.",
     "sections": {
       "mission": {
-        "title": "Our mission",
-        "body": "Enterprise exists to reduce the cost of building production-grade web applications. We provide opinionated foundations so teams can focus on product value instead of reinventing infrastructure."
+        "title": "Our philosophy",
+        "body": "SHINSEI exists to serve sushi in its purest form — one piece at a time, shaped for the guest in front of us. Seasonality guides the board; calm attention shapes the room."
       },
       "approach": {
-        "title": "How we work",
-        "body": "We favor server-first rendering, feature ownership, and proven reuse over speculative abstractions. Every architectural choice is documented and measurable."
+        "title": "How we cook",
+        "body": "We work close to the catch, keep the rice warm, and let precise knife work speak louder than excess. Every seating is a short conversation between chef, fish, and guest."
       },
       "values": {
-        "title": "What we optimize for",
-        "body": "Maintainability, performance, accessibility, and developer experience are treated as product requirements—not afterthoughts."
+        "title": "What we guard",
+        "body": "Freshness, restraint, and a counter experience that feels personal — never theatrical, never hurried."
       }
     }
   },
@@ -169,13 +336,13 @@
     }
   },
   "metadata": {
-    "siteTitle": "Enterprise",
-    "siteDescription": "Production-grade landing experience with SEO, internationalization, and performance built in.",
-    "organizationDescription": "Enterprise builds scalable frontend platforms for modern product teams.",
-    "homeTitle": "Build enterprise products faster",
-    "homeDescription": "Production-grade landing experience with SEO, i18n, and performance built in.",
-    "aboutTitle": "About Enterprise",
-    "aboutDescription": "Learn how Enterprise helps teams ship maintainable frontend platforms.",
+    "siteTitle": "SHINSEI",
+    "siteDescription": "Omakase sushi in its purest form — seasonal fish, warm rice, and an intimate counter experience.",
+    "organizationDescription": "SHINSEI is a contemporary omakase house focused on precision, seasonality, and calm hospitality.",
+    "homeTitle": "Sushi in its purest form",
+    "homeDescription": "Seasonal omakase, pristine fish, and a calm counter experience in the heart of the city.",
+    "aboutTitle": "About SHINSEI",
+    "aboutDescription": "Meet the omakase house behind the counter — seasonal fish, warm rice, and calm hospitality.",
     "termsTitle": "Terms of service",
     "termsDescription": "Terms governing use of the Enterprise landing site.",
     "faqTitle": "Frequently asked questions",
@@ -185,6 +352,20 @@
     "contactTitle": "Contact us",
     "contactDescription": "Get in touch with the Enterprise team about your next project.",
     "productsTitle": "Products",
-    "productsDescription": "Search and explore Enterprise platform building blocks."
+    "productsDescription": "Search and explore Enterprise platform building blocks.",
+    "galleryTitle": "Gallery",
+    "galleryDescription": "Moments from the SHINSEI counter, kitchen, and room.",
+    "menuTitle": "Menu",
+    "menuDescription": "Seasonal plates, drinks, and desserts from the SHINSEI counter."
+  },
+  "galleryPage": {
+    "title": "Gallery",
+    "description": "Moments from the counter, the kitchen, and the room.",
+    "comingSoon": "The full gallery is being prepared. Check back soon."
+  },
+  "menuPage": {
+    "title": "Menu",
+    "description": "Seasonal plates, drinks, and desserts from the SHINSEI counter.",
+    "comingSoon": "The searchable menu is being prepared. Check back soon."
   }
 }

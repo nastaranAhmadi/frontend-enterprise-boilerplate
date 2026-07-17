@@ -5,7 +5,7 @@ import { buildLocalizedPath } from '@/config/routes';
 import { siteKeywords } from '@/config/seo';
 import { isLocale, type Locale } from '@/config/site';
 import { ProductsPage } from '@/features/products/products-page';
-import { getDictionary } from '@/i18n/get-dictionary';
+import { createT } from '@/i18n/t';
 import { createPageMetadata } from '@/lib/seo/metadata';
 
 type ProductsRouteProps = {
@@ -19,13 +19,13 @@ export const generateMetadata = async ({ params }: ProductsRouteProps): Promise<
     return {};
   }
 
-  const dictionary = getDictionary(localeParam);
+  const t = createT(localeParam);
 
   return createPageMetadata({
     locale: localeParam,
     pathname: buildLocalizedPath(localeParam, 'products'),
-    title: dictionary.metadata.productsTitle,
-    description: dictionary.metadata.productsDescription,
+    title: t('metadata.productsTitle'),
+    description: t('metadata.productsDescription'),
     keywords: siteKeywords,
   });
 };

@@ -81,4 +81,14 @@ describe('BottomSheet', () => {
     await user.tab();
     expect(reset).toHaveFocus();
   });
+
+  it('applies open animation class on the panel', () => {
+    render(
+      <BottomSheet open onClose={() => undefined} title="Filters">
+        Sheet content
+      </BottomSheet>,
+    );
+
+    expect(screen.getByRole('dialog').className).toContain('animate-bottom-sheet-up');
+  });
 });

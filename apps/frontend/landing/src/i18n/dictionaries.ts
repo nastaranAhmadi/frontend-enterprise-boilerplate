@@ -1,13 +1,15 @@
 import type { Locale } from '@/config/site';
 
+import ar from './dictionaries/ar.json';
+import de from './dictionaries/de.json';
 import en from './dictionaries/en.json';
 import fa from './dictionaries/fa.json';
 
 export type Dictionary = typeof en;
 
-const dictionaries: Record<Locale, Dictionary> = {
+export const dictionaries: Record<Locale, Dictionary> = {
   en,
   fa,
+  de,
+  ar,
 };
-
-export const getDictionary = (locale: Locale): Dictionary => dictionaries[locale];

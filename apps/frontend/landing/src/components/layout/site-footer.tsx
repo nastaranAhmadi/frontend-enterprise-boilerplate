@@ -2,33 +2,30 @@ import Link from 'next/link';
 
 import { buildLocalizedPath } from '@/config/routes';
 import type { Locale } from '@/config/site';
+import { createT } from '@/i18n/t';
 
 type SiteFooterProps = {
   locale: Locale;
-  labels: {
-    copyright: string;
-    terms: string;
-    contact: string;
-  };
 };
 
-export const SiteFooter = ({ locale, labels }: SiteFooterProps) => {
+export const SiteFooter = ({ locale }: SiteFooterProps) => {
+  const t = createT(locale);
   const year = new Date().getFullYear();
 
   return (
     <footer className="mt-auto border-t border-border bg-background">
-      <div className="mx-auto flex max-w-6xl flex-col gap-md px-md py-lg md:flex-row md:items-center md:justify-between">
-        <p className="text-sm text-muted-foreground">
-          {labels.copyright.replace('{year}', String(year))}
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-lg px-md py-xl text-center">
+        <p className="font-serif text-lg tracking-[0.2em] text-foreground">
+          {t('common.siteName')}
         </p>
         <nav aria-label="Footer">
-          <ul className="flex flex-wrap gap-md">
+          <ul className="flex flex-wrap justify-center gap-md">
             <li>
               <Link
                 href={buildLocalizedPath(locale, 'terms')}
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                {labels.terms}
+                {t('footer.terms')}
               </Link>
             </li>
             <li>
@@ -36,11 +33,14 @@ export const SiteFooter = ({ locale, labels }: SiteFooterProps) => {
                 href={buildLocalizedPath(locale, 'contact')}
                 className="text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                {labels.contact}
+                {t('footer.contact')}
               </Link>
             </li>
           </ul>
         </nav>
+        <p className="text-sm text-muted-foreground">
+          {t('footer.copyright').replace('{year}', String(year))}
+        </p>
       </div>
     </footer>
   );

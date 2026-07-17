@@ -81,4 +81,82 @@ export const productsByLocale: Record<Locale, Product[]> = {
       category: 'ویژگی',
     },
   ],
+  de: [
+    {
+      id: 'platform-core',
+      name: 'Platform Core',
+      description: 'Shared design system, routing shell, and repository foundations for new apps.',
+      category: 'Platform',
+    },
+    {
+      id: 'i18n-kit',
+      name: 'I18n Kit',
+      description: 'Locale routing, server dictionaries, and RTL-aware UI primitives.',
+      category: 'Toolkit',
+    },
+    {
+      id: 'seo-starter',
+      name: 'SEO Starter',
+      description: 'Metadata helpers, JSON-LD builders, sitemap routes, and hreflang support.',
+      category: 'Toolkit',
+    },
+    {
+      id: 'data-layer',
+      name: 'Data Layer',
+      description:
+        'Repository pattern with mock and API datasource switching via environment config.',
+      category: 'Platform',
+    },
+    {
+      id: 'contact-hub',
+      name: 'Contact Hub',
+      description: 'Accessible contact forms with TanStack Query mutations and validation.',
+      category: 'Feature',
+    },
+    {
+      id: 'blog-engine',
+      name: 'Blog Engine',
+      description: 'Static blog list and article pages with Article schema and locale content.',
+      category: 'Feature',
+    },
+  ],
+  ar: [
+    {
+      id: 'platform-core',
+      name: 'Platform Core',
+      description: 'Shared design system, routing shell, and repository foundations for new apps.',
+      category: 'Platform',
+    },
+    {
+      id: 'i18n-kit',
+      name: 'I18n Kit',
+      description: 'Locale routing, server dictionaries, and RTL-aware UI primitives.',
+      category: 'Toolkit',
+    },
+    {
+      id: 'seo-starter',
+      name: 'SEO Starter',
+      description: 'Metadata helpers, JSON-LD builders, sitemap routes, and hreflang support.',
+      category: 'Toolkit',
+    },
+    {
+      id: 'data-layer',
+      name: 'Data Layer',
+      description:
+        'Repository pattern with mock and API datasource switching via environment config.',
+      category: 'Platform',
+    },
+    {
+      id: 'contact-hub',
+      name: 'Contact Hub',
+      description: 'Accessible contact forms with TanStack Query mutations and validation.',
+      category: 'Feature',
+    },
+    {
+      id: 'blog-engine',
+      name: 'Blog Engine',
+      description: 'Static blog list and article pages with Article schema and locale content.',
+      category: 'Feature',
+    },
+  ],
 };

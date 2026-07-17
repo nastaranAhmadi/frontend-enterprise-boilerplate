@@ -203,7 +203,7 @@ Use `Composite/RTL` stories for form-control verification. Prefer the global too
 ### Application wiring
 
 ```tsx
-import { I18nProvider, useI18n } from '@enterprise/i18n';
+import { I18nProvider, useI18n } from '@enterprise/i18n/react';
 import { DesignSystemProvider } from '@enterprise/ui';
 
 function AppProviders({ children }: { children: React.ReactNode }) {

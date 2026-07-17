@@ -5,7 +5,7 @@ import { buildLocalizedPath } from '@/config/routes';
 import { siteKeywords } from '@/config/seo';
 import { isLocale, type Locale } from '@/config/site';
 import { ContactPage } from '@/features/contact/contact-page';
-import { getDictionary } from '@/i18n/get-dictionary';
+import { createT } from '@/i18n/t';
 import { createPageMetadata } from '@/lib/seo/metadata';
 
 type ContactRouteProps = {
@@ -19,13 +19,13 @@ export const generateMetadata = async ({ params }: ContactRouteProps): Promise<M
     return {};
   }
 
-  const dictionary = getDictionary(localeParam);
+  const t = createT(localeParam);
 
   return createPageMetadata({
     locale: localeParam,
     pathname: buildLocalizedPath(localeParam, 'contact'),
-    title: dictionary.metadata.contactTitle,
-    description: dictionary.metadata.contactDescription,
+    title: t('metadata.contactTitle'),
+    description: t('metadata.contactDescription'),
     keywords: siteKeywords,
   });
 };

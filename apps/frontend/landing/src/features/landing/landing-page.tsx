@@ -1,8 +1,11 @@
 import type { Locale } from '@/config/site';
 
-import { CtaSection } from './sections/CtaSection';
-import { FeaturesSection } from './sections/FeaturesSection';
+import { GallerySection } from './sections/GallerySection';
+import { GuestExperiencesSection } from './sections/GuestExperiencesSection';
 import { HeroSection } from './sections/HeroSection';
+import { PhilosophySection } from './sections/PhilosophySection';
+import { SeasonalSection } from './sections/SeasonalSection';
+import { VisitUsSection } from './sections/VisitUsSection';
 
 type LandingPageProps = {
   locale: Locale;
@@ -11,7 +14,10 @@ type LandingPageProps = {
 export const LandingPage = ({ locale }: LandingPageProps) => (
   <main id="main-content">
     <HeroSection locale={locale} />
-    <FeaturesSection locale={locale} />
-    <CtaSection locale={locale} />
+    <SeasonalSection locale={locale} />
+    <PhilosophySection locale={locale} />
+    <GuestExperiencesSection locale={locale} />
+    <GallerySection locale={locale} />
+    <VisitUsSection locale={locale} />
   </main>
 );

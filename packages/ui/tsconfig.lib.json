@@ -1,8 +1,6 @@
 {
-  "extends": ["../../tsconfig.base.json", "@enterprise/tsconfig/library-react"],
+  "extends": "@enterprise/tsconfig/library-react",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {},
     "outDir": "./dist",
     "rootDir": "./src",
     "tsBuildInfoFile": "./dist/tsconfig.lib.tsbuildinfo"

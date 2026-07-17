@@ -1,6 +1,6 @@
-import { resolveDirFromLocale } from '@enterprise/ui/locale';
+import { isRtlLocale, resolveDirFromLocale } from '@enterprise/ui/locale';
 import type { Metadata } from 'next';
-import { Inter, Vazirmatn } from 'next/font/google';
+import { Inter, Playfair_Display, Vazirmatn } from 'next/font/google';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
@@ -11,8 +11,7 @@ import { WebSiteJsonLd } from '@/components/seo/website-json-ld';
 import { siteKeywords } from '@/config/seo';
 import { isLocale, type Locale, locales } from '@/config/site';
 import { defaultThemePreference } from '@/config/theme';
-import { getDictionary } from '@/i18n/get-dictionary';
-import { getRouteTransitionMessage } from '@/i18n/get-route-transition-message';
+import { createT } from '@/i18n/t';
 import { parseThemeCookie } from '@/lib/cookies/theme';
 import { createRootMetadata } from '@/lib/seo/metadata';
 import { resolveThemePreference, themeInitScript } from '@/lib/theme/theme-init-script';
@@ -22,6 +21,12 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-family-sans',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-family-serif',
 });
 
 const vazirmatn = Vazirmatn({
@@ -44,15 +49,15 @@ export const generateMetadata = async ({ params }: LocaleLayoutProps): Promise<M
     return {};
   }
 
-  const dictionary = getDictionary(localeParam);
+  const t = createT(localeParam);
 
   return {
     ...createRootMetadata(localeParam),
     title: {
-      default: dictionary.metadata.siteTitle,
-      template: `%s | ${dictionary.metadata.siteTitle}`,
+      default: t('metadata.siteTitle'),
+      template: `%s | ${t('metadata.siteTitle')}`,
     },
-    description: dictionary.metadata.siteDescription,
+    description: t('metadata.siteDescription'),
     keywords: [...siteKeywords],
   };
 };
@@ -65,14 +70,16 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   }
 
   const locale: Locale = localeParam;
-  const dictionary = getDictionary(locale);
+  const t = createT(locale);
   const dir = resolveDirFromLocale(locale);
   const cookieStore = await cookies();
   const theme = resolveThemePreference(
     parseThemeCookie(cookieStore.get('enterprise-theme')?.value),
     defaultThemePreference,
   );
-  const fontClassName = locale === 'fa' ? vazirmatn.variable : inter.variable;
+  const fontClassName = isRtlLocale(locale)
+    ? vazirmatn.variable
+    : `${inter.variable} ${playfair.variable}`;
 
   return (
     <html lang={locale} dir={dir} data-app="landing" data-theme={theme} suppressHydrationWarning>
@@ -85,13 +92,13 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <AppProviders
           locale={locale}
           initialTheme={theme}
-          routeTransitionMessage={getRouteTransitionMessage(locale)}
+          routeTransitionMessage={t('routeTransition.message')}
         >
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:start-md focus:top-md focus:z-toast focus:rounded-md focus:bg-background focus:px-md focus:py-sm"
           >
-            {dictionary.common.skipToContent}
+            {t('common.skipToContent')}
           </a>
           <SiteShell locale={locale}>{children}</SiteShell>
         </AppProviders>

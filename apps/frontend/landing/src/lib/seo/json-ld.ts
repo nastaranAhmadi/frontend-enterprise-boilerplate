@@ -1,6 +1,6 @@
 import { seoDefaults } from '@/config/seo';
 import type { Locale } from '@/config/site';
-import { getDictionary } from '@/i18n/get-dictionary';
+import { createT } from '@/i18n/t';
 
 export type OrganizationSchema = {
   '@context': 'https://schema.org';
@@ -86,7 +86,7 @@ type BuildArticleSchemaInput = {
 };
 
 export const buildOrganizationSchema = (locale: Locale): OrganizationSchema => {
-  const dictionary = getDictionary(locale);
+  const t = createT(locale);
 
   return {
     '@context': 'https://schema.org',
@@ -94,20 +94,20 @@ export const buildOrganizationSchema = (locale: Locale): OrganizationSchema => {
     name: seoDefaults.siteName,
     url: seoDefaults.siteUrl,
     logo: buildAbsoluteAssetUrl(seoDefaults.ogImagePath),
-    description: dictionary.metadata.organizationDescription,
+    description: t('metadata.organizationDescription'),
   };
 };
 
 export const buildWebSiteSchema = (locale: Locale): WebSiteSchema => {
-  const dictionary = getDictionary(locale);
+  const t = createT(locale);
 
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: dictionary.metadata.siteTitle,
+    name: t('metadata.siteTitle'),
     url: `${seoDefaults.siteUrl}/${locale}`,
     inLanguage: locale,
-    description: dictionary.metadata.siteDescription,
+    description: t('metadata.siteDescription'),
   };
 };
 

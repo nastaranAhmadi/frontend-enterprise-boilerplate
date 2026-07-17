@@ -5,24 +5,26 @@ This guide describes how locale, layout direction, and translations work across 
 ## Architecture
 
 ```text
-app messages/          @enterprise/i18n              @enterprise/ui
-(translations)    ->   I18nProvider + useTranslation   DesignSystemProvider (dir/lang)
-                       locale state                    useDesignSystem()
+app dictionaries/      @enterprise/i18n                 @enterprise/ui
+(per-app messages) ->  createTranslator / createT         DesignSystemProvider (dir/lang)
+                       (+ optional I18nProvider)          useDesignSystem()
 ```
 
 - **`locale`** drives copy (`t()`) and default layout direction.
 - **`dir`** controls mirroring (`ltr` / `rtl`).
 - **UI components** receive translated strings via props; they do not call `t()` internally.
+- **Message trees stay in each app** (landing / dashboard / admin). The package only provides lookup.
 
 ## Package responsibilities
 
 ### `@enterprise/i18n`
 
-- `I18nProvider` — holds active locale and translation lookup.
-- `useI18n()` — `{ locale, setLocale, t(namespace, key) }`.
-- `useTranslation(namespace)` — scoped `{ locale, t(key) }`.
+- `createTranslator(dictionaries)` — bind per-locale message trees; returns `createT(locale)`.
+- `createT(dictionary)` / `t(dictionary, path)` — dotted-path lookup (`home.hero.title`).
+- `tNumber` / `tStrings` — typed helpers for number and `string[]` leaves.
+- `@enterprise/i18n/react` — optional client `I18nProvider` / `useI18n` / `useTranslation` for flat namespace keys.
 
-Apps supply `config.translations` at integration time. No bundled copy in the library.
+Apps supply dictionaries at integration time. No bundled copy in the library. Root `@enterprise/i18n` has no React dependency surface (RSC-safe).
 
 ### `@enterprise/ui`
 
@@ -32,73 +34,38 @@ Apps supply `config.translations` at integration time. No bundled copy in the li
 
 ## Recommended app wiring
 
-```tsx
-import { I18nProvider, useI18n } from '@enterprise/i18n';
-import { DesignSystemProvider } from '@enterprise/ui';
+Bind once per app (works in RSC and client components):
 
-const i18nConfig = {
-  defaultLocale: 'en',
-  locales: ['en', 'fa-IR'] as const,
-  namespaces: ['common', 'landing'] as const,
-  translations: {
-    en: {
-      common: { save: 'Save' },
-      landing: { heroTitle: 'Build faster' },
-    },
-    'fa-IR': {
-      common: { save: 'ذخیره' },
-      landing: { heroTitle: 'سریع‌تر بسازید' },
-    },
-  },
-};
+```ts
+// apps/frontend/<app>/src/i18n/t.ts
+import { createTranslator } from '@enterprise/i18n';
+import { dictionaries } from './dictionaries';
 
-function DesignSystemBridge({ children }: { children: React.ReactNode }) {
-  const { locale } = useI18n();
-
-  return <DesignSystemProvider locale={locale}>{children}</DesignSystemProvider>;
-}
-
-export function AppProviders({ children }: { children: React.ReactNode }) {
-  return (
-    <I18nProvider config={i18nConfig}>
-      <DesignSystemBridge>{children}</DesignSystemBridge>
-    </I18nProvider>
-  );
-}
+export const createT = createTranslator(dictionaries);
 ```
 
-Sync the document root in the app shell (especially for marketing/SEO):
-
 ```tsx
-import { useI18n } from '@enterprise/i18n';
-import { resolveDirFromLocale, resolveLangFromLocale } from '@enterprise/ui';
+import { createT } from '@/i18n/t';
 
-function DocumentLocale({ children }: { children: React.ReactNode }) {
-  const { locale } = useI18n();
-  const dir = resolveDirFromLocale(locale);
-  const lang = resolveLangFromLocale(locale);
-
-  useEffect(() => {
-    document.documentElement.setAttribute('dir', dir);
-    document.documentElement.setAttribute('lang', lang);
-  }, [dir, lang]);
-
-  return children;
-}
+const t = createT(locale);
+return <h1>{t('home.hero.title')}</h1>;
 ```
+
+Optional: use `I18nProvider` when a client tree needs reactive locale without passing `locale` props. Prefer `createTranslator` for Next.js App Router / RSC.
 
 ## Per-app notes
 
 ### Landing (`apps/frontend/landing`)
 
-- Prefer locale in the URL (`/fa-IR/...`) for SEO.
+- Prefer locale in the URL (`/fa/...`) for SEO.
 - Set `<html lang>` from the active locale.
-- Pass `t('landing', key)` into UI components as `title`, `label`, etc.
+- Dictionaries live under `src/i18n/dictionaries/`; call sites use `createT(locale)`.
 
 ### Dashboard / Admin panels
 
-- Locale from user preference or account settings.
-- `DesignSystemProvider` should follow `useI18n().locale` so tables, modals, and forms mirror correctly.
+- Own message trees under each app’s `src/i18n/dictionaries/` (or equivalent).
+- Bind with the same `createTranslator` pattern.
+- Locale from user preference or account settings; keep `DesignSystemProvider` in sync for RTL.
 
 ## Storybook (UI package)
 

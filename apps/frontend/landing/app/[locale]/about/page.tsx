@@ -5,7 +5,7 @@ import { buildLocalizedPath } from '@/config/routes';
 import { siteKeywords } from '@/config/seo';
 import { isLocale, type Locale } from '@/config/site';
 import { AboutPage } from '@/features/about/about-page';
-import { getDictionary } from '@/i18n/get-dictionary';
+import { createT } from '@/i18n/t';
 import { createPageMetadata } from '@/lib/seo/metadata';
 
 type AboutRouteProps = {
@@ -19,13 +19,13 @@ export const generateMetadata = async ({ params }: AboutRouteProps): Promise<Met
     return {};
   }
 
-  const dictionary = getDictionary(localeParam);
+  const t = createT(localeParam);
 
   return createPageMetadata({
     locale: localeParam,
     pathname: buildLocalizedPath(localeParam, 'about'),
-    title: dictionary.metadata.aboutTitle,
-    description: dictionary.metadata.aboutDescription,
+    title: t('metadata.aboutTitle'),
+    description: t('metadata.aboutDescription'),
     keywords: siteKeywords,
   });
 };
