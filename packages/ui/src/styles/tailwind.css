@@ -53,4 +53,12 @@
   .animate-loading-grid-pulse {
     animation: loading-grid-pulse 1.1s ease-in-out infinite;
   }
+
+  body[data-route-transition-active='true'] {
+    overflow: hidden;
+  }
+
+  body[data-route-transition-active='true'] #main-content {
+    visibility: hidden;
+  }
 }

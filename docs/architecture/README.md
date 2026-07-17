@@ -19,6 +19,7 @@ Architecture Decision Records (ADRs) for the `@enterprise/landing` application a
 | [ADR-003](./ADR-003-repository-pattern.md)       | Repository pattern and dependency injection      |
 | [ADR-004](./ADR-004-client-server-boundaries.md) | Client/server boundaries and providers           |
 | [ADR-005](./ADR-005-performance.md)              | Performance KPIs and budgets                     |
+| [ADR-006](./ADR-006-route-transitions.md)        | Full-screen route transition overlay             |
 
 ## Future plan
 

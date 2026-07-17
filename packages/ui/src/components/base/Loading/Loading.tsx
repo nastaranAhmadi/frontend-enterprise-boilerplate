@@ -43,7 +43,7 @@ const DotBounce = ({ size }: { size: LoadingProps['size'] }) => (
     aria-hidden="true"
     className={getLoadingLargeDotClassName({
       size,
-      colorClass: 'bg-error',
+      colorClass: 'bg-primary',
       animationClass: 'animate-loading-bounce',
     })}
   />
@@ -131,14 +131,14 @@ const DotsBounce = ({ size }: { size: LoadingProps['size'] }) => (
 const Circular = ({ size }: { size: LoadingProps['size'] }) => (
   <span className={getLoadingCircularClassName({ size })} aria-hidden="true">
     <span
-      className={`${LOADING_CIRCULAR_RING_CLASS} inset-0 border-2 border-error border-t-transparent animate-spin`}
+      className={`${LOADING_CIRCULAR_RING_CLASS} inset-0 border-2 border-primary border-t-transparent animate-spin`}
     />
     <span
-      className={`${LOADING_CIRCULAR_RING_CLASS} inset-1 border-2 border-warning border-t-transparent animate-spin`}
+      className={`${LOADING_CIRCULAR_RING_CLASS} inset-1 border-2 border-secondary border-t-transparent animate-spin`}
       style={{ animationDirection: 'reverse', animationDuration: '1.4s' }}
     />
     <span
-      className={`${LOADING_CIRCULAR_RING_CLASS} inset-2 border-2 border-primary border-b-transparent animate-spin`}
+      className={`${LOADING_CIRCULAR_RING_CLASS} inset-2 border-2 border-accent border-b-transparent animate-spin`}
       style={{ animationDuration: '1.8s' }}
     />
   </span>

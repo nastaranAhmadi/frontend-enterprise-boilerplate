@@ -12,6 +12,9 @@
       "@enterprise/ui/hooks": ["../../../packages/ui/src/hooks/index.ts"],
       "@enterprise/ui/locale": ["../../../packages/ui/src/locale/index.ts"],
       "@enterprise/ui/providers": ["../../../packages/ui/src/providers/index.ts"],
+      "@enterprise/ui/route-transition": [
+        "../../../packages/ui/src/components/composite/RouteTransition/index.ts"
+      ],
       "@enterprise/ui/skeleton": ["../../../packages/ui/src/components/base/Skeleton/index.ts"]
     },
     "allowJs": true,

@@ -7,11 +7,13 @@ import type { Locale } from '@/config/site';
 import type { ThemePreference } from '@/config/theme';
 import { ThemePreferenceProvider, useThemePreference } from '@/lib/theme/theme-preference-context';
 import { QueryProvider } from '@/providers/query-provider';
+import { NextRouteTransitionProvider } from '@/providers/route-transition-provider';
 
 type AppProvidersProps = {
   children: ReactNode;
-  locale: Locale;
   initialTheme: ThemePreference;
+  locale: Locale;
+  routeTransitionMessage: string;
 };
 
 const DesignSystemBridge = ({ children, locale }: { children: ReactNode; locale: Locale }) => {
@@ -24,10 +26,19 @@ const DesignSystemBridge = ({ children, locale }: { children: ReactNode; locale:
   );
 };
 
-export const AppProviders = ({ children, locale, initialTheme }: AppProvidersProps) => (
+export const AppProviders = ({
+  children,
+  locale,
+  initialTheme,
+  routeTransitionMessage,
+}: AppProvidersProps) => (
   <ThemePreferenceProvider initialTheme={initialTheme}>
     <QueryProvider>
-      <DesignSystemBridge locale={locale}>{children}</DesignSystemBridge>
+      <DesignSystemBridge locale={locale}>
+        <NextRouteTransitionProvider message={routeTransitionMessage}>
+          {children}
+        </NextRouteTransitionProvider>
+      </DesignSystemBridge>
     </QueryProvider>
   </ThemePreferenceProvider>
 );

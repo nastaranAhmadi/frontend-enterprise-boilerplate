@@ -24,6 +24,11 @@
       "import": "./dist/providers/index.js",
       "default": "./dist/providers/index.js"
     },
+    "./route-transition": {
+      "types": "./dist/components/composite/RouteTransition/index.d.ts",
+      "import": "./dist/components/composite/RouteTransition/index.js",
+      "default": "./dist/components/composite/RouteTransition/index.js"
+    },
     "./skeleton": {
       "types": "./dist/components/base/Skeleton/index.d.ts",
       "import": "./dist/components/base/Skeleton/index.js",

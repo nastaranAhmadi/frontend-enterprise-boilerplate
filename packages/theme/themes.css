@@ -31,6 +31,7 @@
   --z-dropdown: 1000;
   --z-modal: 1100;
   --z-toast: 1200;
+  --z-route-transition: 1300;
 
   /* Motion */
   --duration-fast: 150ms;

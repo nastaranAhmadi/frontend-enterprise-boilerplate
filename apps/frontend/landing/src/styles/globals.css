@@ -9,4 +9,12 @@
   body {
     @apply min-h-screen bg-background font-sans text-foreground antialiased;
   }
+
+  body[data-route-transition-active='true'] {
+    overflow: hidden;
+  }
+
+  body[data-route-transition-active='true'] #main-content {
+    visibility: hidden;
+  }
 }

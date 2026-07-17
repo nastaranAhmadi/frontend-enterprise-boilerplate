@@ -67,6 +67,7 @@ export const designTokens = {
     dropdown: 'var(--z-dropdown)',
     modal: 'var(--z-modal)',
     toast: 'var(--z-toast)',
+    'route-transition': 'var(--z-route-transition)',
   },
   animation: {
     durationFast: 'var(--duration-fast)',

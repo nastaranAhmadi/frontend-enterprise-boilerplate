@@ -71,17 +71,31 @@ function MyNav() {
 
 Components inherit `dir` and `data-theme` from the provider. Override only when needed (`Pagination dir="ltr"`, `Carousel rtl={false}`). For portaled UI, call `resolveTextDirection({ element })` at interaction time (see `Tooltip`).
 
+### Route transitions
+
+Full-screen in-app navigation overlay — see [ADR-006](../../docs/architecture/ADR-006-route-transitions.md) and `apps/frontend/README.md`.
+
+```tsx
+import { RouteTransitionProvider } from '@enterprise/ui/providers';
+
+<RouteTransitionProvider pathname={pathname} message={t('routeTransition.message')} blurBackdrop>
+  {children}
+</RouteTransitionProvider>;
+```
+
+`message` is required (pass from app i18n). The overlay is always full viewport when enabled; portal lifecycle and navigation contract are documented in ADR-006.
+
 Responsive behavior uses Tailwind breakpoints (`sm:`, `md:`) on overlays such as `Modal`, `Carousel`, and `Table layout="stacked"`.
 
 Consumers must compile Tailwind with content paths that include `packages/ui/src`. Use `@enterprise/tailwind-config/content` to avoid drift.
 
 ## What's inside
 
-| Layer         | Description          | Examples                                    |
-| ------------- | -------------------- | ------------------------------------------- |
-| **Base**      | Stateless primitives | `Button`, `Input`, `Radio`, `Label`         |
-| **Composite** | Composed UX patterns | `FormField`, `Modal`, `Table`, `Pagination` |
-| **Providers** | App-level wiring     | `DesignSystemProvider`                      |
+| Layer         | Description          | Examples                                          |
+| ------------- | -------------------- | ------------------------------------------------- |
+| **Base**      | Stateless primitives | `Button`, `Input`, `Radio`, `Label`               |
+| **Composite** | Composed UX patterns | `FormField`, `Modal`, `Table`, `RouteTransition`  |
+| **Providers** | App-level wiring     | `DesignSystemProvider`, `RouteTransitionProvider` |
 
 Public exports include component props (`ButtonProps`, `FormFieldProps`, …) and shared tokens (`Size`, `Color`).
 

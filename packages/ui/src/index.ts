@@ -154,6 +154,15 @@ export type { PaginationProps } from './components/composite/Pagination';
 export { Pagination } from './components/composite/Pagination';
 export type { RadioGroupProps } from './components/composite/RadioGroup';
 export { RadioGroup } from './components/composite/RadioGroup';
+export type {
+  RouteTransitionDirection,
+  RouteTransitionOverlayProps,
+  RouteTransitionProviderProps,
+} from './components/composite/RouteTransition';
+export {
+  RouteTransitionOverlay,
+  RouteTransitionProvider,
+} from './components/composite/RouteTransition';
 export type { SelectFieldProps } from './components/composite/SelectField';
 export { SelectField } from './components/composite/SelectField';
 export type {

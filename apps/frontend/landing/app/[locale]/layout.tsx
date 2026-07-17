@@ -12,6 +12,7 @@ import { siteKeywords } from '@/config/seo';
 import { isLocale, type Locale, locales } from '@/config/site';
 import { defaultThemePreference } from '@/config/theme';
 import { getDictionary } from '@/i18n/get-dictionary';
+import { getRouteTransitionMessage } from '@/i18n/get-route-transition-message';
 import { parseThemeCookie } from '@/lib/cookies/theme';
 import { createRootMetadata } from '@/lib/seo/metadata';
 import { resolveThemePreference, themeInitScript } from '@/lib/theme/theme-init-script';
@@ -81,7 +82,11 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <WebSiteJsonLd locale={locale} />
       </head>
       <body className={fontClassName}>
-        <AppProviders locale={locale} initialTheme={theme}>
+        <AppProviders
+          locale={locale}
+          initialTheme={theme}
+          routeTransitionMessage={getRouteTransitionMessage(locale)}
+        >
           <a
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:start-md focus:top-md focus:z-toast focus:rounded-md focus:bg-background focus:px-md focus:py-sm"

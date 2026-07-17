@@ -10,7 +10,7 @@ export const LOADING_DOT_BASE_CLASS = 'rounded-full';
 export const LOADING_DOTS_ROW_CLASS = 'inline-flex items-end justify-center';
 
 export const LOADING_TYPING_SHELL_CLASS =
-  'inline-flex items-center justify-center rounded-full bg-info/15';
+  'inline-flex items-center justify-center rounded-full bg-primary/10';
 
 export const LOADING_TYPING_DOTS_CLASS = 'inline-flex items-center justify-center gap-xs';
 
@@ -64,17 +64,21 @@ const GRID_CELL_SIZE_CLASS_MAP: Record<LoadingSize, string> = {
   large: 'h-5 w-5',
 };
 
-const DOT_COLOR_CLASSES = [
-  'bg-error',
-  'bg-warning',
+/** Brand-forward palette — follows active app theme tokens. */
+const LOADING_THEME_COLOR_CLASSES = [
+  'bg-primary',
+  'bg-secondary',
+  'bg-accent',
   'bg-success',
   'bg-info',
-  'bg-primary',
 ] as const;
 
-const DOTS_3_COLOR_CLASSES = ['bg-error', 'bg-success', 'bg-primary'] as const;
-const DOTS_BOUNCE_COLOR_CLASSES = ['bg-secondary', 'bg-error', 'bg-info'] as const;
-const GRID_COLOR_CLASSES = ['bg-success', 'bg-warning', 'bg-primary', 'bg-error'] as const;
+const LOADING_BRAND_COLOR_CLASSES = ['bg-primary', 'bg-secondary', 'bg-accent'] as const;
+
+const DOT_COLOR_CLASSES = LOADING_THEME_COLOR_CLASSES;
+const DOTS_3_COLOR_CLASSES = LOADING_BRAND_COLOR_CLASSES;
+const DOTS_BOUNCE_COLOR_CLASSES = LOADING_BRAND_COLOR_CLASSES;
+const GRID_COLOR_CLASSES = ['bg-primary', 'bg-secondary', 'bg-accent', 'bg-primary/70'] as const;
 
 const normalizeSize = (size: LoadingProps['size']): LoadingSize => {
   if (size === 'small' || size === 'large') return size;
