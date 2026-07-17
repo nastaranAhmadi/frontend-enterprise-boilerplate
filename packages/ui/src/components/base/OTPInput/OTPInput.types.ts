@@ -9,6 +9,12 @@ export interface OTPInputOwnProps {
   autoFocus?: boolean;
   className?: string;
   defaultValue?: string;
+  /**
+   * Layout direction. OTP digits are inherently left-to-right regardless of
+   * page locale, so the component defaults to `ltr`. Pass `'rtl'` only when
+   * the surrounding page direction should inform keyboard navigation.
+   */
+  dir?: 'ltr' | 'rtl';
   disabled?: boolean;
   id?: string;
   invalid?: boolean;

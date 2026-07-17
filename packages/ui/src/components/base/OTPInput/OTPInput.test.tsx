@@ -108,4 +108,64 @@ describe('OTPInput', () => {
     const firstCell = requireCell(getOtpCells(), 0);
     expect(firstCell).toHaveAttribute('aria-invalid', 'true');
   });
+
+  it('renders with dir="ltr" by default so OTP cells are always LTR', () => {
+    const { container } = render(<OTPInput />);
+    const root = container.querySelector('[role="group"]');
+    expect(root).toHaveAttribute('dir', 'ltr');
+  });
+
+  it('ArrowLeft moves to previous cell in LTR mode', async () => {
+    const user = userEvent.setup();
+    render(<OTPInput defaultValue="12" />);
+
+    const cells = getOtpCells();
+    const firstCell = requireCell(cells, 0);
+    const secondCell = requireCell(cells, 1);
+
+    await user.click(secondCell);
+    expect(secondCell).toHaveFocus();
+
+    await user.keyboard('{ArrowLeft}');
+    expect(firstCell).toHaveFocus();
+  });
+
+  it('ArrowRight moves to previous cell in RTL mode', async () => {
+    const user = userEvent.setup();
+    render(<OTPInput dir="rtl" defaultValue="12" />);
+
+    const cells = getOtpCells();
+    const firstCell = requireCell(cells, 0);
+    const secondCell = requireCell(cells, 1);
+
+    await user.click(secondCell);
+    expect(secondCell).toHaveFocus();
+
+    await user.keyboard('{ArrowRight}');
+    expect(firstCell).toHaveFocus();
+  });
+
+  it('normalizes persian and arabic digits to ascii on input', () => {
+    const onChange = vi.fn();
+    render(<OTPInput length={4} onChange={onChange} />);
+
+    const firstCell = requireCell(getOtpCells(), 0);
+
+    fireEvent.change(firstCell, { target: { value: '۱' } });
+    expect(firstCell).toHaveValue('1');
+    expect(onChange).toHaveBeenLastCalledWith('1');
+
+    fireEvent.paste(firstCell, {
+      clipboardData: {
+        getData: () => '۲۳٤٥',
+      },
+    });
+
+    const cells = getOtpCells();
+    expect(requireCell(cells, 0)).toHaveValue('2');
+    expect(requireCell(cells, 1)).toHaveValue('3');
+    expect(requireCell(cells, 2)).toHaveValue('4');
+    expect(requireCell(cells, 3)).toHaveValue('5');
+    expect(onChange).toHaveBeenLastCalledWith('2345');
+  });
 });

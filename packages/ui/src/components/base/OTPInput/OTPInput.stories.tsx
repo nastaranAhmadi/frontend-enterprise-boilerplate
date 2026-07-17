@@ -78,6 +78,18 @@ export const Invalid = {
   render: (args: StoryProps) => <OTPInput {...args} />,
 };
 
+export const RtlLayout = {
+  render: () => (
+    <div dir="rtl" className="flex flex-col gap-sm">
+      <p className="text-sm text-muted">
+        OTP cells stay LTR and display ASCII digits. Persian/Arabic keyboard input is normalized
+        automatically.
+      </p>
+      <OTPInput length={6} separator />
+    </div>
+  ),
+};
+
 export const Controlled = {
   render: () => {
     const ControlledExample = () => {

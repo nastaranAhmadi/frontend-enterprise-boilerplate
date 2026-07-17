@@ -2,6 +2,7 @@ import { forwardRef } from 'react';
 
 import { OTPInput } from '../../base/OTPInput';
 import { FieldShell } from '../field/FieldShell';
+import { getOTPInputFieldRootClassName, OTP_INPUT_FIELD_LABEL_CLASS } from './OTPInputField.styles';
 import type { OTPInputFieldProps } from './OTPInputField.types';
 
 export const OTPInputField = forwardRef<HTMLDivElement, OTPInputFieldProps>(
@@ -27,7 +28,10 @@ export const OTPInputField = forwardRef<HTMLDivElement, OTPInputFieldProps>(
         helperText={helperText}
         error={errorMessage}
         required={required}
-        className={className}
+        className={getOTPInputFieldRootClassName({ className })}
+        labelClassName={OTP_INPUT_FIELD_LABEL_CLASS}
+        labelDir="auto"
+        helperDir="auto"
         disabled={disabled}
         size={size}
         aria-describedby={ariaDescribedByProp}

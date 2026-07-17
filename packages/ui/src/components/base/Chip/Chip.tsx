@@ -72,6 +72,12 @@ export const Chip = forwardRef<HTMLElement, ChipProps>(function Chip(props, ref)
       return;
     }
 
+    if (hasClickHandler && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      onClick?.(event as unknown as ReactMouseEvent<HTMLElement>);
+      return;
+    }
+
     if (event.key === 'Escape') {
       event.currentTarget.blur();
     }
@@ -141,13 +147,21 @@ export const Chip = forwardRef<HTMLElement, ChipProps>(function Chip(props, ref)
     );
   }
 
+  if (hasDelete && !hasClickHandler) {
+    return (
+      <span {...chipProps} ref={ref} className={chipClassName}>
+        {content}
+      </span>
+    );
+  }
+
   if (interactive) {
     return (
       <span
         {...chipProps}
         ref={ref}
-        role={hasClickHandler ? 'button' : undefined}
-        tabIndex={disabled ? undefined : 0}
+        role="button"
+        tabIndex={disabled ? -1 : 0}
         aria-disabled={disabled || undefined}
         className={chipClassName}
         onClick={disabled ? undefined : onClick}

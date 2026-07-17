@@ -13,6 +13,11 @@ export type FieldControlProps = Pick<FieldShellState, 'id' | 'ariaDescribedBy' |
 
 export interface FieldShellProps extends SharedFieldProps {
   control: (field: FieldControlProps) => ReactNode;
+  errorClassName?: string;
+  helperClassName?: string;
+  helperDir?: 'ltr' | 'rtl' | 'auto';
+  labelClassName?: string;
+  labelDir?: 'ltr' | 'rtl' | 'auto';
   labelPlacement?: FieldLabelPlacement;
   controlRowClassName?: string;
 }
@@ -27,6 +32,11 @@ export const FieldShell = function FieldShell(props: FieldShellProps) {
     disabled,
     size,
     control,
+    errorClassName,
+    helperClassName,
+    helperDir,
+    labelClassName,
+    labelDir,
     labelPlacement = 'top',
     controlRowClassName,
     id: idProp,
@@ -47,7 +57,14 @@ export const FieldShell = function FieldShell(props: FieldShellProps) {
   });
 
   const labelElement = label ? (
-    <Label htmlFor={field.id} required={required} disabled={disabled} size={size}>
+    <Label
+      htmlFor={field.id}
+      required={required}
+      disabled={disabled}
+      size={size}
+      dir={labelDir}
+      className={labelClassName}
+    >
       {label}
     </Label>
   ) : null;
@@ -66,13 +83,19 @@ export const FieldShell = function FieldShell(props: FieldShellProps) {
       )}
 
       {field.hasHelperText ? (
-        <HelperText id={field.helperId} disabled={disabled} size={size}>
+        <HelperText
+          id={field.helperId}
+          disabled={disabled}
+          size={size}
+          dir={helperDir}
+          className={helperClassName}
+        >
           {helperText}
         </HelperText>
       ) : null}
 
       {field.hasError ? (
-        <ErrorMessage id={field.errorId} size={size}>
+        <ErrorMessage id={field.errorId} size={size} className={errorClassName} dir={helperDir}>
           {errorMessage}
         </ErrorMessage>
       ) : null}

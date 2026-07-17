@@ -9,6 +9,7 @@ import {
   useState,
 } from 'react';
 
+import { delocalizeDigits } from '../../../date/digits';
 import {
   getOTPInputCellClassName,
   getOTPInputGroupClassName,
@@ -18,7 +19,7 @@ import {
 import type { OTPInputLength, OTPInputProps } from './OTPInput.types';
 
 const sanitizeDigits = (value: string, length: OTPInputLength): string =>
-  value.replace(/\D/g, '').slice(0, length);
+  delocalizeDigits(value).replace(/\D/g, '').slice(0, length);
 
 const splitValue = (value: string, length: OTPInputLength): string[] => {
   const digits = sanitizeDigits(value, length).split('');
@@ -58,6 +59,10 @@ export const OTPInput = forwardRef<HTMLDivElement, OTPInputProps>(function OTPIn
     autoFocus = false,
     className,
     defaultValue,
+    // OTP codes are numeric sequences that must always read left-to-right.
+    // Default to ltr so RTL page context doesn't reverse the cell order or
+    // flip the text-caret direction inside each box.
+    dir = 'ltr',
     disabled = false,
     id,
     invalid = false,
@@ -69,6 +74,8 @@ export const OTPInput = forwardRef<HTMLDivElement, OTPInputProps>(function OTPIn
     value,
     ...rootProps
   } = props;
+
+  const isRtl = dir === 'rtl';
 
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
   const { currentValue, setValue } = useControllableValue({
@@ -136,13 +143,17 @@ export const OTPInput = forwardRef<HTMLDivElement, OTPInputProps>(function OTPIn
       return;
     }
 
-    if (event.key === 'ArrowLeft') {
+    // In RTL the visual "previous" cell is to the right, so arrow directions flip.
+    const prevKey = isRtl ? 'ArrowRight' : 'ArrowLeft';
+    const nextKey = isRtl ? 'ArrowLeft' : 'ArrowRight';
+
+    if (event.key === prevKey) {
       event.preventDefault();
       focusAt(index - 1);
       return;
     }
 
-    if (event.key === 'ArrowRight') {
+    if (event.key === nextKey) {
       event.preventDefault();
       focusAt(index + 1);
     }
@@ -173,6 +184,7 @@ export const OTPInput = forwardRef<HTMLDivElement, OTPInputProps>(function OTPIn
       ref={ref}
       role="group"
       aria-label={ariaLabel}
+      dir={dir}
       className={getOTPInputRootClassName({ className })}
       {...rootProps}
     >

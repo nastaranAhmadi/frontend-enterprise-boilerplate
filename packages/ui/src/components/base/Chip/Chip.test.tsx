@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef } from 'react';
 import { describe, expect, it, vi } from 'vitest';
@@ -44,19 +44,19 @@ describe('Chip', () => {
     expect(onDelete).toHaveBeenCalledTimes(1);
   });
 
-  it('calls onDelete when Backspace is pressed on a deletable chip', () => {
+  it('calls onClick from a composite chip with delete', async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
     const onDelete = vi.fn();
 
-    render(<Chip onDelete={onDelete}>Deletable</Chip>);
+    render(
+      <Chip onClick={onClick} onDelete={onDelete}>
+        Composite
+      </Chip>,
+    );
 
-    const chip = screen.getByText('Deletable').parentElement;
-    expect(chip).toHaveAttribute('tabindex', '0');
-    if (!(chip instanceof HTMLElement)) {
-      throw new Error('Expected chip root element');
-    }
-
-    fireEvent.keyDown(chip, { key: 'Backspace' });
-    expect(onDelete).toHaveBeenCalledTimes(1);
+    await user.click(screen.getByRole('button', { name: 'Composite' }));
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   it('renders icon adornment', () => {

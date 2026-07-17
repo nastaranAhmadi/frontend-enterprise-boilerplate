@@ -55,3 +55,18 @@ export const WithError = {
   },
   render: (args: StoryProps) => <OTPInputField {...args} />,
 };
+
+export const RtlLayout = {
+  render: () => (
+    <div dir="rtl" className="flex flex-col gap-sm">
+      <p className="text-sm text-muted">Label and hint stay centered; OTP cells remain LTR.</p>
+      <OTPInputField
+        label="Secure code"
+        helperText="This is a hint text to help user."
+        length={6}
+        separator
+        required
+      />
+    </div>
+  ),
+};

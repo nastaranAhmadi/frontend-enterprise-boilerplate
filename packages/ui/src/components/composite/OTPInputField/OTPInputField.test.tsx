@@ -25,4 +25,23 @@ describe('OTPInputField', () => {
     );
     expect(screen.getByLabelText('Secure code')).toHaveAttribute('id', 'secure-code');
   });
+
+  it('centers label and helper text and keeps bidi auto in rtl containers', () => {
+    const { container } = render(
+      <div dir="rtl">
+        <OTPInputField
+          label="Secure code"
+          helperText="This is a hint text to help user."
+          length={4}
+        />
+      </div>,
+    );
+
+    const fieldRoot = container.querySelector('.items-center.text-center');
+    expect(fieldRoot).toBeInTheDocument();
+
+    expect(screen.getByText('Secure code').closest('label')).toHaveAttribute('dir', 'auto');
+    expect(screen.getByText('This is a hint text to help user.')).toHaveAttribute('dir', 'auto');
+    expect(screen.getByRole('group')).toHaveAttribute('dir', 'ltr');
+  });
 });
