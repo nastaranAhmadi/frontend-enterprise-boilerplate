@@ -1,5 +1,5 @@
 import { getBlogPosts } from '@/application/blog/get-blog-posts';
-import { type AppRouteKey, buildLocalizedPath, localizedRoutes } from '@/config/routes';
+import { type AppRouteKey, buildLocalizedPath } from '@/config/routes';
 import { locales } from '@/config/site';
 
 import { buildAbsoluteUrl, buildLocalizedBlogPostPath } from './alternates';
@@ -67,5 +67,3 @@ export const getSitemapEntries = async (): Promise<SitemapEntry[]> => {
 
   return entries;
 };
-
-export const localizedRouteSegments = Object.values(localizedRoutes).filter(Boolean);

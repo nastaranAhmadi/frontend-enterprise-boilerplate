@@ -1,6 +1,4 @@
-import { themeCookieName, type ThemePreference } from '@/config/theme';
-
-export const getThemeCookieName = (): string => themeCookieName;
+import type { ThemePreference } from '@/config/theme';
 
 export const parseThemeCookie = (value: string | undefined): ThemePreference | undefined => {
   if (value === 'light' || value === 'dark') {

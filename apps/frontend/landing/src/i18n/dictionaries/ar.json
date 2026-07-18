@@ -209,12 +209,7 @@
     }
   },
   "navigation": {
-    "home": "الرئيسية",
-    "about": "من نحن",
-    "blog": "Blog",
-    "products": "المنتجات",
-    "faq": "FAQ",
-    "contact": "اتصل بنا"
+    "home": "الرئيسية"
   },
   "locale": {
     "en": "English",

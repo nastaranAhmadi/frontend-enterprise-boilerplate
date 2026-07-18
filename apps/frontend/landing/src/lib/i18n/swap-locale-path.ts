@@ -17,6 +17,3 @@ export const swapLocaleInPath = (pathname: string, nextLocale: Locale): string =
 
   return `/${nextLocale}${pathname}`;
 };
-
-export const getAlternateLocales = (currentLocale: Locale): Locale[] =>
-  locales.filter((locale) => locale !== currentLocale);

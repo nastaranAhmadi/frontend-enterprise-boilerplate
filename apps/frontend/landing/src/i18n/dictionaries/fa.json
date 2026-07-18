@@ -209,12 +209,7 @@
     }
   },
   "navigation": {
-    "home": "خانه",
-    "about": "درباره",
-    "blog": "بلاگ",
-    "products": "محصولات",
-    "faq": "سوالات",
-    "contact": "تماس"
+    "home": "خانه"
   },
   "locale": {
     "en": "English",

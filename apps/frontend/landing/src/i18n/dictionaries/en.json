@@ -209,12 +209,7 @@
     }
   },
   "navigation": {
-    "home": "Home",
-    "about": "About",
-    "blog": "Blog",
-    "products": "Products",
-    "faq": "FAQ",
-    "contact": "Contact"
+    "home": "Home"
   },
   "locale": {
     "en": "English",
