@@ -1,6 +1,5 @@
-import { isRtlLocale, resolveDirFromLocale } from '@enterprise/ui/locale';
+import { resolveDirFromLocale } from '@enterprise/ui/locale';
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display, Vazirmatn } from 'next/font/google';
 import { cookies } from 'next/headers';
 import { notFound } from 'next/navigation';
 import type { ReactNode } from 'react';
@@ -11,29 +10,12 @@ import { WebSiteJsonLd } from '@/components/seo/website-json-ld';
 import { siteKeywords } from '@/config/seo';
 import { isLocale, type Locale, locales } from '@/config/site';
 import { defaultThemePreference } from '@/config/theme';
+import { vazirmatn } from '@/fonts/vazirmatn';
 import { createT } from '@/i18n/t';
 import { parseThemeCookie } from '@/lib/cookies/theme';
 import { createRootMetadata } from '@/lib/seo/metadata';
 import { resolveThemePreference, themeInitScript } from '@/lib/theme/theme-init-script';
 import { AppProviders } from '@/providers/app-providers';
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-family-sans',
-});
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-family-serif',
-});
-
-const vazirmatn = Vazirmatn({
-  subsets: ['arabic'],
-  display: 'swap',
-  variable: '--font-family-sans',
-});
 
 type LocaleLayoutProps = {
   children: ReactNode;
@@ -77,9 +59,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     parseThemeCookie(cookieStore.get('enterprise-theme')?.value),
     defaultThemePreference,
   );
-  const fontClassName = isRtlLocale(locale)
-    ? vazirmatn.variable
-    : `${inter.variable} ${playfair.variable}`;
 
   return (
     <html lang={locale} dir={dir} data-app="landing" data-theme={theme} suppressHydrationWarning>
@@ -88,7 +67,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         <OrganizationJsonLd locale={locale} />
         <WebSiteJsonLd locale={locale} />
       </head>
-      <body className={fontClassName}>
+      <body className={vazirmatn.variable}>
         <AppProviders
           locale={locale}
           initialTheme={theme}

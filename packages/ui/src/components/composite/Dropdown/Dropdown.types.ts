@@ -10,8 +10,15 @@ import type { Size } from '../../../types';
 
 export type DropdownAlign = 'start' | 'end' | 'center';
 
-export interface DropdownOwnProps {
-  trigger: ReactElement;
+export type DropdownTriggerRenderProps = {
+  open: boolean;
+};
+
+export type DropdownTriggerRenderFn = (props: DropdownTriggerRenderProps) => ReactElement;
+
+export type DropdownTrigger = ReactElement | DropdownTriggerRenderFn;
+
+type DropdownSharedOwnProps = {
   children?: ReactNode;
   className?: string;
   menuClassName?: string;
@@ -27,10 +34,17 @@ export interface DropdownOwnProps {
   open?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
-}
+};
+
+/**
+ * `trigger` is a union of object variants (not `ReactElement | Fn` on one field) so
+ * render-prop callbacks get contextual typing for `{ open }`.
+ */
+export type DropdownOwnProps = DropdownSharedOwnProps &
+  ({ trigger: ReactElement } | { trigger: DropdownTriggerRenderFn });
 
 export type DropdownProps = DropdownOwnProps &
-  Omit<HTMLAttributes<HTMLDivElement>, keyof DropdownOwnProps>;
+  Omit<HTMLAttributes<HTMLDivElement>, keyof DropdownSharedOwnProps | 'trigger'>;
 
 export interface DropdownItemOwnProps {
   children?: ReactNode;

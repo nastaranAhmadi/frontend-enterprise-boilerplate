@@ -60,6 +60,7 @@ Optional: use `I18nProvider` when a client tree needs reactive locale without pa
 - Prefer locale in the URL (`/fa/...`) for SEO.
 - Set `<html lang>` from the active locale.
 - Dictionaries live under `src/i18n/dictionaries/`; call sites use `createT(locale)`.
+- Self-hosted **Vazirmatn** (`src/fonts/vazirmatn/`, OFL) is the default font for all landing locales via `next/font/local`.
 
 ### Dashboard / Admin panels
 

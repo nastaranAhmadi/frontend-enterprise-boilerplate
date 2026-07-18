@@ -49,7 +49,7 @@ const ExperienceCard = ({
       <Card variant="elevated" className="h-full">
         <CardContent className="flex h-full flex-col gap-md pt-lg">
           <StarRating rating={t.number(`${prefix}.rating`)} />
-          <blockquote className="flex-1 font-serif text-lg leading-relaxed text-foreground">
+          <blockquote className="flex-1 text-lg leading-relaxed text-foreground">
             “{t(`${prefix}.quote`)}”
           </blockquote>
           <div>
@@ -75,9 +75,7 @@ export const GuestExperiencesSection = ({ locale }: GuestExperiencesSectionProps
             visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
-          <h2 className="font-serif text-3xl text-foreground md:text-4xl">
-            {t('home.experiences.title')}
-          </h2>
+          <h2 className="text-3xl text-foreground md:text-4xl">{t('home.experiences.title')}</h2>
           <p className="mt-sm text-muted-foreground">{t('home.experiences.subtitle')}</p>
         </div>
 

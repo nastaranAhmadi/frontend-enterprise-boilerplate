@@ -26,9 +26,7 @@ export const GallerySection = ({ locale }: GallerySectionProps) => {
             visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
-          <h2 className="font-serif text-3xl text-foreground md:text-4xl">
-            {t('home.gallery.title')}
-          </h2>
+          <h2 className="text-3xl text-foreground md:text-4xl">{t('home.gallery.title')}</h2>
           <p className="mt-sm text-muted-foreground">{t('home.gallery.subtitle')}</p>
         </div>
 

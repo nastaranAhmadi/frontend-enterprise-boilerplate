@@ -46,9 +46,13 @@
  * Default palette: UI Library "Laboratory"
  * Neutral documentation chrome — Storybook and shared components.
  * Apps override via [data-app='…'] after this file.
+ *
+ * Do not use bare `[data-theme='light'|'dark']` here: DesignSystemProvider sets
+ * `data-theme` on an inner div without `data-app`, which would re-apply Laboratory
+ * colors and wipe app overrides for everything inside the provider (while portals
+ * to `body` would keep the app palette — desktop vs mobile mismatch).
  */
 :root,
-[data-theme='light'],
 [data-theme='light'][data-app='ui'] {
   --color-background: #f8fafc;
   --color-surface: #ffffff;
@@ -81,7 +85,7 @@
   --color-overlay: rgb(15 23 42 / 0.45);
 }
 
-[data-theme='dark'],
+:root[data-theme='dark'],
 [data-theme='dark'][data-app='ui'] {
   --color-background: #0b1220;
   --color-surface: #141c2b;

@@ -4,4 +4,7 @@ export type {
   DropdownItemProps,
   DropdownLinkProps,
   DropdownProps,
+  DropdownTrigger,
+  DropdownTriggerRenderFn,
+  DropdownTriggerRenderProps,
 } from './Dropdown.types';

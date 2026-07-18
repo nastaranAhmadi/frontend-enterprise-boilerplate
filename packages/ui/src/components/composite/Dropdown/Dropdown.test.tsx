@@ -154,6 +154,20 @@ describe('Dropdown', () => {
     expect(profile).toHaveFocus();
   });
 
+  it('supports a render-prop trigger that receives open state', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <Dropdown trigger={({ open }) => <Button>Account {open ? 'open' : 'closed'}</Button>}>
+        <DropdownItem>Profile</DropdownItem>
+      </Dropdown>,
+    );
+
+    expect(screen.getByRole('button', { name: 'Account closed' })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Account closed' }));
+    expect(screen.getByRole('button', { name: 'Account open' })).toBeInTheDocument();
+  });
+
   it('opens on hover when openOnHover is enabled', async () => {
     const user = userEvent.setup();
 

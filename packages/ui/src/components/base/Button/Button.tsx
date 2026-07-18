@@ -8,9 +8,9 @@ import {
 } from './Button.styles';
 import type { ButtonProps } from './Button.types';
 
-const LoadingSlot = ({ loading }: { loading?: boolean }) => (
+const LoadingSlot = () => (
   <span aria-hidden="true" className={LOADING_SLOT_CLASS}>
-    {loading ? <span className={LOADING_SPINNER_CLASS} /> : null}
+    <span className={LOADING_SPINNER_CLASS} />
   </span>
 );
 
@@ -51,7 +51,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
       onClick={onClick}
       {...buttonProps}
     >
-      <LoadingSlot loading={loading} />
+      {loading ? <LoadingSlot /> : null}
       {renderIcon(startIcon, iconClassName)}
       {children}
       {renderIcon(endIcon, iconClassName)}

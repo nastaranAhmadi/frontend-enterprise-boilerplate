@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class', '[data-theme="dark"]'],
+  safelist: ['animate-loading-bounce', 'animate-loading-pulse-dot', 'animate-loading-grid-pulse'],
   theme: {
     extend: {
       colors: {
@@ -99,6 +100,25 @@ module.exports = {
         default: 'var(--easing-default)',
         in: 'var(--easing-in)',
         out: 'var(--easing-out)',
+      },
+      keyframes: {
+        'loading-bounce': {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-35%)' },
+        },
+        'loading-pulse-dot': {
+          '0%, 100%': { opacity: '0.35', transform: 'scale(0.85)' },
+          '50%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'loading-grid-pulse': {
+          '0%, 100%': { opacity: '0.45', transform: 'scale(0.92)' },
+          '50%': { opacity: '1', transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        'loading-bounce': 'loading-bounce 0.7s ease-in-out infinite',
+        'loading-pulse-dot': 'loading-pulse-dot 1s ease-in-out infinite',
+        'loading-grid-pulse': 'loading-grid-pulse 1.1s ease-in-out infinite',
       },
       screens: {
         sm: '640px',

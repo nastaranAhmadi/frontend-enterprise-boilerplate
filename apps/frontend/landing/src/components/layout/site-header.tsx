@@ -21,7 +21,7 @@ export const SiteHeader = ({ locale }: SiteHeaderProps) => {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-md px-md py-md">
         <Link
           href={buildLocalizedPath(locale, 'home')}
-          className="font-serif text-xl tracking-[0.18em] text-foreground"
+          className="text-xl tracking-[0.18em] text-foreground"
         >
           {t('common.siteName')}
         </Link>

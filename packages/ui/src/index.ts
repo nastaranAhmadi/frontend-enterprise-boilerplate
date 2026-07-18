@@ -139,6 +139,9 @@ export type {
   DropdownItemProps,
   DropdownLinkProps,
   DropdownProps,
+  DropdownTrigger,
+  DropdownTriggerRenderFn,
+  DropdownTriggerRenderProps,
 } from './components/composite/Dropdown';
 export { Dropdown, DropdownItem, DropdownLink } from './components/composite/Dropdown';
 export type { FileInputFieldProps } from './components/composite/FileInputField';

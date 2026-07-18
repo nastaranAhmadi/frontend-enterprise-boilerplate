@@ -33,15 +33,11 @@ export const PhilosophySection = ({ locale }: PhilosophySectionProps) => {
           />
         </div>
         <div>
-          <h2 className="font-serif text-3xl text-foreground md:text-4xl">
-            {t('home.philosophy.title')}
-          </h2>
+          <h2 className="text-3xl text-foreground md:text-4xl">{t('home.philosophy.title')}</h2>
           <p className="mt-md text-lg leading-relaxed text-muted-foreground">
             {t('home.philosophy.body')}
           </p>
-          <p className="mt-lg font-serif text-xl italic text-secondary">
-            {t('home.philosophy.quote')}
-          </p>
+          <p className="mt-lg text-xl italic text-secondary">{t('home.philosophy.quote')}</p>
         </div>
       </div>
     </section>

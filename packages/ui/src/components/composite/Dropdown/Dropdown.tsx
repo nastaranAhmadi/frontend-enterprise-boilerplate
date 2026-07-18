@@ -1,10 +1,12 @@
 import {
+  type AriaAttributes,
   cloneElement,
   createContext,
   forwardRef,
   isValidElement,
   type KeyboardEvent as ReactKeyboardEvent,
   type MouseEvent as ReactMouseEvent,
+  type ReactElement,
   useCallback,
   useContext,
   useEffect,
@@ -20,6 +22,21 @@ import {
   getDropdownRootClassName,
 } from './Dropdown.styles';
 import type { DropdownItemProps, DropdownLinkProps, DropdownProps } from './Dropdown.types';
+
+type DropdownTriggerElementProps = {
+  disabled?: boolean;
+  onClick?: (event: ReactMouseEvent<HTMLElement>) => void;
+} & Pick<AriaAttributes, 'aria-expanded' | 'aria-haspopup' | 'aria-controls'>;
+
+type DropdownTriggerNode = ReactElement | ((props: { open: boolean }) => ReactElement);
+
+const resolveDropdownTrigger = (trigger: DropdownTriggerNode, open: boolean): ReactElement => {
+  if (typeof trigger === 'function') {
+    return trigger({ open });
+  }
+
+  return trigger;
+};
 
 interface DropdownContextValue {
   size?: DropdownProps['size'];
@@ -205,16 +222,16 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(function Dropd
     }
   };
 
-  const triggerElement = isValidElement(trigger)
-    ? cloneElement(trigger, {
+  const resolvedTrigger = resolveDropdownTrigger(trigger, isOpen);
+
+  const triggerElement = isValidElement<DropdownTriggerElementProps>(resolvedTrigger)
+    ? cloneElement(resolvedTrigger, {
         'aria-expanded': isOpen,
         'aria-haspopup': 'menu',
         'aria-controls': isOpen ? menuId : undefined,
-        disabled: disabled || (trigger.props as { disabled?: boolean }).disabled,
+        disabled: Boolean(disabled || resolvedTrigger.props.disabled),
         onClick: (event: ReactMouseEvent<HTMLElement>) => {
-          (trigger.props as { onClick?: (event: ReactMouseEvent<HTMLElement>) => void }).onClick?.(
-            event,
-          );
+          resolvedTrigger.props.onClick?.(event);
           if (!disabled) {
             if (isOpen) {
               closeMenu();
@@ -223,8 +240,8 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(function Dropd
             }
           }
         },
-      } as Record<string, unknown>)
-    : trigger;
+      })
+    : resolvedTrigger;
 
   const hoverHandlers = openOnHover
     ? {

@@ -18,9 +18,7 @@ export const VisitUsSection = ({ locale }: VisitUsSectionProps) => {
     >
       <div className="mx-auto grid max-w-6xl gap-xl lg:grid-cols-2">
         <div>
-          <h2 className="font-serif text-3xl text-foreground md:text-4xl">
-            {t('home.visit.title')}
-          </h2>
+          <h2 className="text-3xl text-foreground md:text-4xl">{t('home.visit.title')}</h2>
           <dl className="mt-lg space-y-md text-foreground">
             <div>
               <dt className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">

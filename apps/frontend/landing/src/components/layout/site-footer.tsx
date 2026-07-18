@@ -15,9 +15,7 @@ export const SiteFooter = ({ locale }: SiteFooterProps) => {
   return (
     <footer className="mt-auto border-t border-border bg-background">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-lg px-md py-xl text-center">
-        <p className="font-serif text-lg tracking-[0.2em] text-foreground">
-          {t('common.siteName')}
-        </p>
+        <p className="text-lg tracking-[0.2em] text-foreground">{t('common.siteName')}</p>
         <nav aria-label="Footer">
           <ul className="flex flex-wrap justify-center gap-md">
             <li>

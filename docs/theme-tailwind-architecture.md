@@ -28,13 +28,14 @@ This monorepo uses a token-first architecture:
 ## 2) Where theme definitions live
 
 - Default palette (**UI Library — Laboratory**) lives in `packages/theme/themes.css`
-- `:root` / `[data-theme='light']` and `[data-theme='dark']`
+- `:root` (light default) / `:root[data-theme='dark']` and `[data-theme][data-app='ui']`
 - Apps set `data-app` on `<html>` and load override CSS **after** the base theme
+- Avoid bare `[data-theme='light'|'dark']` in the base theme — it fights app overrides on `DesignSystemProvider`
 
 | App                    | `data-app`  | Palette                            | Override file                                          |
 | ---------------------- | ----------- | ---------------------------------- | ------------------------------------------------------ |
 | Storybook / UI         | `ui`        | Laboratory (teal docs)             | default in `themes.css`                                |
-| Landing                | `landing`   | Publisher (blue + cyan)            | `apps/frontend/landing/src/styles/theme-overrides.css` |
+| Landing                | `landing`   | SHINSEI (sage + teal)              | `apps/frontend/landing/src/styles/theme-overrides.css` |
 | Dashboard (user panel) | `dashboard` | My space (indigo + teal)           | `apps/frontend/dashboard/src/theme-overrides.css`      |
 | Admin                  | `admin`     | Control plane (slate + red signal) | `apps/frontend/admin/src/theme-overrides.css`          |
 

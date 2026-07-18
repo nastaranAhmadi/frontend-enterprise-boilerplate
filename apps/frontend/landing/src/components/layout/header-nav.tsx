@@ -16,6 +16,30 @@ type HeaderNavProps = {
   locale: Locale;
 };
 
+type NavDropdownTriggerProps = {
+  open: boolean;
+};
+
+const NavChevron = ({ open }: { open: boolean }) => (
+  <svg
+    aria-hidden="true"
+    viewBox="0 0 16 16"
+    className={[
+      'h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform duration-normal',
+      open ? 'rotate-180' : 'rotate-0',
+    ].join(' ')}
+  >
+    <path
+      d="M4.5 6.25 8 9.75l3.5-3.5"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 export const HeaderNav = ({ locale }: HeaderNavProps) => {
   const t = createT(locale);
 
@@ -26,11 +50,12 @@ export const HeaderNav = ({ locale }: HeaderNavProps) => {
         openOnHover
         size="large"
         menuClassName="flex max-h-[min(80vh,40rem)] min-w-[min(92vw,48rem)] w-[min(92vw,48rem)] flex-col overflow-hidden p-0"
-        trigger={
-          <Button type="button" variant="ghost" size="small" className="font-medium">
+        trigger={({ open }: NavDropdownTriggerProps) => (
+          <Button type="button" variant="ghost" size="small" className="gap-xs font-medium">
             {t('header.links.menu')}
+            <NavChevron open={open} />
           </Button>
-        }
+        )}
       >
         <MenuNavPanel locale={locale} />
       </Dropdown>
@@ -40,11 +65,12 @@ export const HeaderNav = ({ locale }: HeaderNavProps) => {
         openOnHover
         size="large"
         menuClassName="min-w-[min(92vw,32rem)] w-[min(92vw,32rem)] p-0"
-        trigger={
-          <Button type="button" variant="ghost" size="small" className="font-medium">
+        trigger={({ open }: NavDropdownTriggerProps) => (
+          <Button type="button" variant="ghost" size="small" className="gap-xs font-medium">
             {t('header.links.blog')}
+            <NavChevron open={open} />
           </Button>
-        }
+        )}
       >
         <BlogNavPanel locale={locale} />
       </Dropdown>
@@ -71,11 +97,12 @@ export const HeaderNav = ({ locale }: HeaderNavProps) => {
       <Dropdown
         align="start"
         openOnHover
-        trigger={
-          <Button type="button" variant="ghost" size="small" className="font-medium">
+        trigger={({ open }: NavDropdownTriggerProps) => (
+          <Button type="button" variant="ghost" size="small" className="gap-xs font-medium">
             {t('header.links.about')}
+            <NavChevron open={open} />
           </Button>
-        }
+        )}
       >
         <DropdownLink href={`${buildLocalizedPath(locale, 'about')}#philosophy`}>
           {t('header.about.philosophy')}

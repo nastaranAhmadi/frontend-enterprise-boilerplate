@@ -56,7 +56,7 @@ const SeasonalCard = ({
           />
         </div>
         <CardHeader>
-          <CardTitle className="font-serif text-xl">{t(`${prefix}.name`)}</CardTitle>
+          <CardTitle className="text-xl">{t(`${prefix}.name`)}</CardTitle>
           <CardDescription>{t(`${prefix}.description`)}</CardDescription>
         </CardHeader>
         <CardContent>
@@ -89,9 +89,7 @@ export const SeasonalSection = ({ locale }: SeasonalSectionProps) => {
             visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
-          <h2 className="font-serif text-3xl text-foreground md:text-4xl">
-            {t('home.seasonal.title')}
-          </h2>
+          <h2 className="text-3xl text-foreground md:text-4xl">{t('home.seasonal.title')}</h2>
           <p className="mt-sm text-muted-foreground">{t('home.seasonal.subtitle')}</p>
         </div>
 

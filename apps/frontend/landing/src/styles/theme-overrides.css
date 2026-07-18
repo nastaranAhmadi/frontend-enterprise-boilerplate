@@ -1,8 +1,9 @@
 /**
  * Landing — "SHINSEI"
- * Warm canvas, sage primary, muted botanical secondary.
+ * Warm canvas, sage primary (#3d5248), teal secondary (#0f766e).
  */
 :root[data-app='landing'],
+:root[data-app='landing'][data-theme='light'],
 [data-theme='light'][data-app='landing'] {
   --color-background: #f7f6f2;
   --color-surface: #fdfcf9;
@@ -15,8 +16,8 @@
   --color-primary: #3d5248;
   --color-primary-foreground: #f7f6f2;
   --color-primary-muted: #d9e4dc;
-  --color-secondary: #7a8f78;
-  --color-secondary-foreground: #f7f6f2;
+  --color-secondary: #0f766e;
+  --color-secondary-foreground: #ffffff;
   --color-accent: #eef1ea;
   --color-accent-foreground: #2f4038;
   --color-success: #4a7c59;
@@ -47,8 +48,8 @@
   --color-primary: #8faa98;
   --color-primary-foreground: #121816;
   --color-primary-muted: #2f4038;
-  --color-secondary: #a3b59f;
-  --color-secondary-foreground: #121816;
+  --color-secondary: #2dd4bf;
+  --color-secondary-foreground: #042f2e;
   --color-accent: #2a332f;
   --color-accent-foreground: #dce5df;
   --color-success: #6fbf8b;
