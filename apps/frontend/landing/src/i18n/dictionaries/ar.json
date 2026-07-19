@@ -411,8 +411,8 @@
     "favorited": "إزالة من المفضلة",
     "compare": "قارن",
     "compareComingSoon": "المقارنة قادمة قريباً",
-    "addToCart": "أضف",
-    "added": "تمت الإضافة",
+    "addToCart": "أضف إلى الطلب",
+    "added": "أُضيف إلى الطلب",
     "nutritionLabel": "التغذية",
     "ingredientsLabel": "المكوّنات",
     "openAssistant": "افتح مساعد الطعام الذكي",
@@ -422,5 +422,125 @@
     "assistantPlaceholder": "أريد شيئاً حاراً…",
     "assistantSend": "إرسال",
     "assistantEmptyHint": "الدردشة قادمة قريباً. تصفّح القائمة حسب الفئة الآن."
+  },
+  "menuDetail": {
+    "backToMenu": "العودة إلى القائمة",
+    "showMore": "عرض المزيد",
+    "showLess": "عرض أقل",
+    "origin": "الأصل",
+    "taste": "الطعم",
+    "story": "القصة",
+    "comments": {
+      "title": "تعليقات الضيوف",
+      "empty": "لا تعليقات بعد."
+    },
+    "order": {
+      "title": "الطلب",
+      "loginTitle": "سجّل الدخول للطلب",
+      "loginBody": "سجّل الدخول لتقديم الطلب وحفظ العنوان ومتابعة الجاهزية.",
+      "loginCta": "تسجيل الدخول",
+      "steps": {
+        "prepMode": {
+          "title": "كيف تفضّله؟",
+          "description": "جاهز من المطبخ أو طقم مكونات نيئة"
+        },
+        "quantity": {
+          "title": "الكمية",
+          "description": "كم حصة"
+        },
+        "serviceMode": {
+          "title": "الخدمة",
+          "description": "تناول في المكان أو سفري"
+        },
+        "seating": {
+          "title": "الجلوس",
+          "description": "احجز طاولة أو انتظر مقعدًا"
+        },
+        "reservation": {
+          "title": "الحجز",
+          "description": "عدد الأشخاص والوقت المفضل"
+        },
+        "pickupMode": {
+          "title": "سفري",
+          "description": "استلم بنفسك أو أرسل إلى عنوان"
+        },
+        "address": {
+          "title": "العنوان",
+          "description": "إلى أين نوصّل"
+        },
+        "branch": {
+          "title": "الفرع",
+          "description": "اختر مطبخ شينسي"
+        },
+        "payment": {
+          "title": "الدفع",
+          "description": "راجع وادفع"
+        },
+        "receipt": {
+          "title": "الإيصال",
+          "description": "تم تأكيد الطلب"
+        }
+      },
+      "prepModes": {
+        "cooked": "مطهو",
+        "raw": "طقم نيء"
+      },
+      "prepHints": {
+        "cooked": "يُحضَّر في مطبخنا وجاهز للأكل",
+        "raw": "اشترِ المكونات واطبخ في البيت"
+      },
+      "serviceModes": {
+        "dineIn": "في المكان",
+        "takeaway": "سفري"
+      },
+      "seating": {
+        "reserve": "احجز طاولة",
+        "wait": "انتظر مقعدًا"
+      },
+      "pickupModes": {
+        "self": "أستلمه بنفسي",
+        "send": "أرسلوه لي"
+      },
+      "quantityLabel": "الكمية",
+      "decreaseQty": "تقليل الكمية",
+      "increaseQty": "زيادة الكمية",
+      "partySizeLabel": "عدد الأشخاص",
+      "reserveTimeLabel": "الوقت المفضل",
+      "phoneLabel": "الهاتف",
+      "addressLineLabel": "عنوان الشارع",
+      "cityLabel": "المدينة",
+      "postalLabel": "الرمز البريدي",
+      "noteLabel": "ملاحظة (اختياري)",
+      "branchLabel": "الفرع",
+      "paymentMethods": {
+        "card": "بطاقة",
+        "wallet": "محفظة"
+      },
+      "payNow": "ادفع الآن",
+      "continue": "متابعة",
+      "back": "رجوع",
+      "summaryDish": "الطبق",
+      "summaryPrep": "التحضير",
+      "summaryQty": "الكمية",
+      "summaryService": "الخدمة",
+      "summarySeating": "الجلوس",
+      "summaryPickup": "سفري",
+      "summaryBranch": "الفرع",
+      "summaryAddress": "العنوان",
+      "summaryPhone": "الهاتف",
+      "summaryPayment": "الدفع",
+      "receiptTitle": "تم كل شيء",
+      "receiptOrderId": "طلب {id}",
+      "readinessLabel": "جاهز خلال حوالي",
+      "readinessMinutes": "{minutes} د",
+      "branchLocationLabel": "موقع الفرع",
+      "deliveryStateLabel": "حالة التوصيل",
+      "deliveryStates": {
+        "packing": "تجهيز الطقم",
+        "onTheWay": "في الطريق",
+        "delivered": "تم التسليم"
+      },
+      "validationRequired": "يرجى إكمال الحقول المطلوبة."
+    }
   }
 }

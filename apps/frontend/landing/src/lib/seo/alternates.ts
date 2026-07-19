@@ -12,6 +12,8 @@ export const buildCanonicalUrl = (locale: Locale, route: AppRouteKey): string =>
 export const buildLocalizedBlogPostPath = (locale: Locale, slug: string): string =>
   `/${locale}/blog/${slug}`;
 
+export { buildLocalizedMenuItemPath } from '@/config/routes';
+
 export const buildLanguageAlternates = (
   locale: Locale,
   pathname: string,

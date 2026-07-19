@@ -411,8 +411,8 @@
     "favorited": "Remove from favorites",
     "compare": "Compare",
     "compareComingSoon": "Compare coming soon",
-    "addToCart": "Add",
-    "added": "Added",
+    "addToCart": "Order",
+    "added": "Added to order",
     "nutritionLabel": "Nutrition",
     "ingredientsLabel": "Ingredients",
     "openAssistant": "Open AI food assistant",
@@ -422,5 +422,125 @@
     "assistantPlaceholder": "I want something spicy…",
     "assistantSend": "Send",
     "assistantEmptyHint": "Chat is coming soon. For now, browse the menu by category."
+  },
+  "menuDetail": {
+    "backToMenu": "Back to menu",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "origin": "Origin",
+    "taste": "Taste",
+    "story": "Story",
+    "comments": {
+      "title": "Guest comments",
+      "empty": "No comments yet."
+    },
+    "order": {
+      "title": "Order",
+      "loginTitle": "Sign in to order",
+      "loginBody": "Log in to place an order, save your address, and track readiness.",
+      "loginCta": "Log in",
+      "steps": {
+        "prepMode": {
+          "title": "How do you want it?",
+          "description": "Kitchen-prepared or raw ingredients kit"
+        },
+        "quantity": {
+          "title": "Quantity",
+          "description": "How many portions"
+        },
+        "serviceMode": {
+          "title": "Service",
+          "description": "Dine-in or takeaway"
+        },
+        "seating": {
+          "title": "Seating",
+          "description": "Reserve a table or wait for a seat"
+        },
+        "reservation": {
+          "title": "Reservation",
+          "description": "Party size and preferred time"
+        },
+        "pickupMode": {
+          "title": "Takeaway",
+          "description": "Collect yourself or send to an address"
+        },
+        "address": {
+          "title": "Address",
+          "description": "Where should we deliver"
+        },
+        "branch": {
+          "title": "Branch",
+          "description": "Pick your SHINSEI kitchen"
+        },
+        "payment": {
+          "title": "Payment",
+          "description": "Review and pay"
+        },
+        "receipt": {
+          "title": "Receipt",
+          "description": "Order confirmed"
+        }
+      },
+      "prepModes": {
+        "cooked": "Cooked",
+        "raw": "Raw kit"
+      },
+      "prepHints": {
+        "cooked": "Prepared in our kitchen, ready to eat",
+        "raw": "Buy the ingredients and cook at home"
+      },
+      "serviceModes": {
+        "dineIn": "Dine-in",
+        "takeaway": "Takeaway"
+      },
+      "seating": {
+        "reserve": "Reserve a table",
+        "wait": "Wait for a seat"
+      },
+      "pickupModes": {
+        "self": "I’ll take it myself",
+        "send": "Send it for me"
+      },
+      "quantityLabel": "Quantity",
+      "decreaseQty": "Decrease quantity",
+      "increaseQty": "Increase quantity",
+      "partySizeLabel": "Party size",
+      "reserveTimeLabel": "Preferred time",
+      "phoneLabel": "Phone",
+      "addressLineLabel": "Street address",
+      "cityLabel": "City",
+      "postalLabel": "Postal code",
+      "noteLabel": "Note (optional)",
+      "branchLabel": "Branch",
+      "paymentMethods": {
+        "card": "Card",
+        "wallet": "Wallet"
+      },
+      "payNow": "Pay now",
+      "continue": "Continue",
+      "back": "Back",
+      "summaryDish": "Dish",
+      "summaryPrep": "Prep",
+      "summaryQty": "Quantity",
+      "summaryService": "Service",
+      "summarySeating": "Seating",
+      "summaryPickup": "Takeaway",
+      "summaryBranch": "Branch",
+      "summaryAddress": "Address",
+      "summaryPhone": "Phone",
+      "summaryPayment": "Payment",
+      "receiptTitle": "You’re all set",
+      "receiptOrderId": "Order {id}",
+      "readinessLabel": "Ready in about",
+      "readinessMinutes": "{minutes} min",
+      "branchLocationLabel": "Branch location",
+      "deliveryStateLabel": "Delivery status",
+      "deliveryStates": {
+        "packing": "Packing your kit",
+        "onTheWay": "On the way",
+        "delivered": "Delivered"
+      },
+      "validationRequired": "Please complete the required fields."
+    }
   }
 }

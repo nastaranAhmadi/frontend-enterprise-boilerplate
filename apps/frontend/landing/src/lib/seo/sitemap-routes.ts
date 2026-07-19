@@ -1,9 +1,15 @@
 import { getBlogPost } from '@/application/blog/get-blog-post';
 import { getBlogPostSlugs } from '@/application/blog/get-blog-posts';
+import { getMenuItemDetail } from '@/application/menu/get-menu-item-detail';
 import { type AppRouteKey, buildLocalizedPath } from '@/config/routes';
 import { locales } from '@/config/site';
+import { mockMenuDetailSlug } from '@/repositories/menu/menu-detail.types';
 
-import { buildAbsoluteUrl, buildLocalizedBlogPostPath } from './alternates';
+import {
+  buildAbsoluteUrl,
+  buildLocalizedBlogPostPath,
+  buildLocalizedMenuItemPath,
+} from './alternates';
 
 export type SitemapRouteKey = AppRouteKey;
 
@@ -64,6 +70,16 @@ export const getSitemapEntries = async (): Promise<SitemapEntry[]> => {
         lastModified: page ? new Date(page.lastModified) : new Date(),
         changeFrequency: 'monthly',
         priority: 0.6,
+      });
+    }
+
+    const menuItem = await getMenuItemDetail(locale, mockMenuDetailSlug);
+    if (menuItem) {
+      entries.push({
+        url: buildAbsoluteUrl(buildLocalizedMenuItemPath(locale, mockMenuDetailSlug)),
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.7,
       });
     }
   }

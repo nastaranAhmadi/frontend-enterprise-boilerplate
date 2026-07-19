@@ -10,13 +10,14 @@ import {
   Flame,
   Heart,
   type LucideIcon,
-  Plus,
+  ShoppingCart,
   Sparkles,
   Star,
   Timer,
 } from 'lucide-react';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
+import { type MouseEvent, useEffect, useRef, useState } from 'react';
 
 import type { Locale } from '@/config/site';
 import type { MenuItem, MenuLabel } from '@/repositories/menu/menu.types';
@@ -56,6 +57,9 @@ const LABEL_ICONS: Record<MenuLabel, LucideIcon> = {
 const LABEL_CHIP_CLASS =
   'inline-flex items-center gap-1 rounded-full border border-border bg-surface px-2.5 py-1 text-[0.7rem] font-medium text-foreground';
 
+/** Temporary shared detail slug until per-item routes exist. */
+const DETAIL_SLUG = '1';
+
 /**
  * Sample-inspired card: circular dish tucked into the top-end corner
  * (clipped by the card edge), open white space for tags + copy.
@@ -69,6 +73,7 @@ export const MenuFoodCard = ({
 }: MenuFoodCardProps) => {
   const [justAdded, setJustAdded] = useState(false);
   const addedTimeoutRef = useRef<number | null>(null);
+  const detailHref = `/${locale}/menu/${DETAIL_SLUG}` as const;
 
   useEffect(
     () => () => {
@@ -96,7 +101,9 @@ export const MenuFoodCard = ({
   const favoriteLabel = favorited ? labels.favorited : labels.favorite;
   const ingredientLine = item.ingredients.slice(0, 4).join(' · ');
 
-  const handleAdd = () => {
+  const handleAdd = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
     if (addedTimeoutRef.current !== null) {
       window.clearTimeout(addedTimeoutRef.current);
     }
@@ -109,6 +116,12 @@ export const MenuFoodCard = ({
 
   return (
     <article className="group relative flex h-full min-w-0 flex-col overflow-hidden rounded-[1.75rem] border border-border-subtle bg-surface-elevated shadow-[0_12px_40px_-24px_rgba(28,36,32,0.35)] transition-[transform,box-shadow] duration-500 hover:-translate-y-1 hover:shadow-[0_22px_50px_-28px_rgba(28,36,32,0.45)] motion-reduce:transform-none animate-fade-in-up">
+      <Link
+        href={detailHref}
+        className="absolute inset-0 z-[1] rounded-[1.75rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        aria-label={item.name}
+      />
+
       <div
         className="pointer-events-none absolute -end-10 -top-10 z-0 h-[13.5rem] w-[13.5rem] overflow-hidden rounded-full bg-muted shadow-[0_8px_28px_-12px_rgba(28,36,32,0.45)] sm:h-[15rem] sm:w-[15rem]"
         aria-hidden="true"
@@ -118,9 +131,9 @@ export const MenuFoodCard = ({
         </div>
       </div>
 
-      <div className="relative z-10 flex min-h-0 flex-1 flex-col p-5">
+      <div className="pointer-events-none relative z-10 flex min-h-0 flex-1 flex-col p-5">
         <div className="flex min-h-[8.5rem] flex-col justify-between sm:min-h-[9.5rem]">
-          <div className="flex max-w-[52%] items-start justify-start gap-1">
+          <div className="pointer-events-auto relative z-[2] flex max-w-[52%] items-start justify-start gap-1">
             <Tooltip title={favoriteLabel} arrow placement="top">
               <Button
                 type="button"
@@ -129,7 +142,9 @@ export const MenuFoodCard = ({
                 aria-pressed={favorited}
                 aria-label={favoriteLabel}
                 className="h-9 w-9 rounded-full px-0 text-muted-foreground hover:bg-muted hover:text-foreground"
-                onClick={() => {
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
                   onFavoriteToggle(item.id);
                 }}
               >
@@ -211,12 +226,16 @@ export const MenuFoodCard = ({
               </span>
             </li>
             {item.spicyLevel > 0 ? (
-              <li>
+              <li className="pointer-events-auto relative z-[2]">
                 <Tooltip title={spicyLabel} arrow placement="top">
                   <button
                     type="button"
                     aria-label={spicyLabel}
                     className="inline-flex items-center gap-1.5 rounded-full bg-error-muted px-2.5 py-1.5 text-xs font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                    }}
                   >
                     <span className="inline-flex gap-0.5" aria-hidden="true">
                       {[1, 2, 3].map((dot) => (
@@ -243,10 +262,11 @@ export const MenuFoodCard = ({
               type="button"
               variant="filled"
               size="small"
-              className="gap-1.5 rounded-full ps-3 pe-4"
+              iconSize="small"
+              className="pointer-events-auto gap-1.5 rounded-full px-4"
               onClick={handleAdd}
+              startIcon={<ShoppingCart aria-hidden="true" strokeWidth={1.75} />}
             >
-              <Plus aria-hidden="true" className="h-4 w-4 shrink-0" strokeWidth={2.25} />
               {justAdded ? labels.added : labels.addToCart}
             </Button>
           </div>

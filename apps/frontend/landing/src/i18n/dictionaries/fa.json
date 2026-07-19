@@ -411,8 +411,8 @@
     "favorited": "حذف از علاقه‌مندی‌ها",
     "compare": "مقایسه",
     "compareComingSoon": "مقایسه به‌زودی",
-    "addToCart": "افزودن",
-    "added": "افزوده شد",
+    "addToCart": "افزودن به سفارش",
+    "added": "به سفارش اضافه شد",
     "nutritionLabel": "ارزش غذایی",
     "ingredientsLabel": "مواد اولیه",
     "openAssistant": "باز کردن دستیار هوش مصنوعی غذا",
@@ -422,5 +422,125 @@
     "assistantPlaceholder": "چیزی تند می‌خواهم…",
     "assistantSend": "ارسال",
     "assistantEmptyHint": "چت به‌زودی می‌آید. فعلاً منو را بر اساس دسته‌بندی ببینید."
+  },
+  "menuDetail": {
+    "backToMenu": "بازگشت به منو",
+    "showMore": "نمایش بیشتر",
+    "showLess": "نمایش کمتر",
+    "origin": "خاستگاه",
+    "taste": "طعم",
+    "story": "داستان",
+    "comments": {
+      "title": "نظر مهمان‌ها",
+      "empty": "هنوز نظری نیست."
+    },
+    "order": {
+      "title": "سفارش",
+      "loginTitle": "برای سفارش وارد شوید",
+      "loginBody": "وارد شوید تا سفارش دهید، آدرس ذخیره شود و آماده‌سازی را دنبال کنید.",
+      "loginCta": "ورود",
+      "steps": {
+        "prepMode": {
+          "title": "چطور می‌خواهید؟",
+          "description": "آماده از آشپزخانه یا بسته مواد خام"
+        },
+        "quantity": {
+          "title": "تعداد",
+          "description": "چند پرس"
+        },
+        "serviceMode": {
+          "title": "سرویس",
+          "description": "صرف در محل یا بیرون‌بر"
+        },
+        "seating": {
+          "title": "نشستن",
+          "description": "رزرو میز یا انتظار برای صندلی"
+        },
+        "reservation": {
+          "title": "رزرو",
+          "description": "تعداد نفرات و زمان ترجیحی"
+        },
+        "pickupMode": {
+          "title": "بیرون‌بر",
+          "description": "خودتان بردارید یا ارسال شود"
+        },
+        "address": {
+          "title": "آدرس",
+          "description": "کجا تحویل دهیم"
+        },
+        "branch": {
+          "title": "شعبه",
+          "description": "آشپزخانه شینسی را انتخاب کنید"
+        },
+        "payment": {
+          "title": "پرداخت",
+          "description": "بازبینی و پرداخت"
+        },
+        "receipt": {
+          "title": "رسید",
+          "description": "سفارش ثبت شد"
+        }
+      },
+      "prepModes": {
+        "cooked": "پخته",
+        "raw": "بسته خام"
+      },
+      "prepHints": {
+        "cooked": "در آشپزخانه ما آماده می‌شود",
+        "raw": "مواد را بخرید و در خانه بپزید"
+      },
+      "serviceModes": {
+        "dineIn": "صرف در محل",
+        "takeaway": "بیرون‌بر"
+      },
+      "seating": {
+        "reserve": "رزرو میز",
+        "wait": "انتظار برای صندلی"
+      },
+      "pickupModes": {
+        "self": "خودم برمی‌دارم",
+        "send": "برایم بفرستید"
+      },
+      "quantityLabel": "تعداد",
+      "decreaseQty": "کاهش تعداد",
+      "increaseQty": "افزایش تعداد",
+      "partySizeLabel": "تعداد نفرات",
+      "reserveTimeLabel": "زمان ترجیحی",
+      "phoneLabel": "تلفن",
+      "addressLineLabel": "آدرس خیابان",
+      "cityLabel": "شهر",
+      "postalLabel": "کد پستی",
+      "noteLabel": "یادداشت (اختیاری)",
+      "branchLabel": "شعبه",
+      "paymentMethods": {
+        "card": "کارت",
+        "wallet": "کیف پول"
+      },
+      "payNow": "پرداخت",
+      "continue": "ادامه",
+      "back": "قبلی",
+      "summaryDish": "غذا",
+      "summaryPrep": "آماده‌سازی",
+      "summaryQty": "تعداد",
+      "summaryService": "سرویس",
+      "summarySeating": "نشستن",
+      "summaryPickup": "بیرون‌بر",
+      "summaryBranch": "شعبه",
+      "summaryAddress": "آدرس",
+      "summaryPhone": "تلفن",
+      "summaryPayment": "پرداخت",
+      "receiptTitle": "سفارش شما ثبت شد",
+      "receiptOrderId": "سفارش {id}",
+      "readinessLabel": "آماده در حدود",
+      "readinessMinutes": "{minutes} دقیقه",
+      "branchLocationLabel": "محل شعبه",
+      "deliveryStateLabel": "وضعیت ارسال",
+      "deliveryStates": {
+        "packing": "در حال بسته‌بندی",
+        "onTheWay": "در مسیر",
+        "delivered": "تحویل شد"
+      },
+      "validationRequired": "لطفاً فیلدهای لازم را کامل کنید."
+    }
   }
 }

@@ -411,8 +411,8 @@
     "favorited": "Aus Favoriten entfernen",
     "compare": "Vergleichen",
     "compareComingSoon": "Vergleich kommt bald",
-    "addToCart": "Hinzufügen",
-    "added": "Hinzugefügt",
+    "addToCart": "Zur Bestellung",
+    "added": "Zur Bestellung hinzugefügt",
     "nutritionLabel": "Nährwerte",
     "ingredientsLabel": "Zutaten",
     "openAssistant": "KI-Essensassistent öffnen",
@@ -422,5 +422,125 @@
     "assistantPlaceholder": "Ich möchte etwas Scharfes…",
     "assistantSend": "Senden",
     "assistantEmptyHint": "Chat kommt bald. Stöbern Sie vorerst nach Kategorie."
+  },
+  "menuDetail": {
+    "backToMenu": "Zurück zur Speisekarte",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen",
+    "origin": "Herkunft",
+    "taste": "Geschmack",
+    "story": "Geschichte",
+    "comments": {
+      "title": "Gästekommentare",
+      "empty": "Noch keine Kommentare."
+    },
+    "order": {
+      "title": "Bestellung",
+      "loginTitle": "Zum Bestellen anmelden",
+      "loginBody": "Melde dich an, um zu bestellen, Adressen zu speichern und den Status zu verfolgen.",
+      "loginCta": "Anmelden",
+      "steps": {
+        "prepMode": {
+          "title": "Wie soll es sein?",
+          "description": "Fertig aus der Küche oder Rohzutaten-Set"
+        },
+        "quantity": {
+          "title": "Menge",
+          "description": "Wie viele Portionen"
+        },
+        "serviceMode": {
+          "title": "Service",
+          "description": "Vor Ort oder Mitnehmen"
+        },
+        "seating": {
+          "title": "Platz",
+          "description": "Tisch reservieren oder warten"
+        },
+        "reservation": {
+          "title": "Reservierung",
+          "description": "Personenanzahl und Wunschzeit"
+        },
+        "pickupMode": {
+          "title": "Mitnehmen",
+          "description": "Selbst abholen oder liefern lassen"
+        },
+        "address": {
+          "title": "Adresse",
+          "description": "Wohin liefern wir"
+        },
+        "branch": {
+          "title": "Filiale",
+          "description": "Wähle deine SHINSEI-Küche"
+        },
+        "payment": {
+          "title": "Zahlung",
+          "description": "Prüfen und bezahlen"
+        },
+        "receipt": {
+          "title": "Beleg",
+          "description": "Bestellung bestätigt"
+        }
+      },
+      "prepModes": {
+        "cooked": "Fertig",
+        "raw": "Roh-Set"
+      },
+      "prepHints": {
+        "cooked": "In unserer Küche zubereitet",
+        "raw": "Zutaten kaufen und zu Hause kochen"
+      },
+      "serviceModes": {
+        "dineIn": "Vor Ort",
+        "takeaway": "Mitnehmen"
+      },
+      "seating": {
+        "reserve": "Tisch reservieren",
+        "wait": "Auf einen Platz warten"
+      },
+      "pickupModes": {
+        "self": "Ich hole selbst ab",
+        "send": "Zu mir schicken"
+      },
+      "quantityLabel": "Menge",
+      "decreaseQty": "Menge verringern",
+      "increaseQty": "Menge erhöhen",
+      "partySizeLabel": "Personen",
+      "reserveTimeLabel": "Wunschzeit",
+      "phoneLabel": "Telefon",
+      "addressLineLabel": "Straße und Hausnummer",
+      "cityLabel": "Stadt",
+      "postalLabel": "PLZ",
+      "noteLabel": "Notiz (optional)",
+      "branchLabel": "Filiale",
+      "paymentMethods": {
+        "card": "Karte",
+        "wallet": "Wallet"
+      },
+      "payNow": "Jetzt zahlen",
+      "continue": "Weiter",
+      "back": "Zurück",
+      "summaryDish": "Gericht",
+      "summaryPrep": "Zubereitung",
+      "summaryQty": "Menge",
+      "summaryService": "Service",
+      "summarySeating": "Platz",
+      "summaryPickup": "Mitnehmen",
+      "summaryBranch": "Filiale",
+      "summaryAddress": "Adresse",
+      "summaryPhone": "Telefon",
+      "summaryPayment": "Zahlung",
+      "receiptTitle": "Alles erledigt",
+      "receiptOrderId": "Bestellung {id}",
+      "readinessLabel": "Fertig in etwa",
+      "readinessMinutes": "{minutes} Min.",
+      "branchLocationLabel": "Filialadresse",
+      "deliveryStateLabel": "Lieferstatus",
+      "deliveryStates": {
+        "packing": "Set wird gepackt",
+        "onTheWay": "Unterwegs",
+        "delivered": "Zugestellt"
+      },
+      "validationRequired": "Bitte fülle die Pflichtfelder aus."
+    }
   }
 }

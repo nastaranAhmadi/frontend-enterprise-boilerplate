@@ -18,3 +18,6 @@ export const buildLocalizedPath = (locale: Locale, route: AppRouteKey): string =
   const segment = localizedRoutes[route];
   return segment ? `/${locale}/${segment}` : `/${locale}`;
 };
+
+export const buildLocalizedMenuItemPath = (locale: Locale, slug: string): string =>
+  `/${locale}/${localizedRoutes.menu}/${slug}`;

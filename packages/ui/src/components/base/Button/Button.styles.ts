@@ -98,4 +98,10 @@ export const getIconClassName = ({
   iconSize,
   iconColor,
 }: Pick<ButtonProps, 'iconSize' | 'iconColor'>): string =>
-  joinClassNames(iconSizeClasses(iconSize), COLOR_CLASS_MAP[colorToken(iconColor)]);
+  joinClassNames(
+    'inline-flex shrink-0 items-center justify-center [&_svg]:size-[1em]',
+    iconSizeClasses(iconSize),
+    // Inherit button text color unless an explicit iconColor is set (avoids
+    // `text-primary` icons disappearing on `filled` / primary-foreground buttons).
+    iconColor ? COLOR_CLASS_MAP[colorToken(iconColor)] : 'text-current',
+  );
