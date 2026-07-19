@@ -1,12 +1,13 @@
 import 'server-only';
 
-import { blogPostsByLocale } from '@/_mocks/blog/posts';
+import { blogDetailByLocale, blogIndexByLocale } from '@/_mocks/blog/posts';
 import type { Locale } from '@/config/site';
 
 import type { BlogDatasource } from './blog.datasource';
 
 export const createMockBlogDatasource = (): BlogDatasource => ({
-  getPosts: (locale: Locale) => Promise.resolve(blogPostsByLocale[locale]),
+  getIndexPage: (locale: Locale) => Promise.resolve(blogIndexByLocale[locale]),
+  getPostSlugs: (locale: Locale) => Promise.resolve(Object.keys(blogDetailByLocale[locale])),
   getPostBySlug: (locale: Locale, slug: string) =>
-    Promise.resolve(blogPostsByLocale[locale].find((post) => post.slug === slug) ?? null),
+    Promise.resolve(blogDetailByLocale[locale][slug] ?? null),
 });

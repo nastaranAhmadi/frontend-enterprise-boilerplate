@@ -6,15 +6,17 @@ import { env } from '@/config/env';
 import type { Locale } from '@/config/site';
 
 import type { BlogDatasource } from './blog.datasource';
-import type { BlogPost } from './blog.types';
+import type { BlogPageResponse } from './blog.types';
 
 const apiClient = createApiClient({
   baseUrl: env.siteUrl,
 });
 
 export const createApiBlogDatasource = (): BlogDatasource => ({
-  getPosts: async (locale: Locale) =>
-    apiClient.request<BlogPost[]>({ path: `/api/blog?locale=${locale}` }),
+  getIndexPage: async (locale: Locale) =>
+    apiClient.request<BlogPageResponse>({ path: `/api/blog?locale=${locale}` }),
+  getPostSlugs: async (locale: Locale) =>
+    apiClient.request<string[]>({ path: `/api/blog/slugs?locale=${locale}` }),
   getPostBySlug: async (locale: Locale, slug: string) =>
-    apiClient.request<BlogPost | null>({ path: `/api/blog/${slug}?locale=${locale}` }),
+    apiClient.request<BlogPageResponse | null>({ path: `/api/blog/${slug}?locale=${locale}` }),
 });

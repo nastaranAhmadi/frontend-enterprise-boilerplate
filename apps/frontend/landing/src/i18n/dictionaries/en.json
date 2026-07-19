@@ -30,32 +30,6 @@
       "philosophy": "Our philosophy",
       "chefs": "Meet the chefs"
     },
-    "blog": {
-      "shareTaste": {
-        "title": "Share your taste",
-        "description": "Offer a formula. If chefs plate it and guests order it, you unlock future discounts."
-      },
-      "shareOrders": {
-        "title": "Share your orders",
-        "description": "Capture your table. Friends who reorder with your code earn rewards for both of you."
-      },
-      "donation": {
-        "title": "Buy 2, share 1",
-        "description": "A gentle discount on two plates — the second quietly feeds someone in need."
-      },
-      "newOnMenu": {
-        "title": "New on the menu",
-        "description": "Seasonal arrivals and chef notes from this week’s board."
-      },
-      "events": {
-        "title": "Events",
-        "description": "Counter nights, tastings, and gatherings worth clearing your calendar."
-      },
-      "heritage": {
-        "title": "Culinary heritage",
-        "description": "National dishes, their stories, and the nutrition behind each tradition."
-      }
-    },
     "menu": {
       "drinks": {
         "label": "Drinks",
@@ -269,43 +243,52 @@
     }
   },
   "blog": {
-    "title": "Blog",
-    "description": "Architecture notes and product updates from the Enterprise team.",
-    "empty": "No posts published yet.",
-    "readMore": "Read more"
+    "title": "Stories from the counter",
+    "description": "Seasonal notes, community rituals, and the quiet craft behind every plate.",
+    "empty": "No stories published yet.",
+    "readMore": "View details",
+    "backToJournal": "Back to journal"
   },
   "faq": {
-    "title": "Frequently asked questions",
-    "description": "Answers to common questions about the Enterprise landing stack and architecture.",
+    "kicker": "Guest guide",
+    "title": "Before you sit",
+    "description": "A short guide to reservations, pacing, and how evenings at SHINSEI usually unfold.",
+    "ctaTitle": "Still curious?",
+    "ctaBody": "Write to the counter — we are happy to help with dates, dietary notes, or a private tasting.",
+    "ctaLabel": "Contact us",
     "items": {
-      "stack": {
-        "question": "What technologies power this landing app?",
-        "answer": "Next.js 15 App Router, React Server Components, Tailwind CSS, and shared monorepo packages for UI, i18n, and theming."
+      "reservations": {
+        "question": "Do I need a reservation?",
+        "answer": "Counter seats are limited, so we recommend booking ahead. Walk-ins are welcome when space allows — call the same day and we will be honest about the wait."
       },
-      "i18n": {
-        "question": "How is internationalization handled?",
-        "answer": "Locale-prefixed routes with server dictionaries for RSC and @enterprise/i18n for client components. RTL layout is handled by the design system."
+      "dietary": {
+        "question": "Can you accommodate dietary needs?",
+        "answer": "Tell us when you reserve. We cook with seasonal fish and warm rice, and we can usually adapt for allergies or preferences with enough notice — some requests may reshape the omakase flow."
       },
-      "data": {
-        "question": "How does data fetching work?",
-        "answer": "Server application functions call repositories backed by injectable datasources. Mocks live in _mocks/; the API client handles HTTP only."
+      "timing": {
+        "question": "How long is an evening at the counter?",
+        "answer": "Most seatings last about two hours. We pace courses so nothing feels rushed; if you have a hard stop, mention it when you book and we will plan around it."
       },
-      "performance": {
-        "question": "What performance practices are enforced?",
-        "answer": "Static generation for marketing pages, minimal client JavaScript, explicit performance budgets, and server-first rendering by default."
+      "private": {
+        "question": "Do you host private tastings?",
+        "answer": "Yes — small private counters and tasting nights are available on select evenings. Share your date and party size through the contact form and we will follow up with options."
       }
     }
   },
   "contact": {
-    "title": "Contact us",
-    "description": "Tell us about your project and we will get back to you.",
+    "kicker": "Visit & reserve",
+    "title": "A seat at the counter",
+    "description": "Book an evening at SHINSEI, ask about a tasting night, or simply say hello — we read every note with the same care we plate with.",
+    "mediaCaption": "Find the counter",
+    "formTitle": "Write to us",
+    "formLede": "Reservations, private tastings, or a quiet question. We typically reply within one day.",
     "form": {
       "name": "Name",
       "namePlaceholder": "Your name",
       "email": "Email",
-      "emailPlaceholder": "you@company.com",
+      "emailPlaceholder": "you@example.com",
       "message": "Message",
-      "messagePlaceholder": "How can we help?",
+      "messagePlaceholder": "Preferred date, party size, or anything we should know…",
       "submit": "Send message",
       "submitting": "Sending...",
       "validation": {
@@ -314,7 +297,7 @@
         "emailInvalid": "Enter a valid email address.",
         "messageRequired": "Message is required."
       },
-      "success": "Thanks! We received your message and will get back to you soon.",
+      "success": "Thanks — we received your note and will reply soon.",
       "error": "Something went wrong. Please try again."
     }
   },
@@ -340,27 +323,104 @@
     "aboutDescription": "Meet the omakase house behind the counter — seasonal fish, warm rice, and calm hospitality.",
     "termsTitle": "Terms of service",
     "termsDescription": "Terms governing use of the Enterprise landing site.",
-    "faqTitle": "Frequently asked questions",
-    "faqDescription": "Common questions about the Enterprise landing application and architecture.",
-    "blogTitle": "Blog",
-    "blogDescription": "Architecture notes and product updates from the Enterprise team.",
-    "contactTitle": "Contact us",
-    "contactDescription": "Get in touch with the Enterprise team about your next project.",
+    "faqTitle": "Guest FAQ | SHINSEI",
+    "faqDescription": "Reservations, dietary notes, pacing, and private tastings at the SHINSEI counter.",
+    "blogTitle": "Kitchen journal | SHINSEI",
+    "blogDescription": "Seasonal notes, community rituals, and culinary stories from the SHINSEI counter.",
+    "contactTitle": "Contact & reservations | SHINSEI",
+    "contactDescription": "Reserve a counter seat, ask about tasting nights, or write to the SHINSEI team.",
     "productsTitle": "Products",
     "productsDescription": "Search and explore Enterprise platform building blocks.",
-    "galleryTitle": "Gallery",
-    "galleryDescription": "Moments from the SHINSEI counter, kitchen, and room.",
+    "galleryTitle": "Explore gallery | SHINSEI",
+    "galleryDescription": "Browse dishes, drinks, and kitchen moments — search, filter, and sort the SHINSEI feed.",
     "menuTitle": "Menu",
     "menuDescription": "Seasonal plates, drinks, and desserts from the SHINSEI counter."
   },
   "galleryPage": {
-    "title": "Gallery",
-    "description": "Moments from the counter, the kitchen, and the room.",
-    "comingSoon": "The full gallery is being prepared. Check back soon."
+    "kicker": "Explore",
+    "title": "Plate & pour",
+    "description": "An Instagram-style feed of dishes, drinks, and kitchen moments — search by name or code, then filter and sort.",
+    "searchLabel": "Search",
+    "searchPlaceholder": "Food name or code (e.g. Ice Americano, DR-001)",
+    "categoryLabel": "Category",
+    "categoryAll": "All",
+    "categories": {
+      "drinks": "Drinks",
+      "mains": "Mains",
+      "desserts": "Desserts",
+      "snacks": "Snacks",
+      "kitchen": "Kitchen"
+    },
+    "periodLabel": "Date",
+    "periods": {
+      "any": "Any time",
+      "week": "This week",
+      "month": "This month",
+      "year": "This year"
+    },
+    "sortLabel": "Sort",
+    "sorts": {
+      "newest": "Newest",
+      "mostOrdered": "Most ordered",
+      "trending": "Trending",
+      "name": "Name A–Z"
+    },
+    "resultCount": "{count} moments",
+    "empty": "No moments match your search.",
+    "error": "Unable to load the gallery. Please try again.",
+    "loadingMore": "Loading more…",
+    "end": "You have reached the end of the feed.",
+    "follow": "Follow",
+    "following": "Following",
+    "orders": "{count} ordered",
+    "gridLabel": "Gallery explore grid"
   },
   "menuPage": {
+    "kicker": "Order",
     "title": "Menu",
-    "description": "Seasonal plates, drinks, and desserts from the SHINSEI counter.",
-    "comingSoon": "The searchable menu is being prepared. Check back soon."
+    "description": "Seasonal plates, drinks, and desserts from the SHINSEI counter — browse by category, or ask the AI assistant what to order.",
+    "categoryLabel": "Category",
+    "categoryAll": "All",
+    "categories": {
+      "breakfast": "Breakfast",
+      "snacks": "Snacks",
+      "appetizers": "Appetizers",
+      "mainCourse": "Main course",
+      "desserts": "Desserts",
+      "drinks": "Drinks",
+      "healthy": "Healthy",
+      "kids": "Kids",
+      "seasonal": "Seasonal",
+      "specialDiet": "Special diet"
+    },
+    "labels": {
+      "bestSeller": "Best seller",
+      "chefChoice": "Chef choice",
+      "new": "New",
+      "limited": "Limited",
+      "todaysSpecial": "Today's special"
+    },
+    "empty": "No dishes in this category yet.",
+    "gridLabel": "Menu dishes",
+    "calories": "{count} kcal",
+    "protein": "{count}g protein",
+    "prepTime": "{minutes} min",
+    "spicy": "Spice level {level}",
+    "mild": "Mild",
+    "favorite": "Add to favorites",
+    "favorited": "Remove from favorites",
+    "compare": "Compare",
+    "compareComingSoon": "Compare coming soon",
+    "addToCart": "Add",
+    "added": "Added",
+    "nutritionLabel": "Nutrition",
+    "ingredientsLabel": "Ingredients",
+    "openAssistant": "Open AI food assistant",
+    "closeAssistant": "Close AI food assistant",
+    "assistantTitle": "AI Food Assistant",
+    "assistantSubtitle": "Tell us what you’re craving",
+    "assistantPlaceholder": "I want something spicy…",
+    "assistantSend": "Send",
+    "assistantEmptyHint": "Chat is coming soon. For now, browse the menu by category."
   }
 }

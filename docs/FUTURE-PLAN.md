@@ -477,6 +477,8 @@ Implement `createPermissionChecker()` with one in-memory policy **before** admin
 - [ ] Changesets
 - [ ] `enterprise.config.ts` spec
 - [ ] Extract `@enterprise/next-i18n` from landing middleware
+- [ ] Landing blog: when HTML CMS API is live, delete `_mocks/blog` + mock datasource (checklist in [ADR-002](./architecture/ADR-002-data-flow.md#blog-html-cms--mock-cleanup-checklist))
+- [ ] Landing about: when HTML CMS API is live, delete `_mocks/about` + mock datasource (checklist in [ADR-002](./architecture/ADR-002-data-flow.md#about-html-cms--mock-cleanup-checklist))
 
 ### v0.5 — Platform preview (6 months)
 

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { getBlogPost } from '@/application/blog/get-blog-post';
-import { getBlogPosts } from '@/application/blog/get-blog-posts';
+import { getBlogPostSlugs } from '@/application/blog/get-blog-posts';
 import { siteKeywords } from '@/config/seo';
 import { isLocale, type Locale, locales } from '@/config/site';
 import { BlogPostPage } from '@/features/blog/blog-post-page';
+import { getBlogPostSeo } from '@/features/blog/blog-seo';
 import { buildLocalizedBlogPostPath } from '@/lib/seo/alternates';
 import { createPageMetadata } from '@/lib/seo/metadata';
 
@@ -17,10 +17,10 @@ export const generateStaticParams = async () => {
   const params: Array<{ locale: Locale; slug: string }> = [];
 
   for (const locale of locales) {
-    const posts = await getBlogPosts(locale);
+    const slugs = await getBlogPostSlugs(locale);
 
-    for (const post of posts) {
-      params.push({ locale, slug: post.slug });
+    for (const slug of slugs) {
+      params.push({ locale, slug });
     }
   }
 
@@ -34,17 +34,17 @@ export const generateMetadata = async ({ params }: BlogPostRouteProps): Promise<
     return {};
   }
 
-  const post = await getBlogPost(localeParam, slug);
+  const seo = await getBlogPostSeo(localeParam, slug);
 
-  if (!post) {
+  if (!seo) {
     return {};
   }
 
   return createPageMetadata({
     locale: localeParam,
-    pathname: buildLocalizedBlogPostPath(localeParam, post.slug),
-    title: post.title,
-    description: post.excerpt,
+    pathname: buildLocalizedBlogPostPath(localeParam, slug),
+    title: seo.title,
+    description: seo.description,
     keywords: siteKeywords,
   });
 };

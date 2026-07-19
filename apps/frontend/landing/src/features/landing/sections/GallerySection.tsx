@@ -22,7 +22,7 @@ export const GallerySection = ({ locale }: GallerySectionProps) => {
       <div className="mx-auto max-w-6xl">
         <div
           ref={ref}
-          className={`mb-xl max-w-2xl transition-all duration-700 motion-reduce:transition-none ${
+          className={`my-xl max-w-2xl transition-all duration-700 motion-reduce:transition-none ${
             visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
@@ -56,15 +56,15 @@ export const GallerySection = ({ locale }: GallerySectionProps) => {
             aria-hidden="true"
           />
 
-          <div className="relative z-10 -mt-8 flex flex-col items-center gap-sm pb-md">
+          <div className="relative z-10 mt-lg flex flex-col items-center gap-sm pt-md">
             <Link
               href={buildLocalizedPath(locale, 'gallery')}
-              className="group flex flex-col items-center gap-xs text-sm font-medium text-foreground transition-colors hover:text-secondary"
+              className="group flex flex-col items-center gap-sm text-sm font-medium text-foreground transition-colors hover:text-secondary"
             >
               <span>{t('home.gallery.loadMore')}</span>
               <span
                 aria-hidden="true"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface-elevated shadow-sm transition-transform group-hover:border-secondary motion-safe:animate-bounce-gentle"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border bg-surface-elevated shadow-sm transition-transform group-hover:border-secondary motion-safe:animate-bounce-gentle"
               >
                 ↓
               </span>

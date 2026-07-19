@@ -32,7 +32,7 @@ export const LocaleSwitcher = ({ currentLocale, labels }: LocaleSwitcherProps) =
           variant="ghost"
           size="small"
           aria-label="Language"
-          className="gap-xs px-sm"
+          className="gap-xs px-sm text-white hover:bg-white/10"
         >
           <span aria-hidden="true" className="text-md leading-none">
             {localeFlags[currentLocale]}

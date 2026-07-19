@@ -2,6 +2,7 @@
 
 import { BottomSheet } from '@enterprise/ui';
 import { Button } from '@enterprise/ui/button';
+import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -15,19 +16,9 @@ type MobileNavProps = {
   locale: Locale;
 };
 
-const BurgerIcon = () => (
-  <svg
-    aria-hidden="true"
-    viewBox="0 0 24 24"
-    className="h-5 w-5 fill-none stroke-current stroke-[1.75]"
-  >
-    <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
-  </svg>
-);
-
 /**
  * Phase 1: flat destination links only.
- * Desktop mega-menu labels (header.menu / header.blog panels) are intentionally unused here.
+ * Desktop mega-menu labels (header.menu panel) are intentionally unused here.
  */
 export const MobileNav = ({ locale }: MobileNavProps) => {
   const t = createT(locale);
@@ -56,11 +47,12 @@ export const MobileNav = ({ locale }: MobileNavProps) => {
         aria-controls="mobile-navigation-sheet"
         aria-haspopup="dialog"
         aria-label={t('common.mobileMenu')}
+        className="text-white hover:bg-white/10"
         onClick={() => {
           setOpen(true);
         }}
       >
-        <BurgerIcon />
+        <Menu aria-hidden="true" className="h-5 w-5" strokeWidth={1.75} />
       </Button>
 
       <BottomSheet

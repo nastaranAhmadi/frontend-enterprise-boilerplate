@@ -89,23 +89,30 @@ export const ContactForm = ({ labels }: ContactFormProps) => {
           updateField('message', event.target.value);
         }}
         error={fieldErrors.message}
-        rows={5}
+        rows={6}
         required
       />
 
-      <div className="flex flex-col gap-sm">
-        <Button type="submit" loading={mutation.isPending} disabled={mutation.isPending}>
+      <div className="flex flex-col gap-sm pt-xs">
+        <Button
+          type="submit"
+          variant="filled"
+          fullWidth
+          loading={mutation.isPending}
+          disabled={mutation.isPending}
+          className="min-h-12"
+        >
           {mutation.isPending ? labels.submitting : labels.submit}
         </Button>
 
         {submitted ? (
-          <p className="text-sm text-success" role="status">
+          <p className="rounded-md bg-success-muted px-md py-sm text-sm text-success" role="status">
             {labels.success}
           </p>
         ) : null}
 
         {mutation.isError ? (
-          <p className="text-sm text-error" role="alert">
+          <p className="rounded-md bg-error-muted px-md py-sm text-sm text-error" role="alert">
             {labels.error}
           </p>
         ) : null}

@@ -12,7 +12,7 @@ type GuestExperiencesSectionProps = {
 };
 
 const StarRating = ({ rating }: { rating: number }) => (
-  <div className="flex gap-0.5" aria-label={`${String(rating)} out of 5 stars`}>
+  <div className="flex gap-xs" aria-label={`${String(rating)} out of 5 stars`}>
     {Array.from({ length: 5 }, (_, index) => (
       <span
         key={index}

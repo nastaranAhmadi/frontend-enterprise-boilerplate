@@ -1,91 +1,42 @@
 'use client';
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Chip,
-} from '@enterprise/ui';
-import Image from 'next/image';
+import { useState } from 'react';
 
 import type { Locale } from '@/config/site';
-import {
-  seasonalImages,
-  type SeasonalItemKey,
-  seasonalItemKeys,
-} from '@/features/landing/data/home-content';
 import { useRevealOnScroll } from '@/features/landing/hooks/use-reveal-on-scroll';
+import { MenuFoodCard, type MenuFoodCardLabels } from '@/features/menu/components/menu-food-card';
 import { createT } from '@/i18n/t';
+import type { MenuItem } from '@/repositories/menu/menu.types';
 
 type SeasonalSectionProps = {
   locale: Locale;
+  items: MenuItem[];
+  cardLabels: MenuFoodCardLabels;
 };
 
-const SeasonalCard = ({
-  locale,
-  itemKey,
-  index,
-}: {
-  locale: Locale;
-  index: number;
-  itemKey: SeasonalItemKey;
-}) => {
+export const SeasonalSection = ({ locale, items, cardLabels }: SeasonalSectionProps) => {
   const t = createT(locale);
   const { ref, visible } = useRevealOnScroll();
-  const prefix = `home.seasonal.items.${itemKey}`;
+  const [favoritedIds, setFavoritedIds] = useState<Set<string>>(() => new Set());
 
-  return (
-    <div
-      ref={ref}
-      className={`transition-all duration-500 motion-reduce:transition-none ${
-        visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-      }`}
-      style={{ transitionDelay: `${String(index * 80)}ms` }}
-    >
-      <Card className="h-full overflow-hidden">
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <Image
-            src={seasonalImages[itemKey]}
-            alt={t(`${prefix}.name`)}
-            fill
-            className="object-cover transition-transform duration-700 hover:scale-105 motion-reduce:transform-none"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
-        </div>
-        <CardHeader>
-          <CardTitle className="text-xl">{t(`${prefix}.name`)}</CardTitle>
-          <CardDescription>{t(`${prefix}.description`)}</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-wrap gap-xs">
-            {t.strings(`${prefix}.ingredients`).map((ingredient) => (
-              <Chip key={ingredient} size="small" color="secondary" variant="outlined">
-                {ingredient}
-              </Chip>
-            ))}
-          </div>
-        </CardContent>
-        <CardFooter>
-          <span className="text-sm font-medium text-foreground">{t(`${prefix}.price`)}</span>
-        </CardFooter>
-      </Card>
-    </div>
-  );
-};
-
-export const SeasonalSection = ({ locale }: SeasonalSectionProps) => {
-  const t = createT(locale);
-  const { ref, visible } = useRevealOnScroll();
+  const toggleFavorite = (id: string) => {
+    setFavoritedIds((current) => {
+      const next = new Set(current);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
 
   return (
     <section id="seasonal" className="scroll-mt-24 bg-surface px-md py-2xl md:py-3xl">
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-[1280px]">
         <div
           ref={ref}
-          className={`mb-xl max-w-2xl transition-all duration-700 motion-reduce:transition-none ${
+          className={`my-xl max-w-2xl transition-all duration-700 motion-reduce:transition-none ${
             visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
           }`}
         >
@@ -93,11 +44,19 @@ export const SeasonalSection = ({ locale }: SeasonalSectionProps) => {
           <p className="mt-sm text-muted-foreground">{t('home.seasonal.subtitle')}</p>
         </div>
 
-        <div className="grid gap-lg sm:grid-cols-2 lg:grid-cols-3">
-          {seasonalItemKeys.map((itemKey, index) => (
-            <SeasonalCard key={itemKey} locale={locale} itemKey={itemKey} index={index} />
+        <ul className="grid list-none grid-cols-1 gap-lg sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {items.map((item) => (
+            <li key={item.id} className="min-w-0">
+              <MenuFoodCard
+                item={item}
+                locale={locale}
+                labels={cardLabels}
+                favorited={favoritedIds.has(item.id)}
+                onFavoriteToggle={toggleFavorite}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

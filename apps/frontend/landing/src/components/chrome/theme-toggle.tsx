@@ -1,5 +1,7 @@
 'use client';
 
+import { Moon, Sun } from 'lucide-react';
+
 import { useThemePreference } from '@/lib/theme/theme-preference-context';
 
 type ThemeLabels = {
@@ -18,31 +20,6 @@ type ThemeAppearanceSwitchProps = {
   labels: ThemeLabels;
 };
 
-const SunIcon = ({ className }: { className?: string }) => (
-  <svg
-    aria-hidden="true"
-    viewBox="0 0 24 24"
-    className={['h-4 w-4 fill-none stroke-current stroke-[1.75]', className]
-      .filter(Boolean)
-      .join(' ')}
-  >
-    <circle cx="12" cy="12" r="4" />
-    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-  </svg>
-);
-
-const MoonIcon = ({ className }: { className?: string }) => (
-  <svg
-    aria-hidden="true"
-    viewBox="0 0 24 24"
-    className={['h-4 w-4 fill-none stroke-current stroke-[1.75]', className]
-      .filter(Boolean)
-      .join(' ')}
-  >
-    <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5Z" />
-  </svg>
-);
-
 /** Compact icon button — used in the desktop header. */
 export const ThemeToggle = ({ labels, className }: ThemeToggleProps) => {
   const { theme, toggleTheme } = useThemePreference();
@@ -54,13 +31,17 @@ export const ThemeToggle = ({ labels, className }: ThemeToggleProps) => {
       onClick={toggleTheme}
       aria-label={isLight ? labels.switchToDark : labels.switchToLight}
       className={[
-        'inline-flex h-9 w-9 items-center justify-center rounded-md text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+        'inline-flex h-9 w-9 items-center justify-center rounded-md text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50',
         className,
       ]
         .filter(Boolean)
         .join(' ')}
     >
-      {isLight ? <MoonIcon /> : <SunIcon />}
+      {isLight ? (
+        <Moon aria-hidden="true" className="h-4 w-4" strokeWidth={1.75} />
+      ) : (
+        <Sun aria-hidden="true" className="h-4 w-4" strokeWidth={1.75} />
+      )}
     </button>
   );
 };
@@ -100,7 +81,7 @@ export const ThemeAppearanceSwitch = ({ labels }: ThemeAppearanceSwitchProps) =>
           className="absolute -end-3 -top-4 h-16 w-16 rounded-full bg-[radial-gradient(circle_at_center,#f4e8c8_0%,transparent_70%)] opacity-90 transition-transform duration-500 group-hover:scale-110 motion-reduce:transition-none"
         />
         <span className="relative flex min-h-[4.75rem] flex-col justify-between gap-md p-md">
-          <SunIcon className="h-5 w-5 text-[#3d5248]" />
+          <Sun aria-hidden="true" className="h-5 w-5 text-[#3d5248]" strokeWidth={1.75} />
           <span className="text-sm font-medium tracking-wide text-[#1c2420]">{labels.light}</span>
         </span>
       </button>
@@ -129,7 +110,7 @@ export const ThemeAppearanceSwitch = ({ labels }: ThemeAppearanceSwitchProps) =>
           className="absolute -end-2 -top-3 h-14 w-14 rounded-full bg-[radial-gradient(circle_at_center,#a3b59f_0%,transparent_68%)] opacity-40 transition-transform duration-500 group-hover:scale-110 motion-reduce:transition-none"
         />
         <span className="relative flex min-h-[4.75rem] flex-col justify-between gap-md p-md">
-          <MoonIcon className="h-5 w-5 text-[#a3b59f]" />
+          <Moon aria-hidden="true" className="h-5 w-5 text-[#a3b59f]" strokeWidth={1.75} />
           <span className="text-sm font-medium tracking-wide text-[#eef1ed]">{labels.dark}</span>
         </span>
       </button>

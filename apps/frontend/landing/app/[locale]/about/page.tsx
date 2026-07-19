@@ -5,7 +5,7 @@ import { buildLocalizedPath } from '@/config/routes';
 import { siteKeywords } from '@/config/seo';
 import { isLocale, type Locale } from '@/config/site';
 import { AboutPage } from '@/features/about/about-page';
-import { createT } from '@/i18n/t';
+import { getAboutSeo } from '@/features/about/about-seo';
 import { createPageMetadata } from '@/lib/seo/metadata';
 
 type AboutRouteProps = {
@@ -19,13 +19,13 @@ export const generateMetadata = async ({ params }: AboutRouteProps): Promise<Met
     return {};
   }
 
-  const t = createT(localeParam);
+  const { title, description } = await getAboutSeo(localeParam);
 
   return createPageMetadata({
     locale: localeParam,
     pathname: buildLocalizedPath(localeParam, 'about'),
-    title: t('metadata.aboutTitle'),
-    description: t('metadata.aboutDescription'),
+    title,
+    description,
     keywords: siteKeywords,
   });
 };

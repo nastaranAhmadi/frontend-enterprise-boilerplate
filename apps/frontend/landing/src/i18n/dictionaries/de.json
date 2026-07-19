@@ -30,32 +30,6 @@
       "philosophy": "Unsere Philosophie",
       "chefs": "Die Köche"
     },
-    "blog": {
-      "shareTaste": {
-        "title": "Teile deinen Geschmack",
-        "description": "Schlage eine Formel vor. Wenn Köche sie anrichten und Gäste bestellen, schaltest du künftige Rabatte frei."
-      },
-      "shareOrders": {
-        "title": "Teile deine Bestellungen",
-        "description": "Halte deinen Tisch fest. Freunde, die mit deinem Code nachbestellen, bringen euch beiden Vorteile."
-      },
-      "donation": {
-        "title": "2 kaufen, 1 teilen",
-        "description": "Ein sanfter Rabatt auf zwei Teller — der zweite speist still jemanden in Not."
-      },
-      "newOnMenu": {
-        "title": "Neu auf der Karte",
-        "description": "Saisonale Neuheiten und Notizen der Köche von dieser Woche."
-      },
-      "events": {
-        "title": "Events",
-        "description": "Counter-Abende, Verkostungen und Treffen, für die sich der Kalender lohnt."
-      },
-      "heritage": {
-        "title": "Kulinarisches Erbe",
-        "description": "Nationale Gerichte, ihre Geschichten und die Ernährung hinter jeder Tradition."
-      }
-    },
     "menu": {
       "drinks": {
         "label": "Getränke",
@@ -269,43 +243,52 @@
     }
   },
   "blog": {
-    "title": "Blog",
-    "description": "Architektur-Notizen und Produkt-Updates vom Enterprise-Team.",
+    "title": "Stories from the counter",
+    "description": "Seasonal notes, community rituals, and the quiet craft behind every plate.",
     "empty": "Noch keine Beiträge veröffentlicht.",
-    "readMore": "Weiterlesen"
+    "readMore": "Details ansehen",
+    "backToJournal": "Zurück zum Journal"
   },
   "faq": {
-    "title": "Häufig gestellte Fragen",
-    "description": "Antworten auf häufige Fragen zum Enterprise-Landing-Stack und zur Architektur.",
+    "kicker": "Gästeführer",
+    "title": "Bevor du Platz nimmst",
+    "description": "Kurzer Überblick zu Reservierung, Tempo und dem Ablauf eines Abends bei SHINSEI.",
+    "ctaTitle": "Noch Fragen?",
+    "ctaBody": "Schreib an den Counter — wir helfen gern bei Terminen, Ernährungshinweisen oder privaten Tastings.",
+    "ctaLabel": "Kontakt",
     "items": {
-      "stack": {
-        "question": "Welche Technologien treiben diese Landing-App an?",
-        "answer": "Next.js 15 App Router, React Server Components, Tailwind CSS und gemeinsame Monorepo-Pakete für UI, i18n und Theming."
+      "reservations": {
+        "question": "Brauche ich eine Reservierung?",
+        "answer": "Counter-Plätze sind begrenzt — am besten vorausbuchen. Walk-ins sind willkommen, wenn Raum ist; ruf am selben Tag an, und wir sagen ehrlich, wie die Warteliste aussieht."
       },
-      "i18n": {
-        "question": "Wie wird Internationalisierung gehandhabt?",
-        "answer": "Locale-präfixierte Routen mit Server-Dictionaries für RSC und @enterprise/i18n für Client-Komponenten. RTL übernimmt das Design System."
+      "dietary": {
+        "question": "Könnt ihr auf Ernährungswünsche eingehen?",
+        "answer": "Sag es bei der Reservierung. Wir kochen mit saisonalem Fisch und warmem Reis und können Allergien oder Vorlieben meist anpassen — manche Wünsche ändern den Omakase-Fluss."
       },
-      "data": {
-        "question": "Wie funktioniert das Datenabrufen?",
-        "answer": "Server-Anwendungsfunktionen rufen Repositories mit injizierbaren Datasources auf. Mocks liegen in _mocks/; der API-Client erledigt nur HTTP."
+      "timing": {
+        "question": "Wie lange dauert ein Abend am Counter?",
+        "answer": "Die meisten Sitzungen dauern etwa zwei Stunden. Wir takten die Gänge ruhig; wenn du einen harten Stopp hast, nenn ihn bei der Buchung."
       },
-      "performance": {
-        "question": "Welche Performance-Praktiken gelten?",
-        "answer": "Statische Generierung für Marketingseiten, minimaler Client-JavaScript, explizite Performance-Budgets und server-first Rendering als Standard."
+      "private": {
+        "question": "Gibt es private Tastings?",
+        "answer": "Ja — kleine private Counter und Tasting Nights an ausgewählten Abenden. Schick Datum und Gruppengröße über das Kontaktformular, wir melden uns mit Optionen."
       }
     }
   },
   "contact": {
-    "title": "Kontaktiere uns",
-    "description": "Erzähl uns von deinem Projekt — wir melden uns.",
+    "kicker": "Besuch & Reservierung",
+    "title": "Ein Platz am Counter",
+    "description": "Reserviere einen Abend bei SHINSEI, frage nach einer Tasting Night oder schreib einfach — wir lesen jede Nachricht mit derselben Sorgfalt wie wir anrichten.",
+    "mediaCaption": "Den Counter finden",
+    "formTitle": "Schreib uns",
+    "formLede": "Reservierungen, private Tastings oder eine stille Frage. Wir antworten meist innerhalb eines Tages.",
     "form": {
       "name": "Name",
       "namePlaceholder": "Dein Name",
       "email": "E-Mail",
-      "emailPlaceholder": "you@company.com",
+      "emailPlaceholder": "you@example.com",
       "message": "Nachricht",
-      "messagePlaceholder": "Wie können wir helfen?",
+      "messagePlaceholder": "Wunschdatum, Gruppengröße oder was wir wissen sollten…",
       "submit": "Nachricht senden",
       "submitting": "Wird gesendet…",
       "validation": {
@@ -314,7 +297,7 @@
         "emailInvalid": "Gib eine gültige E-Mail-Adresse ein.",
         "messageRequired": "Nachricht ist erforderlich."
       },
-      "success": "Danke! Wir haben deine Nachricht erhalten und melden uns bald.",
+      "success": "Danke — wir haben deine Nachricht erhalten und melden uns bald.",
       "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
     }
   },
@@ -340,27 +323,104 @@
     "aboutDescription": "Das Omakase-Haus hinter dem Counter — saisonaler Fisch, warmer Reis und ruhige Gastfreundschaft.",
     "termsTitle": "Nutzungsbedingungen",
     "termsDescription": "Bedingungen für die Nutzung der Enterprise-Landing-Seite.",
-    "faqTitle": "Häufig gestellte Fragen",
-    "faqDescription": "Häufige Fragen zur Enterprise-Landing-Anwendung und Architektur.",
-    "blogTitle": "Blog",
-    "blogDescription": "Architektur-Notizen und Produkt-Updates vom Enterprise-Team.",
-    "contactTitle": "Kontaktiere uns",
-    "contactDescription": "Nimm Kontakt mit dem Enterprise-Team für dein nächstes Projekt auf.",
+    "faqTitle": "Gäste-FAQ | SHINSEI",
+    "faqDescription": "Reservierung, Ernährung, Tempo und private Tastings am SHINSEI-Counter.",
+    "blogTitle": "Kitchen journal | SHINSEI",
+    "blogDescription": "Seasonal notes, community rituals, and culinary stories from the SHINSEI counter.",
+    "contactTitle": "Kontakt & Reservierung | SHINSEI",
+    "contactDescription": "Reserviere einen Counter-Platz, frage nach Tasting Nights oder schreib dem SHINSEI-Team.",
     "productsTitle": "Produkte",
     "productsDescription": "Enterprise-Plattform-Bausteine suchen und erkunden.",
-    "galleryTitle": "Galerie",
-    "galleryDescription": "Momente vom SHINSEI-Counter, aus der Küche und dem Raum.",
+    "galleryTitle": "Explore-Galerie | SHINSEI",
+    "galleryDescription": "Gerichte, Getränke und Küchenmomente durchsuchen — filtern und sortieren im SHINSEI-Feed.",
     "menuTitle": "Speisekarte",
     "menuDescription": "Saisonale Teller, Getränke und Desserts vom SHINSEI-Counter."
   },
   "galleryPage": {
-    "title": "Galerie",
-    "description": "Momente von der Theke, aus der Küche und dem Raum.",
-    "comingSoon": "Die vollständige Galerie wird vorbereitet. Schau bald wieder vorbei."
+    "kicker": "Entdecken",
+    "title": "Teller & Glas",
+    "description": "Ein Explore-Feed mit Gerichten, Getränken und Küchenmomenten — suche nach Name oder Code, filtere und sortiere.",
+    "searchLabel": "Suche",
+    "searchPlaceholder": "Name oder Code (z. B. Ice Americano, DR-001)",
+    "categoryLabel": "Kategorie",
+    "categoryAll": "Alle",
+    "categories": {
+      "drinks": "Getränke",
+      "mains": "Hauptgerichte",
+      "desserts": "Desserts",
+      "snacks": "Snacks",
+      "kitchen": "Küche"
+    },
+    "periodLabel": "Datum",
+    "periods": {
+      "any": "Jederzeit",
+      "week": "Diese Woche",
+      "month": "Dieser Monat",
+      "year": "Dieses Jahr"
+    },
+    "sortLabel": "Sortierung",
+    "sorts": {
+      "newest": "Neueste",
+      "mostOrdered": "Meist bestellt",
+      "trending": "Im Trend",
+      "name": "Name A–Z"
+    },
+    "resultCount": "{count} Momente",
+    "empty": "Keine Momente passen zu deiner Suche.",
+    "error": "Galerie konnte nicht geladen werden. Bitte erneut versuchen.",
+    "loadingMore": "Weitere werden geladen…",
+    "end": "Ende des Feeds erreicht.",
+    "follow": "Folgen",
+    "following": "Folgst du",
+    "orders": "{count} bestellt",
+    "gridLabel": "Galerie-Explore-Raster"
   },
   "menuPage": {
+    "kicker": "Bestellen",
     "title": "Speisekarte",
-    "description": "Saisonale Gerichte, Getränke und Desserts vom SHINSEI-Counter.",
-    "comingSoon": "Die durchsuchbare Speisekarte wird vorbereitet."
+    "description": "Saisonale Gerichte, Getränke und Desserts vom SHINSEI-Counter — nach Kategorie browsen oder den KI-Assistenten fragen.",
+    "categoryLabel": "Kategorie",
+    "categoryAll": "Alle",
+    "categories": {
+      "breakfast": "Frühstück",
+      "snacks": "Snacks",
+      "appetizers": "Vorspeisen",
+      "mainCourse": "Hauptgericht",
+      "desserts": "Desserts",
+      "drinks": "Getränke",
+      "healthy": "Gesund",
+      "kids": "Kinder",
+      "seasonal": "Saisonal",
+      "specialDiet": "Spezialdiät"
+    },
+    "labels": {
+      "bestSeller": "Bestseller",
+      "chefChoice": "Chefempfehlung",
+      "new": "Neu",
+      "limited": "Limitiert",
+      "todaysSpecial": "Tagesangebot"
+    },
+    "empty": "In dieser Kategorie gibt es noch keine Gerichte.",
+    "gridLabel": "Gerichte der Speisekarte",
+    "calories": "{count} kcal",
+    "protein": "{count}g Protein",
+    "prepTime": "{minutes} Min.",
+    "spicy": "Schärfegrad {level}",
+    "mild": "Mild",
+    "favorite": "Zu Favoriten hinzufügen",
+    "favorited": "Aus Favoriten entfernen",
+    "compare": "Vergleichen",
+    "compareComingSoon": "Vergleich kommt bald",
+    "addToCart": "Hinzufügen",
+    "added": "Hinzugefügt",
+    "nutritionLabel": "Nährwerte",
+    "ingredientsLabel": "Zutaten",
+    "openAssistant": "KI-Essensassistent öffnen",
+    "closeAssistant": "KI-Essensassistent schließen",
+    "assistantTitle": "KI-Essensassistent",
+    "assistantSubtitle": "Sagen Sie uns, worauf Sie Lust haben",
+    "assistantPlaceholder": "Ich möchte etwas Scharfes…",
+    "assistantSend": "Senden",
+    "assistantEmptyHint": "Chat kommt bald. Stöbern Sie vorerst nach Kategorie."
   }
 }

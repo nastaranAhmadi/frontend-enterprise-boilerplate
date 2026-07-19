@@ -17,11 +17,11 @@ export const SiteHeader = ({ locale }: SiteHeaderProps) => {
   const t = createT(locale);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-background/90 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/55 text-white backdrop-blur-md supports-[backdrop-filter]:bg-neutral-900/45">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-md px-md py-md">
         <Link
           href={buildLocalizedPath(locale, 'home')}
-          className="text-xl tracking-[0.18em] text-foreground"
+          className="text-xl tracking-[0.18em] text-white"
         >
           {t('common.siteName')}
         </Link>

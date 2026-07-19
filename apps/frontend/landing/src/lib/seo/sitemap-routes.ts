@@ -1,4 +1,5 @@
-import { getBlogPosts } from '@/application/blog/get-blog-posts';
+import { getBlogPost } from '@/application/blog/get-blog-post';
+import { getBlogPostSlugs } from '@/application/blog/get-blog-posts';
 import { type AppRouteKey, buildLocalizedPath } from '@/config/routes';
 import { locales } from '@/config/site';
 
@@ -53,12 +54,14 @@ export const getSitemapEntries = async (): Promise<SitemapEntry[]> => {
       });
     }
 
-    const posts = await getBlogPosts(locale);
+    const slugs = await getBlogPostSlugs(locale);
 
-    for (const post of posts) {
+    for (const slug of slugs) {
+      const page = await getBlogPost(locale, slug);
+
       entries.push({
-        url: buildAbsoluteUrl(buildLocalizedBlogPostPath(locale, post.slug)),
-        lastModified: new Date(post.publishedAt),
+        url: buildAbsoluteUrl(buildLocalizedBlogPostPath(locale, slug)),
+        lastModified: page ? new Date(page.lastModified) : new Date(),
         changeFrequency: 'monthly',
         priority: 0.6,
       });

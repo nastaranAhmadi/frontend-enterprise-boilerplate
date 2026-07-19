@@ -36,6 +36,8 @@ export const designTokens = {
     md: 'var(--spacing-md)',
     lg: 'var(--spacing-lg)',
     xl: 'var(--spacing-xl)',
+    '2xl': 'var(--spacing-2xl)',
+    '3xl': 'var(--spacing-3xl)',
   },
   typography: {
     fontFamily: 'var(--font-family-sans)',
@@ -114,5 +116,13 @@ export const cssVariableNames = {
     '--color-ring',
     '--color-overlay',
   ],
-  spacing: ['--spacing-xs', '--spacing-sm', '--spacing-md', '--spacing-lg', '--spacing-xl'],
+  spacing: [
+    '--spacing-xs',
+    '--spacing-sm',
+    '--spacing-md',
+    '--spacing-lg',
+    '--spacing-xl',
+    '--spacing-2xl',
+    '--spacing-3xl',
+  ],
 } as const;
