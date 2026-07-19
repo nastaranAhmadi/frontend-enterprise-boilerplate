@@ -108,7 +108,7 @@ export const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(function Dropd
   const menuId = useId();
   const rootRef = useRef<HTMLDivElement | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
-  const closeTimerRef = useRef<ReturnType<typeof window.setTimeout> | null>(null);
+  const closeTimerRef = useRef<number | null>(null);
   const openedByHoverRef = useRef(false);
   const { isOpen, setOpen } = useControllableOpen({ open, defaultOpen, onOpenChange });
 
