@@ -111,23 +111,26 @@ If styles look broken after a production build while dev is running, stop dev an
 
 ### Live demos
 
-| Surface   | URL                                                                                      |
-| --------- | ---------------------------------------------------------------------------------------- |
-| Landing   | Vercel project 1 — root [`vercel.json`](../../vercel.json)                               |
-| Storybook | Vercel project 2 — [`vercel.storybook.json`](../../vercel.storybook.json); local `:3000` |
+| Surface   | URL                                                                                          |
+| --------- | -------------------------------------------------------------------------------------------- |
+| Landing   | Vercel project 1 — [`apps/frontend/landing/vercel.json`](./landing/vercel.json)              |
+| Storybook | Vercel project 2 — [`packages/ui/vercel.json`](../../packages/ui/vercel.json); local `:3000` |
 
 ### Vercel deploy (landing)
 
-Config lives in the repo-root [`vercel.json`](../../vercel.json). Import the **repository root** (do not set Root Directory to `apps/frontend/landing`).
+Import the same Git repo. Set **Root Directory** to `apps/frontend/landing` (Vercel often detects this automatically). Config: [`landing/vercel.json`](./landing/vercel.json).
 
-| Setting            | Value                         |
-| ------------------ | ----------------------------- |
-| Framework          | Next.js                       |
-| Install            | `pnpm install`                |
-| Build              | `pnpm exec nx build landing`  |
-| Output             | `apps/frontend/landing/.next` |
-| Ignored Build Step | `npx nx-ignore landing`       |
-| Node               | from `.nvmrc` (22)            |
+| Setting            | Value                                             |
+| ------------------ | ------------------------------------------------- |
+| Root Directory     | `apps/frontend/landing`                           |
+| Framework          | Next.js                                           |
+| Install            | `cd ../../.. && pnpm install`                     |
+| Build              | `cd ../../.. && pnpm exec nx build landing`       |
+| Output             | `.next` (relative to Root Directory — not nested) |
+| Ignored Build Step | `cd ../../.. && npx nx-ignore landing`            |
+| Node               | from `.nvmrc` (22)                                |
+
+If a previous deploy failed with a doubled path like `.../landing/apps/frontend/landing/.next`, clear any Output Directory override that still says `apps/frontend/landing/.next` and set it to `.next` only.
 
 **Environment variables** (Project → Settings → Environment Variables):
 
@@ -140,17 +143,16 @@ After the first deploy, set `NEXT_PUBLIC_SITE_URL` to the production URL and red
 
 ### Vercel deploy (Storybook)
 
-Storybook is a **static** site. Create a **second** Vercel project on the same repo (one project cannot host both Next.js landing and Storybook). Leave Root Directory empty.
+Storybook is a **static** site. Create a **second** Vercel project on the same repo. Set **Root Directory** to `packages/ui`. Config: [`packages/ui/vercel.json`](../../packages/ui/vercel.json).
 
-Copy settings from [`vercel.storybook.json`](../../vercel.storybook.json) into Project → Settings → Build & Development (Vercel only auto-reads `vercel.json`, which is reserved for landing):
-
-| Setting            | Value                             |
-| ------------------ | --------------------------------- |
-| Framework          | Other                             |
-| Install            | `pnpm install`                    |
-| Build              | `pnpm exec nx build-storybook ui` |
-| Output             | `packages/ui/storybook-static`    |
-| Ignored Build Step | `npx nx-ignore ui`                |
-| Node               | from `.nvmrc` (22)                |
+| Setting            | Value                                         |
+| ------------------ | --------------------------------------------- |
+| Root Directory     | `packages/ui`                                 |
+| Framework          | Other                                         |
+| Install            | `cd ../.. && pnpm install`                    |
+| Build              | `cd ../.. && pnpm exec nx build-storybook ui` |
+| Output             | `storybook-static`                            |
+| Ignored Build Step | `cd ../.. && npx nx-ignore ui`                |
+| Node               | from `.nvmrc` (22)                            |
 
 No env vars required. Local static preview: `pnpm nx build-storybook ui` then `pnpm nx static-storybook ui`.
