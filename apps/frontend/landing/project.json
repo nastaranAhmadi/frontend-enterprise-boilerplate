@@ -6,8 +6,15 @@
   "tags": ["scope:app", "type:app", "platform:web", "domain:frontend"],
   "targets": {
     "build": {
-      "defaultConfiguration": "production"
+      "defaultConfiguration": "production",
+      "inputs": [
+        "production",
+        "^production",
+        { "env": "NEXT_PUBLIC_SITE_URL" },
+        { "env": "NEXT_PUBLIC_DATA_SOURCE" }
+      ]
     },
+
     "clean": {
       "executor": "nx:run-commands",
       "options": {

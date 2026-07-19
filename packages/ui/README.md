@@ -3,7 +3,8 @@
 Browser-only design system for enterprise frontend apps. Built with React 19, semantic Tailwind tokens, Vitest, and Storybook.
 
 **Package:** `@enterprise/ui`  
-**Storybook:** `pnpm nx storybook ui` → [http://localhost:3000](http://localhost:3000)
+**Storybook:** `pnpm nx storybook ui` → [http://localhost:3000](http://localhost:3000)  
+**Deploy:** second Vercel project — copy settings from [`vercel.storybook.json`](../../vercel.storybook.json) (see [`apps/frontend/README.md`](../../apps/frontend/README.md#vercel-deploy-storybook))
 
 ## Quick start
 

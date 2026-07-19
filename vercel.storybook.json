@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm exec nx build-storybook ui",
+  "outputDirectory": "packages/ui/storybook-static",
+  "ignoreCommand": "npx nx-ignore ui"
+}

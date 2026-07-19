@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm exec nx build landing",
+  "outputDirectory": "apps/frontend/landing/.next",
+  "ignoreCommand": "npx nx-ignore landing"
+}

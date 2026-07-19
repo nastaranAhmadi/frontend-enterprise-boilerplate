@@ -41,6 +41,7 @@ Production-grade Frontend Monorepo built with Nx, React, Next.js, TypeScript and
 - Typecheck UI library: `pnpm nx typecheck ui`
 - Run UI Storybook: `pnpm nx storybook ui` → [http://localhost:3000](http://localhost:3000)
 - Build static Storybook: `pnpm nx build-storybook ui`
+- Deploy Storybook on Vercel: second project using [`vercel.storybook.json`](./vercel.storybook.json) — see [`apps/frontend/README.md`](./apps/frontend/README.md#vercel-deploy-storybook)
 
 ### Frontend apps
 

@@ -111,7 +111,46 @@ If styles look broken after a production build while dev is running, stop dev an
 
 ### Live demos
 
-| Surface   | URL                                                                     |
-| --------- | ----------------------------------------------------------------------- |
-| Landing   | _Deploy target TBD — run locally on port 4200_                          |
-| Storybook | `pnpm nx storybook ui` → [http://localhost:3000](http://localhost:3000) |
+| Surface   | URL                                                                                      |
+| --------- | ---------------------------------------------------------------------------------------- |
+| Landing   | Vercel project 1 — root [`vercel.json`](../../vercel.json)                               |
+| Storybook | Vercel project 2 — [`vercel.storybook.json`](../../vercel.storybook.json); local `:3000` |
+
+### Vercel deploy (landing)
+
+Config lives in the repo-root [`vercel.json`](../../vercel.json). Import the **repository root** (do not set Root Directory to `apps/frontend/landing`).
+
+| Setting            | Value                         |
+| ------------------ | ----------------------------- |
+| Framework          | Next.js                       |
+| Install            | `pnpm install`                |
+| Build              | `pnpm exec nx build landing`  |
+| Output             | `apps/frontend/landing/.next` |
+| Ignored Build Step | `npx nx-ignore landing`       |
+| Node               | from `.nvmrc` (22)            |
+
+**Environment variables** (Project → Settings → Environment Variables):
+
+| Name                      | Example                       | Notes                                   |
+| ------------------------- | ----------------------------- | --------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`    | `https://your-app.vercel.app` | Canonical URLs / SEO; baked in at build |
+| `NEXT_PUBLIC_DATA_SOURCE` | `mock` or `api`               | Defaults to `mock`                      |
+
+After the first deploy, set `NEXT_PUBLIC_SITE_URL` to the production URL and redeploy so SEO metadata picks it up.
+
+### Vercel deploy (Storybook)
+
+Storybook is a **static** site. Create a **second** Vercel project on the same repo (one project cannot host both Next.js landing and Storybook). Leave Root Directory empty.
+
+Copy settings from [`vercel.storybook.json`](../../vercel.storybook.json) into Project → Settings → Build & Development (Vercel only auto-reads `vercel.json`, which is reserved for landing):
+
+| Setting            | Value                             |
+| ------------------ | --------------------------------- |
+| Framework          | Other                             |
+| Install            | `pnpm install`                    |
+| Build              | `pnpm exec nx build-storybook ui` |
+| Output             | `packages/ui/storybook-static`    |
+| Ignored Build Step | `npx nx-ignore ui`                |
+| Node               | from `.nvmrc` (22)                |
+
+No env vars required. Local static preview: `pnpm nx build-storybook ui` then `pnpm nx static-storybook ui`.
