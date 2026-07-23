@@ -1,0 +1,8 @@
+{
+  "extends": ["../../../tsconfig.base.json", "@enterprise/tsconfig/node"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noEmit": true
+  },
+  "include": ["vite.config.ts"]
+}

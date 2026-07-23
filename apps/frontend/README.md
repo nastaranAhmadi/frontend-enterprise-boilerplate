@@ -1,12 +1,23 @@
 # Frontend Applications
 
-| App         | Stack                | Rendering | Status                         |
-| ----------- | -------------------- | --------- | ------------------------------ |
-| `landing`   | Next.js (App Router) | SSR / SSG | Production-ready marketing app |
-| `dashboard` | React + Vite         | CSR       | Infrastructure only            |
-| `admin`     | React + Vite         | CSR       | Infrastructure only            |
+| App         | Stack                | Rendering | Status                                    |
+| ----------- | -------------------- | --------- | ----------------------------------------- |
+| `landing`   | Next.js (App Router) | SSR / SSG | Production-ready marketing app            |
+| `dashboard` | React + Vite         | CSR       | Infrastructure only                       |
+| `admin`     | React + Vite         | CSR       | Foundation shell (sidebar, orders sample) |
 
 **Tags:** `scope:app`, `type:app`, `platform:web`, `domain:frontend`
+
+## Admin app
+
+```bash
+pnpm nx dev admin            # http://localhost:4300
+pnpm nx build admin
+pnpm nx typecheck admin
+pnpm nx preview admin
+```
+
+Orange brand tokens live in `admin/src/theme-overrides.css` (`data-app="admin"`). i18n uses the same `createTranslator` pattern as landing (`src/i18n/t.ts` + JSON dictionaries).
 
 ## Landing app
 
@@ -31,7 +42,7 @@ Each app has its own `*AppProviders` that wires `RouteTransitionProvider` with d
 | ----------- | --------------------------------------------------------------------------- | --------------------------------- | --------------------------------------------------------- |
 | `landing`   | `landing/src/providers/app-providers.tsx` + `route-transition-provider.tsx` | `usePathname()`                   | Wired in `[locale]/layout.tsx`                            |
 | `dashboard` | `dashboard/src/providers/app-providers.tsx`                                 | Pass `pathname` from React Router | **Not bootstrapped yet** — wire when the Vite shell lands |
-| `admin`     | `admin/src/providers/app-providers.tsx`                                     | Pass `pathname` from React Router | **Not bootstrapped yet** — wire when the Vite shell lands |
+| `admin`     | `admin/src/providers/app-providers.tsx`                                     | `useLocation()` from React Router | Wired in Vite shell                                       |
 
 #### App-specific defaults (today)
 

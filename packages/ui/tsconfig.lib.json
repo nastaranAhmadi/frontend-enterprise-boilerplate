@@ -1,5 +1,5 @@
 {
-  "extends": "@enterprise/tsconfig/library-react",
+  "extends": ["../../tsconfig.base.json", "@enterprise/tsconfig/library-react"],
   "compilerOptions": {
     "outDir": "./dist",
     "rootDir": "./src",

@@ -1,56 +1,57 @@
 /**
- * Admin — "Control plane"
- * Serious, sparse authority chrome. Slate primary; amber only as warning.
+ * Admin — "D.CC Control plane"
+ * Orange brand primary; neutral workspace chrome. Scoped to data-app='admin' only.
  */
 :root[data-app='admin'],
+:root[data-app='admin'][data-theme='light'],
 [data-theme='light'][data-app='admin'] {
-  --color-background: #f1f3f5;
+  --color-background: #f4f4f5;
   --color-surface: #ffffff;
   --color-surface-elevated: #ffffff;
-  --color-foreground: #0c0f14;
-  --color-muted: #d9dee5;
-  --color-muted-foreground: #5c6570;
-  --color-border: #d9dee5;
-  --color-border-subtle: #e8ebef;
-  --color-primary: #1e293b;
-  --color-primary-foreground: #f8fafc;
-  --color-primary-muted: #e2e8f0;
-  --color-secondary: #b91c1c;
-  --color-secondary-foreground: #ffffff;
-  --color-accent: #fee2e2;
-  --color-accent-foreground: #7f1d1d;
-  --color-success: #166534;
+  --color-foreground: #18181b;
+  --color-muted: #f4f4f5;
+  --color-muted-foreground: #71717a;
+  --color-border: #e4e4e7;
+  --color-border-subtle: #f4f4f5;
+  --color-primary: #ea580c;
+  --color-primary-foreground: #ffffff;
+  --color-primary-muted: #ffedd5;
+  --color-secondary: #27272a;
+  --color-secondary-foreground: #fafafa;
+  --color-accent: #fff7ed;
+  --color-accent-foreground: #9a3412;
+  --color-success: #16a34a;
   --color-success-foreground: #ffffff;
   --color-success-muted: #dcfce7;
-  --color-warning: #ca8a04;
+  --color-warning: #eab308;
   --color-warning-foreground: #422006;
   --color-warning-muted: #fef9c3;
   --color-error: #dc2626;
   --color-error-foreground: #ffffff;
   --color-error-muted: #fee2e2;
-  --color-info: #0369a1;
+  --color-info: #0284c7;
   --color-info-foreground: #ffffff;
   --color-info-muted: #e0f2fe;
-  --color-ring: #1e293b;
-  --color-overlay: rgb(12 15 20 / 0.5);
+  --color-ring: #ea580c;
+  --color-overlay: rgb(24 24 27 / 0.45);
 }
 
 [data-theme='dark'][data-app='admin'] {
-  --color-background: #090b0e;
-  --color-surface: #12151a;
-  --color-surface-elevated: #1a1f27;
-  --color-foreground: #eef1f5;
-  --color-muted: #2c333d;
-  --color-muted-foreground: #8b949e;
-  --color-border: #2c333d;
-  --color-border-subtle: #1a1f27;
-  --color-primary: #e2e8f0;
-  --color-primary-foreground: #0f172a;
-  --color-primary-muted: #334155;
-  --color-secondary: #f87171;
-  --color-secondary-foreground: #450a0a;
-  --color-accent: #3f1515;
-  --color-accent-foreground: #fecaca;
+  --color-background: #09090b;
+  --color-surface: #18181b;
+  --color-surface-elevated: #27272a;
+  --color-foreground: #fafafa;
+  --color-muted: #27272a;
+  --color-muted-foreground: #a1a1aa;
+  --color-border: #3f3f46;
+  --color-border-subtle: #27272a;
+  --color-primary: #f97316;
+  --color-primary-foreground: #18181b;
+  --color-primary-muted: #431407;
+  --color-secondary: #e4e4e7;
+  --color-secondary-foreground: #18181b;
+  --color-accent: #431407;
+  --color-accent-foreground: #fed7aa;
   --color-success: #4ade80;
   --color-success-foreground: #052e16;
   --color-success-muted: #14532d;
@@ -63,6 +64,6 @@
   --color-info: #38bdf8;
   --color-info-foreground: #082f49;
   --color-info-muted: #075985;
-  --color-ring: #e2e8f0;
+  --color-ring: #f97316;
   --color-overlay: rgb(0 0 0 / 0.65);
 }

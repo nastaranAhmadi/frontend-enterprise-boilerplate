@@ -1,0 +1,66 @@
+{
+  "common": {
+    "skipToContent": "رفتن به محتوا",
+    "back": "بازگشت",
+    "search": "جستجو",
+    "viewDetails": "مشاهده جزئیات",
+    "notifications": "اعلان‌ها",
+    "settings": "تنظیمات"
+  },
+  "theme": {
+    "light": "روشن",
+    "dark": "تیره",
+    "switchToLight": "تغییر به حالت روشن",
+    "switchToDark": "تغییر به حالت تیره"
+  },
+  "locale": {
+    "en": "انگلیسی",
+    "fa": "فارسی"
+  },
+  "shell": {
+    "storeManagement": "مدیریت فروشگاه",
+    "storeName": "رستوران مرکزی",
+    "tagline": "پنل مدیریت سازمانی",
+    "menuSection": "منو",
+    "othersSection": "سایر",
+    "roleAdmin": "مدیر",
+    "profileOptions": "گزینه‌های پروفایل",
+    "breadcrumb": "مسیر ناوبری",
+    "home": "خانه",
+    "collapseSidebar": "جمع کردن نوار کناری",
+    "expandSidebar": "باز کردن نوار کناری",
+    "openSidebar": "باز کردن منو",
+    "closeSidebar": "بستن منو",
+    "actionsMenu": "عملیات workspace",
+    "languageSection": "زبان",
+    "appearanceSection": "ظاهر"
+  },
+  "nav": {
+    "dashboard": "داشبورد",
+    "orders": "سفارش‌ها",
+    "tables": "میزها",
+    "kitchen": "آشپزخانه",
+    "menus": "منوها",
+    "analytics": "تحلیل‌ها",
+    "settings": "تنظیمات"
+  },
+  "orders": {
+    "title": "سفارش‌ها",
+    "subtitle": "پیگیری و مدیریت سفارش‌های ورودی رستوران.",
+    "totalOrders": "کل سفارش‌ها",
+    "pending": "در انتظار",
+    "preparing": "در حال آماده‌سازی",
+    "served": "سرو شده",
+    "completed": "تکمیل شده",
+    "cancelled": "لغو شده",
+    "tabAll": "همه",
+    "tableLabel": "میز"
+  },
+  "dashboard": {
+    "title": "داشبورد",
+    "subtitle": "نمای کلی عملیات رستوران."
+  },
+  "routeTransition": {
+    "message": "در حال بارگذاری…"
+  }
+}

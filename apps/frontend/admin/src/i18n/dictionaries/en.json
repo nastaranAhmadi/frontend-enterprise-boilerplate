@@ -1,0 +1,66 @@
+{
+  "common": {
+    "skipToContent": "Skip to content",
+    "back": "Back",
+    "search": "Search",
+    "viewDetails": "View Details",
+    "notifications": "Notifications",
+    "settings": "Settings"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode"
+  },
+  "locale": {
+    "en": "English",
+    "fa": "Persian"
+  },
+  "shell": {
+    "storeManagement": "Store Management",
+    "storeName": "Downtown Bistro",
+    "tagline": "Enterprise Admin",
+    "menuSection": "Menu",
+    "othersSection": "Others",
+    "roleAdmin": "Admin",
+    "profileOptions": "Profile options",
+    "breadcrumb": "Breadcrumb",
+    "home": "Home",
+    "collapseSidebar": "Collapse sidebar",
+    "expandSidebar": "Expand sidebar",
+    "openSidebar": "Open navigation",
+    "closeSidebar": "Close navigation",
+    "actionsMenu": "Workspace actions",
+    "languageSection": "Language",
+    "appearanceSection": "Appearance"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "orders": "Orders",
+    "tables": "Tables",
+    "kitchen": "Kitchen",
+    "menus": "Menus",
+    "analytics": "Analytics",
+    "settings": "Settings"
+  },
+  "orders": {
+    "title": "Orders",
+    "subtitle": "Track and manage incoming orders across your restaurant.",
+    "totalOrders": "Total Orders",
+    "pending": "Pending",
+    "preparing": "Preparing",
+    "served": "Served",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "tabAll": "All",
+    "tableLabel": "Table"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Overview of restaurant operations."
+  },
+  "routeTransition": {
+    "message": "Loading workspace…"
+  }
+}

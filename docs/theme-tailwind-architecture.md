@@ -32,12 +32,12 @@ This monorepo uses a token-first architecture:
 - Apps set `data-app` on `<html>` and load override CSS **after** the base theme
 - Avoid bare `[data-theme='light'|'dark']` in the base theme — it fights app overrides on `DesignSystemProvider`
 
-| App                    | `data-app`  | Palette                            | Override file                                          |
-| ---------------------- | ----------- | ---------------------------------- | ------------------------------------------------------ |
-| Storybook / UI         | `ui`        | Laboratory (teal docs)             | default in `themes.css`                                |
-| Landing                | `landing`   | SHINSEI (sage + teal)              | `apps/frontend/landing/src/styles/theme-overrides.css` |
-| Dashboard (user panel) | `dashboard` | My space (indigo + teal)           | `apps/frontend/dashboard/src/theme-overrides.css`      |
-| Admin                  | `admin`     | Control plane (slate + red signal) | `apps/frontend/admin/src/theme-overrides.css`          |
+| App                    | `data-app`  | Palette                      | Override file                                          |
+| ---------------------- | ----------- | ---------------------------- | ------------------------------------------------------ |
+| Storybook / UI         | `ui`        | Laboratory (teal docs)       | default in `themes.css`                                |
+| Landing                | `landing`   | SHINSEI (sage + teal)        | `apps/frontend/landing/src/styles/theme-overrides.css` |
+| Dashboard (user panel) | `dashboard` | My space (indigo + teal)     | `apps/frontend/dashboard/src/theme-overrides.css`      |
+| Admin                  | `admin`     | Control plane (orange brand) | `apps/frontend/admin/src/theme-overrides.css`          |
 
 ## 3) Where Tailwind configuration lives
 

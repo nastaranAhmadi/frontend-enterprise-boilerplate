@@ -1,30 +1,54 @@
-import { RouteTransitionProvider } from '@enterprise/ui/providers';
+import { DesignSystemProvider, RouteTransitionProvider } from '@enterprise/ui/providers';
 import type { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 
-export type AdminAppProvidersProps = {
-  blurBackdrop?: boolean;
+import { readStoredThemePreference } from '@/config/theme';
+import { LocalePreferenceProvider } from '@/lib/i18n/locale-preference-context';
+import { useLocalePreference } from '@/lib/i18n/locale-preference-context';
+import { useT } from '@/lib/i18n/use-t';
+import { SidebarPreferenceProvider } from '@/lib/sidebar/sidebar-preference-context';
+import { ThemePreferenceProvider, useThemePreference } from '@/lib/theme/theme-preference-context';
+
+type AppProvidersProps = {
   children: ReactNode;
-  enabled?: boolean;
-  message: string;
-  minDuration?: number;
-  pathname: string;
 };
 
-export const AdminAppProviders = ({
-  blurBackdrop = true,
-  children,
-  enabled = true,
-  message,
-  minDuration,
-  pathname,
-}: AdminAppProvidersProps) => (
-  <RouteTransitionProvider
-    pathname={pathname}
-    message={message}
-    enabled={enabled}
-    blurBackdrop={blurBackdrop}
-    minDuration={minDuration}
-  >
-    {children}
-  </RouteTransitionProvider>
+const DesignSystemBridge = ({ children }: { children: ReactNode }) => {
+  const { theme } = useThemePreference();
+  const { locale } = useLocalePreference();
+
+  return (
+    <DesignSystemProvider locale={locale} theme={theme}>
+      {children}
+    </DesignSystemProvider>
+  );
+};
+
+const RouteTransitionBridge = ({ children }: { children: ReactNode }) => {
+  const pathname = useLocation().pathname;
+  const t = useT();
+
+  return (
+    <RouteTransitionProvider
+      pathname={pathname}
+      message={t('routeTransition.message')}
+      enabled
+      blurBackdrop
+      minDuration={600}
+    >
+      {children}
+    </RouteTransitionProvider>
+  );
+};
+
+export const AppProviders = ({ children }: AppProvidersProps) => (
+  <ThemePreferenceProvider initialTheme={readStoredThemePreference()}>
+    <LocalePreferenceProvider>
+      <SidebarPreferenceProvider>
+        <DesignSystemBridge>
+          <RouteTransitionBridge>{children}</RouteTransitionBridge>
+        </DesignSystemBridge>
+      </SidebarPreferenceProvider>
+    </LocalePreferenceProvider>
+  </ThemePreferenceProvider>
 );

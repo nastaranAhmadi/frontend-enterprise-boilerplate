@@ -51,11 +51,11 @@ Current app projects are:
 - `admin` (`apps/frontend/admin`)
 - `landing` (`apps/frontend/landing`) — Next.js marketing site with SSR/SSG, i18n (`en` / `fa`), and Route Handlers for client mutations
 
-| App         | Dev                           | Build / test                                    |
-| ----------- | ----------------------------- | ----------------------------------------------- |
-| `landing`   | `pnpm nx dev landing` → :4200 | `pnpm nx build landing`, `pnpm nx test landing` |
-| `dashboard` | —                             | `pnpm nx typecheck dashboard`                   |
-| `admin`     | —                             | `pnpm nx typecheck admin`                       |
+| App         | Dev                           | Build / test                                     |
+| ----------- | ----------------------------- | ------------------------------------------------ |
+| `landing`   | `pnpm nx dev landing` → :4200 | `pnpm nx build landing`, `pnpm nx test landing`  |
+| `dashboard` | —                             | `pnpm nx typecheck dashboard`                    |
+| `admin`     | `pnpm nx dev admin` → :4300   | `pnpm nx build admin`, `pnpm nx typecheck admin` |
 
 See [`apps/frontend/README.md`](./apps/frontend/README.md) for landing details and demo links.
 
